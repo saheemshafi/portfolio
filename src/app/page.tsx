@@ -1,113 +1,320 @@
-import Image from 'next/image'
+import Button, { buttonVariants } from "@/components/ui/Button";
+import Container from "@/components/ui/Container";
+import GradientLine from "@/components/ui/GradientLine";
+import Heading, { textVariants } from "@/components/ui/Heading";
+import { cn } from "@/lib/utils";
+import Image from "next/image";
+import Link from "next/link";
+import { CgArrowsExpandUpRight } from "react-icons/cg";
+import { BiSend } from "react-icons/bi";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <main>
+      <section className="grid min-h-[calc(100vh_-_64px)] place-items-center text-center">
+        <div>
+          <div>
+            <Heading subHeading="Hello, I am">Mir Saheem Shafi</Heading>
+          </div>
+          <div
+            className="absolute inset-0 -z-[1] flex flex-col items-center justify-center space-y-12"
+            aria-hidden
           >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
+            <img src="/images/design-elements/FULL STACK.png" />
+            <img
+              src="/images/design-elements/WEB DEVELOPER.png"
+              className="scale-150"
             />
-          </a>
+          </div>
+          <blockquote className="mt-3">
+            Doing things I love, A <strong>Fullstack Web Developer.</strong>
+          </blockquote>
+          <div className="mt-6 flex justify-center gap-4">
+            <Button>View Projects</Button>
+            <Button variant="outline">About Me</Button>
+          </div>
         </div>
-      </div>
+      </section>
+      <Container id="skills">
+        <div className="max-w-md">
+          <Heading level="h2" subHeading="SKILLS">
+            Technologies i am working with
+          </Heading>
+        </div>
+        <div className="relative md:-mt-12">
+          <Link
+            href="/skills"
+            className={cn(
+              buttonVariants({ variant: "outline", size: "sm" }),
+              "absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2",
+            )}
+          >
+            All Skills
+          </Link>
+          <img
+            src="/images/design-elements/eclipse.png"
+            alt="skills"
+            className="mx-auto"
+          />
+        </div>
+        <GradientLine className="max-w-lg" />
+      </Container>
+      <Container id="projects">
+        <Heading level="h2" subHeading="PROJECTS">
+          Projects I Have Worked On
+        </Heading>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+        <div className="mb-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <Container.Gradient className="relative rounded-xl shadow">
+            <div>
+              <img
+                src="/images/lycoris recoil.png"
+                alt=""
+                className="rounded-t-xl grayscale"
+              />
+            </div>
+            <div className="px-3 py-4">
+              <div className="isolate flex flex-wrap gap-2 text-xs uppercase">
+                <Container.Gradient className="rounded-full px-2 py-1">
+                  React
+                </Container.Gradient>
+                <Container.Gradient className="rounded-full px-2 py-1">
+                  DotNet.WebApi
+                </Container.Gradient>
+                <Container.Gradient className="rounded-full px-2 py-1">
+                  Javascript
+                </Container.Gradient>
+              </div>
+              <div className="my-3">
+                <h6 className={textVariants({ level: "h6" })}>
+                  Lavist Official - Ecommerce Platform
+                </h6>
+                <p className="mt-1 text-sm">
+                  An Ecommerce Platform for unique fashion.
+                </p>
+              </div>
+              <Button size="sm">
+                Live Project
+                <CgArrowsExpandUpRight />
+              </Button>
+            </div>
+          </Container.Gradient>
+          <Container.Gradient className="rounded-xl shadow">
+            <div>
+              <img
+                src="/images/lycoris recoil.png"
+                alt=""
+                className="rounded-t-xl grayscale"
+              />
+            </div>
+            <div className="px-3 py-4">
+              <div className="isolate flex flex-wrap gap-2 text-xs uppercase">
+                <Container.Gradient className="rounded-full px-2 py-1">
+                  React
+                </Container.Gradient>
+                <Container.Gradient className="rounded-full px-2 py-1">
+                  DotNet.WebApi
+                </Container.Gradient>
+                <Container.Gradient className="rounded-full px-2 py-1">
+                  Javascript
+                </Container.Gradient>
+              </div>
+              <div className="my-3">
+                <h6 className={textVariants({ level: "h6" })}>
+                  Lavist Official - Ecommerce Platform
+                </h6>
+                <p className="mt-1 text-sm">
+                  An Ecommerce Platform for unique fashion.
+                </p>
+              </div>
+              <Button size="sm">
+                Live Project
+                <CgArrowsExpandUpRight />
+              </Button>
+            </div>
+          </Container.Gradient>
+          <Container.Gradient className="relative rounded-xl bg-slate-main shadow">
+            <div>
+              <img
+                src="/images/lycoris recoil.png"
+                alt=""
+                className="rounded-t-xl grayscale"
+              />
+            </div>
+            <div className="px-3 py-4">
+              <div className="isolate flex flex-wrap gap-2 text-xs uppercase">
+                <Container.Gradient className="rounded-full px-2 py-1">
+                  React
+                </Container.Gradient>
+                <Container.Gradient className="rounded-full px-2 py-1">
+                  DotNet.WebApi
+                </Container.Gradient>
+                <Container.Gradient className="rounded-full px-2 py-1">
+                  Javascript
+                </Container.Gradient>
+              </div>
+              <div className="my-3">
+                <h6 className={textVariants({ level: "h6" })}>
+                  Lavist Official - Ecommerce Platform
+                </h6>
+                <p className="mt-1 text-sm">
+                  An Ecommerce Platform for unique fashion.
+                </p>
+              </div>
+              <Button size="sm">
+                Live Project
+                <CgArrowsExpandUpRight />
+              </Button>
+            </div>
+          </Container.Gradient>
+        </div>
+        <GradientLine className="max-w-lg" />
+        <div className="mt-8 grid place-items-center">
+          <Button variant="outline">View All Projects</Button>
+        </div>
+      </Container>
+      <Container id="socials">
+        <div className="max-w-md">
+          <Heading level="h2" subHeading="SOCIALS">
+            Find Me On Social Media
+          </Heading>
+        </div>
+        <div className="relative sm:my-36">
+          <GradientLine className="absolute left-1/2 hidden -translate-x-1/2 sm:block" />
+          <GradientLine
+            className="absolute left-1/2 -translate-x-1/2 opacity-25 sm:hidden"
+            vertical
+          />
+          <div className="relative grid place-items-center gap-y-24 sm:-translate-y-1/2 sm:grid-cols-4 sm:gap-y-0">
+            <Link
+              href="https://github.com/saheemshafi"
+              referrerPolicy="no-referrer"
+            >
+              <Container.Gradient className="relative grid aspect-square w-24 place-items-center rounded-full bg-slate-main p-4">
+                <Image
+                  src="/images/icons/github.png"
+                  alt="github"
+                  width={300}
+                  height={300}
+                />
+                <p
+                  className={cn(
+                    textVariants({ level: "h6" }),
+                    "absolute top-full mt-4 text-center text-base font-semibold uppercase tracking-wide",
+                  )}
+                >
+                  GITHUB
+                </p>
+              </Container.Gradient>
+            </Link>
+            <Link
+              href="https://linkedin.com/in/saheemshafi"
+              referrerPolicy="no-referrer"
+            >
+              <Container.Gradient className="relative grid aspect-square w-24 place-items-center rounded-full bg-slate-main p-5">
+                <Image
+                  src="/images/icons/linkedin.png"
+                  alt="linkedin"
+                  width={300}
+                  height={300}
+                />
+                <p className="absolute top-full mt-4 bg-gradient-to-b from-white to-gray-400 bg-clip-text text-center font-semibold uppercase tracking-wide text-transparent">
+                  LinkedIN
+                </p>
+              </Container.Gradient>
+            </Link>
+            {/* TODO: Add twitter and discord link */}
+            <Link href="">
+              <Container.Gradient className="relative grid aspect-square w-24 place-items-center rounded-full bg-slate-main p-4">
+                <Image
+                  src="/images/icons/twitter.png"
+                  alt="twitter"
+                  width={300}
+                  height={300}
+                />
+                <p
+                  className={cn(
+                    textVariants({ level: "h6" }),
+                    "absolute top-full mt-4 text-center text-base font-semibold uppercase tracking-wide",
+                  )}
+                >
+                  Twitter
+                </p>
+              </Container.Gradient>
+            </Link>
+            <Link href="">
+              <Container.Gradient className="relative grid aspect-square w-24 place-items-center rounded-full bg-slate-main p-4">
+                <Image
+                  src="/images/icons/discord.png"
+                  alt="discord"
+                  width={300}
+                  height={300}
+                />
+                <p
+                  className={cn(
+                    textVariants({ level: "h6" }),
+                    "absolute top-full mt-4 text-center text-base font-semibold uppercase tracking-wide",
+                  )}
+                >
+                  Discord
+                </p>
+              </Container.Gradient>
+            </Link>
+          </div>
+        </div>
+      </Container>
+      <Container id="contact">
+        <Heading level="h2" subHeading="React Out">
+          Contact Me
+        </Heading>
+        <Container.Gradient className="rounded-xl sm:rounded-3xl p-4 sm:p-8">
+          <form className="isolate">
+            <div className="grid sm:grid-cols-2 gap-6">
+              <div>
+                <label htmlFor="name" className="mb-2 block">
+                  Enter your name
+                </label>
+                <Container.Gradient className="rounded-full">
+                  <input
+                    type="text"
+                    name="name"
+                    className="block w-full rounded-[inherit] bg-zinc-800/40 px-4 py-3 font-medium"
+                  />
+                </Container.Gradient>
+              </div>
+              <div>
+                <label htmlFor="email" className="mb-2 block">
+                  Enter your email
+                </label>
+                <Container.Gradient className="rounded-full">
+                  <input
+                    type="email"
+                    name="email"
+                    className="block w-full rounded-[inherit] bg-zinc-800/40 px-4 py-3 font-medium"
+                  />
+                </Container.Gradient>
+              </div>
+            </div>
+            <div className="my-6">
+              <label htmlFor="message" className="mb-2 block">
+                Write a message
+              </label>
+              <Container.Gradient className="rounded-lg">
+                <textarea
+                  name="message"
+                  className="block w-full rounded-[inherit] bg-zinc-800/40 px-4 py-3 font-medium"
+                  rows={3}
+                />
+              </Container.Gradient>
+            </div>
+            <div className="flex gap-2">
+            <Button variant="ghost">Cancel</Button>
+            <Button>Send message <BiSend/></Button>
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+            </div>
+          </form>
+        </Container.Gradient>
+      </Container>
     </main>
-  )
+  );
 }
