@@ -18,7 +18,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={cn(inter.className, "min-h-screen bg-slate-main overflow-x-hidden")}>
+      <body
+        className={cn(
+          inter.className,
+          "min-h-screen overflow-x-hidden bg-slate-main",
+        )}
+      >
         <Navbar />
         {children}
       </body>

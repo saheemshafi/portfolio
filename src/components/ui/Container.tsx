@@ -23,7 +23,7 @@ const GradientContainer: FC<ContainerProps> = ({
     <div
       {...attrs}
       className={cn(
-        "bg-slate-main relative after:absolute after:inset-[-1px] after:-z-[1] after:rounded-[inherit] after:bg-gradient-to-t after:from-white",
+        "relative bg-slate-main after:absolute after:inset-[-1px] after:-z-[1] after:rounded-[inherit] after:bg-gradient-to-t after:from-white",
         className,
       )}
     >

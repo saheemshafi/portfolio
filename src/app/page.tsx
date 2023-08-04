@@ -1,4 +1,6 @@
-import Button, { buttonVariants } from "@/components/ui/Button";
+import ContactForm from "@/components/ContactForm";
+import Button from "@/components/ui/Button";
+import { buttonVariants } from "@/components/ui/Button/_buttonVariants";
 import Container from "@/components/ui/Container";
 import GradientLine from "@/components/ui/GradientLine";
 import Heading, { textVariants } from "@/components/ui/Heading";
@@ -6,7 +8,6 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { CgArrowsExpandUpRight } from "react-icons/cg";
-import { BiSend } from "react-icons/bi";
 
 export default function Home() {
   return (
@@ -267,53 +268,7 @@ export default function Home() {
         <Heading level="h2" subHeading="React Out">
           Contact Me
         </Heading>
-        <Container.Gradient className="rounded-xl sm:rounded-3xl p-4 sm:p-8">
-          <form className="isolate">
-            <div className="grid sm:grid-cols-2 gap-6">
-              <div>
-                <label htmlFor="name" className="mb-2 block">
-                  Enter your name
-                </label>
-                <Container.Gradient className="rounded-full">
-                  <input
-                    type="text"
-                    name="name"
-                    className="block w-full rounded-[inherit] bg-zinc-800/40 px-4 py-3 font-medium"
-                  />
-                </Container.Gradient>
-              </div>
-              <div>
-                <label htmlFor="email" className="mb-2 block">
-                  Enter your email
-                </label>
-                <Container.Gradient className="rounded-full">
-                  <input
-                    type="email"
-                    name="email"
-                    className="block w-full rounded-[inherit] bg-zinc-800/40 px-4 py-3 font-medium"
-                  />
-                </Container.Gradient>
-              </div>
-            </div>
-            <div className="my-6">
-              <label htmlFor="message" className="mb-2 block">
-                Write a message
-              </label>
-              <Container.Gradient className="rounded-lg">
-                <textarea
-                  name="message"
-                  className="block w-full rounded-[inherit] bg-zinc-800/40 px-4 py-3 font-medium"
-                  rows={3}
-                />
-              </Container.Gradient>
-            </div>
-            <div className="flex gap-2">
-            <Button variant="ghost">Cancel</Button>
-            <Button>Send message <BiSend/></Button>
-
-            </div>
-          </form>
-        </Container.Gradient>
+        <ContactForm />
       </Container>
     </main>
   );

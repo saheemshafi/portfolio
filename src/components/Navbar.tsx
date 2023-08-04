@@ -6,7 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FC } from "react";
 import { LiaDownloadSolid } from "react-icons/lia";
-import { buttonVariants } from "./ui/Button";
+import { buttonVariants } from "./ui/Button/_buttonVariants";
 import Container from "./ui/Container";
 import { textVariants } from "./ui/Heading";
 
@@ -22,7 +22,7 @@ const Navbar: FC<NavbarProps> = ({}) => {
         </Link>
 
         <NavigationMenu.Root className="relative">
-          <NavigationMenu.List className="relative items-center gap-2 font-medium text-white hidden sm:flex">
+          <NavigationMenu.List className="relative hidden items-center gap-2 font-medium text-white sm:flex">
             <NavigationMenu.Item>
               <NavigationMenu.Link active={pathname == "/"} asChild>
                 <Link
