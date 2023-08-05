@@ -1,4 +1,5 @@
 import ContactForm from "@/components/ContactForm";
+import * as Accordion from "@/components/ui/Accordion";
 import Button from "@/components/ui/Button";
 import { buttonVariants } from "@/components/ui/Button/_buttonVariants";
 import Container from "@/components/ui/Container";
@@ -269,6 +270,47 @@ export default function Home() {
           Contact Me
         </Heading>
         <ContactForm />
+      </Container>
+      <Container id="about-me">
+        <Heading level="h2" subHeading="About Me">
+          Know Me More
+        </Heading>
+        <Accordion.Root type="multiple">
+          <Accordion.Item value="item-1">
+            <Accordion.Trigger>Who Are You?</Accordion.Trigger>
+            <Accordion.Content>
+              Any details submitted on this form will not be shared with anyone.
+              This form is purely for business use, any personal submittions
+              will not be looked upon.
+            </Accordion.Content>
+          </Accordion.Item>
+          <Accordion.Item value="item-2">
+            <Accordion.Trigger>
+              How Much Experience Do You Have?
+            </Accordion.Trigger>
+            <Accordion.Content>
+              Any details submitted on this form will not be shared with anyone.
+              This form is purely for business use, any personal submittions
+              will not be looked upon.
+            </Accordion.Content>
+          </Accordion.Item>
+          <Accordion.Item value="item-3">
+            <Accordion.Trigger>Where Do You Live? </Accordion.Trigger>
+            <Accordion.Content>
+              Any details submitted on this form will not be shared with anyone.
+              This form is purely for business use, any personal submittions
+              will not be looked upon.
+            </Accordion.Content>
+          </Accordion.Item>
+          <Accordion.Item value="item-4">
+            <Accordion.Trigger>What can you build? </Accordion.Trigger>
+            <Accordion.Content>
+              Any details submitted on this form will not be shared with anyone.
+              This form is purely for business use, any personal submittions
+              will not be looked upon.
+            </Accordion.Content>
+          </Accordion.Item>
+        </Accordion.Root>
       </Container>
     </main>
   );
