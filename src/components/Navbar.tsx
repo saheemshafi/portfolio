@@ -5,8 +5,8 @@ import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FC } from "react";
-import { LiaDownloadSolid } from "react-icons/lia";
-import { buttonVariants } from "./ui/Button/_buttonVariants";
+import { PiCaretDownBold } from "react-icons/pi";
+import Button from "./ui/Button";
 import Container from "./ui/Container";
 import { textVariants } from "./ui/Heading";
 
@@ -21,53 +21,64 @@ const Navbar: FC<NavbarProps> = ({}) => {
           Mir Saheem Shafi
         </Link>
 
-        <NavigationMenu.Root className="relative">
-          <NavigationMenu.List className="relative hidden items-center gap-2 font-medium text-white sm:flex">
+        <NavigationMenu.Root className="relative z-[1] flex flex-1 justify-end">
+          <NavigationMenu.List className="m-0 flex list-none space-x-2 p-1 text-sm font-semibold text-white">
             <NavigationMenu.Item>
-              <NavigationMenu.Link active={pathname == "/"} asChild>
-                <Link
-                  href="/"
-                  className="rounded-full px-2.5 py-1 text-sm data-[active]:bg-white data-[active]:font-semibold data-[active]:text-slate-main"
-                >
-                  Home
-                </Link>
-              </NavigationMenu.Link>
+              <NavigationMenu.Trigger className="group flex select-none items-center justify-between gap-[2px] rounded-full border border-transparent px-3 py-2 leading-none outline-none transition-colors hover:border-zinc-700 hover:bg-zinc-800 focus-visible:border-zinc-700 focus-visible:bg-zinc-800">
+                Home{" "}
+                <PiCaretDownBold
+                  className="text-violet10 relative top-[1px] transition-transform duration-[250] ease-in group-data-[state=open]:-rotate-180"
+                  aria-hidden
+                />
+              </NavigationMenu.Trigger>
+              <NavigationMenu.Content className="absolute left-0 top-0 w-full data-[motion=from-end]:animate-enterFromRight data-[motion=from-start]:animate-enterFromLeft data-[motion=to-end]:animate-exitToRight data-[motion=to-start]:animate-exitToLeft sm:w-auto">
+                <ul className="one m-0 grid list-none gap-x-[10px] p-[22px] sm:w-[500px] sm:grid-cols-[0.75fr_1fr]">
+                  <li>1</li>
+                  <li>2</li>
+                  <li>3</li>
+                  <li>4</li>
+                  <li>5</li>
+                </ul>
+              </NavigationMenu.Content>
             </NavigationMenu.Item>
 
             <NavigationMenu.Item>
-              <NavigationMenu.Link active={pathname == "/about"} asChild>
-                <Link
-                  href="/about"
-                  className="rounded-full px-2.5 py-1 text-sm data-[active]:bg-white data-[active]:font-semibold data-[active]:text-slate-main"
-                >
-                  About
-                </Link>
-              </NavigationMenu.Link>
+              <NavigationMenu.Trigger className="group flex select-none items-center justify-between gap-[2px] rounded-full border border-transparent px-3 py-2 leading-none outline-none transition-colors hover:border-zinc-700 hover:bg-zinc-800 focus-visible:border-zinc-700 focus-visible:bg-zinc-800">
+                Overview{" "}
+                <PiCaretDownBold
+                  className="text-violet10 relative top-[1px] transition-transform duration-[250] ease-in group-data-[state=open]:-rotate-180"
+                  aria-hidden
+                />
+              </NavigationMenu.Trigger>
+              <NavigationMenu.Content className="absolute left-0 top-0 w-full sm:w-auto">
+                <ul className="m-0 grid list-none gap-x-[10px] p-[22px] sm:w-[600px] sm:grid-flow-col sm:grid-rows-3">
+                  <li>a</li>
+                  <li>ab</li>
+                  <li>ac</li>
+                  <li>add</li>
+                </ul>
+              </NavigationMenu.Content>
             </NavigationMenu.Item>
 
             <NavigationMenu.Item>
-              <NavigationMenu.Link asChild active={pathname == "/projects"}>
-                <Link
-                  href="/projects"
-                  className="rounded-full px-2.5 py-1 text-sm data-[active]:bg-white data-[active]:font-semibold data-[active]:text-slate-main"
-                >
-                  Projects
-                </Link>
+              <NavigationMenu.Link
+                className="group flex select-none items-center justify-between gap-[2px] rounded-full border border-transparent px-3 py-2 leading-none outline-none transition-colors hover:border-zinc-700 hover:bg-zinc-800 focus-visible:border-zinc-700 focus-visible:bg-zinc-800"
+                href="https://github.com/radix-ui"
+              >
+                Github
               </NavigationMenu.Link>
             </NavigationMenu.Item>
-
-            <NavigationMenu.Item asChild>
-              <button className={buttonVariants({ size: "sm" })}>
-                <LiaDownloadSolid size={20} /> Resume
-              </button>
+            <NavigationMenu.Item>
+              <Button size="sm">Download Resume</Button>
             </NavigationMenu.Item>
+
+            <NavigationMenu.Indicator className="top-full z-[1] flex h-[10px] items-end justify-center overflow-hidden transition-[width,transform_250ms_ease] data-[state=hidden]:animate-fadeOut data-[state=visible]:animate-fadeIn">
+              <div className="relative top-[70%] h-[10px] w-[10px] rotate-[45deg] rounded-tl-[2px] bg-zinc-800" />
+            </NavigationMenu.Indicator>
           </NavigationMenu.List>
 
-          <NavigationMenu.Indicator className="z-[1] mt-1.5 flex justify-center">
-            <div className="absolute aspect-square h-full -translate-y-full border-8 border-transparent border-b-slate-main"></div>
-          </NavigationMenu.Indicator>
-          <div className="absolute top-full w-full">
-            <NavigationMenu.Viewport className="rounded border border-gray-800 bg-slate-main p-2" />
+          <div className="perspective-[2000px] absolute left-0 top-full flex w-full justify-end text-white">
+            <NavigationMenu.Viewport className="relative mt-[10px] h-[var(--radix-navigation-menu-viewport-height)] w-full origin-[top_center] overflow-hidden rounded-[6px] bg-zinc-800 transition-[width,_height] duration-300 data-[state=closed]:animate-scaleOut data-[state=open]:animate-scaleIn sm:w-[var(--radix-navigation-menu-viewport-width)]" />
           </div>
         </NavigationMenu.Root>
       </Container>

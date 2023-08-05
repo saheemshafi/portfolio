@@ -6,6 +6,7 @@ interface HeadingProps
   extends HTMLAttributes<HTMLHeadingElement>,
     TextVariants {
   subHeading?: string | JSX.Element;
+  description?: string | JSX.Element;
 }
 type TextVariants = VariantProps<typeof textVariants>;
 
@@ -15,7 +16,7 @@ export const textVariants = cva(
     variants: {
       level: {
         h1: "text-5xl sm:text-7xl leading-12",
-        h2: "text-[2rem] sm:text-[2.2rem]  max-w-lg mb-12",
+        h2: "text-[2rem] sm:text-[2.2rem]  max-w-lg",
         h3: "text-[1.7rem]",
         h4: "leading-[1.3] text-[1.5rem]",
         h5: "text-[1.3rem]",
@@ -38,11 +39,12 @@ function Heading({
   children,
   className,
   subHeading,
+  description,
   variant,
   ...props
 }: HeadingProps) {
   return (
-    <div>
+    <div className="mb-12">
       {subHeading && (
         <p className="font-medium uppercase tracking-[0.17188rem] text-yellow-brand">
           {subHeading}
@@ -55,6 +57,11 @@ function Heading({
           className: cn(textVariants({ level, variant }), className),
         },
         children,
+      )}
+      {description && (
+        <p className="font-medium text-zinc-300 max-w-lg capitalize">
+          {description}
+        </p>
       )}
     </div>
   );

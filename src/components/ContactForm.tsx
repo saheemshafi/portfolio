@@ -10,9 +10,9 @@ import { BiSend } from "react-icons/bi";
 import { z } from "zod";
 import Button from "./ui/Button";
 
-interface ContactFormProps {}
+interface ContactFormProps { }
 
-const ContactForm: FC<ContactFormProps> = ({}) => {
+const ContactForm: FC<ContactFormProps> = ({ }) => {
   const contactFormSchema = z.object({
     name: z.string().nonempty("Name is required."),
     email: z.string().email("Email is not valid."),
@@ -26,6 +26,8 @@ const ContactForm: FC<ContactFormProps> = ({}) => {
     z.infer<typeof contactFormSchema>
   >({
     resolver: zodResolver(contactFormSchema),
+    mode: "onChange",
+    reValidateMode: "onChange"
   });
 
   return (
@@ -129,7 +131,7 @@ const ContactForm: FC<ContactFormProps> = ({}) => {
           </Button>
         </div>
 
-        <p className="mt-4 text-sm text-zinc-400">
+        <p className="mt-4 max-w-xl text-sm text-zinc-400">
           Any details submitted on this form will not be shared with anyone.
           This form is purely for business use, any personal submittions will
           not be looked upon.
