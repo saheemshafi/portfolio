@@ -5,6 +5,7 @@ import { buttonVariants } from "@/components/ui/Button/_buttonVariants";
 import Container from "@/components/ui/Container";
 import GradientLine from "@/components/ui/GradientLine";
 import Heading, { textVariants } from "@/components/ui/Heading";
+import Repository, { Commits } from "@/components/ui/Repository/Repository";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
@@ -272,7 +273,11 @@ export default function Home() {
         <ContactForm />
       </Container>
       <Container id="about-me">
-        <Heading level="h2" subHeading="About Me">
+        <Heading
+          level="h2"
+          subHeading="About Me"
+          description="Have questions about me, here are some general ones."
+        >
           Know Me More
         </Heading>
         <Accordion.Root type="multiple">
@@ -311,6 +316,47 @@ export default function Home() {
             </Accordion.Content>
           </Accordion.Item>
         </Accordion.Root>
+      </Container>
+      <Container id="footer">
+        <Heading
+          level="h2"
+          subHeading="Open Source"
+          description="This portfolio is Open Source and you can use it to build your own
+          portfolio too."
+        >
+          Build From My Portfolio
+        </Heading>
+        <Repository username="saheemshafi" repositoryName="portfolio" />
+        <Commits username="saheemshafi" repositoryName="portfolio" />
+      </Container>
+      <Container id="footer">
+        <Heading
+          level="h2"
+          subHeading="Repositories"
+          description="Open Source projects you can learn from."
+        >
+          Projects You Can Browse
+        </Heading>
+        <div className="grid gap-4 lg:grid-cols-2">
+          <div>
+            <Repository username="saheemshafi" repositoryName="portfolio" />
+          </div>
+          <div>
+            <Repository username="saheemshafi" repositoryName="crackle" />
+          </div>
+          <div>
+            <Repository username="saheemshafi" repositoryName="comet" />
+          </div>
+          <div>
+            <Repository username="saheemshafi" repositoryName="music-player" />
+          </div>
+          <div>
+            <Repository username="saheemshafi" repositoryName="music-player" />
+          </div>
+          <div>
+            <Repository username="saheemshafi" repositoryName="neo-news" />
+          </div>
+        </div>
       </Container>
     </main>
   );
