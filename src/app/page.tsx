@@ -5,7 +5,7 @@ import { buttonVariants } from "@/components/ui/Button/_buttonVariants";
 import Container from "@/components/ui/Container";
 import GradientLine from "@/components/ui/GradientLine";
 import Heading, { textVariants } from "@/components/ui/Heading";
-import Repository, { Commits } from "@/components/ui/Repository/Repository";
+import Repository from "@/components/ui/Repository/Repository";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
@@ -317,7 +317,7 @@ export default function Home() {
           </Accordion.Item>
         </Accordion.Root>
       </Container>
-      <Container id="footer">
+      <Container id="os-portfolio">
         <Heading
           level="h2"
           subHeading="Open Source"
@@ -326,16 +326,15 @@ export default function Home() {
         >
           Build From My Portfolio
         </Heading>
-        <Repository username="saheemshafi" repositoryName="portfolio" />
-        <Commits username="saheemshafi" repositoryName="portfolio" />
+        <Repository username="saheemshafi" commits repositoryName="portfolio" />
       </Container>
-      <Container id="footer">
+      <Container id="os-repositories">
         <Heading
           level="h2"
-          subHeading="Repositories"
+          subHeading="Source Code"
           description="Open Source projects you can learn from."
         >
-          Projects You Can Browse
+          Projects You Can Explore
         </Heading>
         <div className="grid gap-4 lg:grid-cols-2">
           <div>
@@ -346,9 +345,6 @@ export default function Home() {
           </div>
           <div>
             <Repository username="saheemshafi" repositoryName="comet" />
-          </div>
-          <div>
-            <Repository username="saheemshafi" repositoryName="music-player" />
           </div>
           <div>
             <Repository username="saheemshafi" repositoryName="music-player" />
