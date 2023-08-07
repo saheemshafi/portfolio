@@ -1,4 +1,4 @@
-import { cn, octokit } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { Fragment, Suspense } from "react";
 import Avatar from "../Avatar";
@@ -7,12 +7,14 @@ import { textVariants } from "../Heading";
 import { ErrorBoundary } from "react-error-boundary";
 import { VscError } from "react-icons/vsc";
 import { AiFillGithub } from "react-icons/ai";
+import octokit from "@/lib/octokit";
 
 type GithubInitials = { username: string; repositoryName: string };
 interface RepositoryProps extends GithubInitials {
   commits?: boolean;
 }
 
+export const revalidate = 12000;
 async function Repository({
   username,
   repositoryName,
@@ -70,7 +72,11 @@ async function RepositoryDetails({ username, repositoryName }: GithubInitials) {
   return (
     <>
       <div className="flex items-center gap-2">
-        <Link target="_blank" href={repository.owner.html_url}>
+        <Link
+          target="_blank"
+          href={repository.owner.html_url}
+          className="focus-visble:ring-offset-1 rounded-full shadow-sm outline-none transition-shadow hover:ring hover:ring-slate-500/20 focus-visible:ring focus-visible:ring-zinc-500/50"
+        >
           <Avatar
             className="w-[30px]"
             src={repository.owner.avatar_url}
@@ -79,24 +85,18 @@ async function RepositoryDetails({ username, repositoryName }: GithubInitials) {
         </Link>
         <div className="flex flex-1 flex-wrap items-center justify-between gap-1">
           <Link
-            className={cn(textVariants({ level: "h6" }), "flex lowercase")}
+            className={cn(
+              textVariants({ level: "h6" }),
+              "flex lowercase hover:from-gray-100 hover:to-white focus-visible:from-gray-100 focus-visible:to-white",
+            )}
             target="_blank"
             href={repository.html_url}
           >
             {repository.owner.login}/{repository.name}
           </Link>
-          <div className="inline-flex items-center gap-1 text-xs font-medium uppercase tracking-wide text-zinc-300">
-            <span className="rounded-full border border-zinc-700 bg-zinc-800 px-2 py-1 ">
-              {repository.language}
-            </span>
-            <Link
-              target="_blank"
-              href={repository.html_url}
-              className="rounded-full border border-zinc-700 bg-zinc-800 p-1 "
-            >
-              <AiFillGithub size={20} />
-            </Link>
-          </div>
+          <span className="rounded-full border border-zinc-700 bg-zinc-800 px-2 py-0.5 text-xs font-medium uppercase tracking-wide text-zinc-300 ">
+            {repository.language}
+          </span>
         </div>
       </div>
       <div className="mt-3 text-sm text-zinc-300">
@@ -123,19 +123,25 @@ async function Commits({
       {commits.splice(0, range).map(({ node_id, commit, author }) => (
         <li
           key={node_id}
-          className="my-2 rounded border border-zinc-800 p-2 text-sm first:border-zinc-700 first:bg-zinc-800"
+          className="relative my-2 rounded border border-zinc-800 p-2 text-sm first:border-zinc-700 first:bg-zinc-800"
         >
-          <p className="font-semibold" title={commit.message}>
+          <p className="truncate font-semibold" title={commit.message}>
             {commit.message}
           </p>
           <div className="mt-1 flex items-center gap-1">
             <Avatar
-              className="w-4"
+              className="w-4 scale-75"
               src={author?.avatar_url || ""}
               name={commit.committer?.name || "AVATAR"}
             ></Avatar>
             <p className="font-normal text-zinc-400">
-              Commited by {author?.login}
+              Commited by{" "}
+              <Link
+                className="font-medium hover:underline"
+                href={author?.html_url || ""}
+              >
+                {author?.login}
+              </Link>
             </p>
           </div>
         </li>

@@ -21,7 +21,7 @@ const Navbar: FC<NavbarProps> = ({}) => {
           Mir Saheem Shafi
         </Link>
 
-        <NavigationMenu.Root className="relative z-[1] flex flex-1 justify-end">
+        <NavigationMenu.Root className="relative z-[1] flex-1 justify-end hidden sm:flex">
           <NavigationMenu.List className="m-0 flex list-none space-x-2 p-1 text-sm font-semibold text-white">
             <NavigationMenu.Item>
               <NavigationMenu.Trigger className="group flex select-none items-center justify-between gap-[2px] rounded-full border border-transparent px-3 py-2 leading-none outline-none transition-colors hover:border-zinc-700 hover:bg-zinc-800 focus-visible:border-zinc-700 focus-visible:bg-zinc-800">

@@ -116,7 +116,7 @@ const ContactForm: FC<ContactFormProps> = ({ }) => {
           )}
         </Form.Field>
 
-        <div className="flex gap-2">
+        <div className="flex gap-2 mt-8">
           <Button
             type="button"
             variant="secondary"
