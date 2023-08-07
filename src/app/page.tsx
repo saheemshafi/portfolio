@@ -23,10 +23,11 @@ export default function Home() {
             className="absolute inset-0 -z-[1] flex flex-col items-center justify-center space-y-12"
             aria-hidden
           >
-            <img src="/images/design-elements/FULL STACK.png" />
-            <img
+            <Image src="/images/design-elements/FULL STACK.png" alt="" />
+            <Image
               src="/images/design-elements/WEB DEVELOPER.png"
               className="scale-150"
+              alt=""
             />
           </div>
           <blockquote className="mt-3">
@@ -54,7 +55,7 @@ export default function Home() {
           >
             All Skills
           </Link>
-          <img
+          <Image
             src="/images/design-elements/eclipse.png"
             alt="skills"
             className="mx-auto"
@@ -70,7 +71,7 @@ export default function Home() {
         <div className="mb-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <Container.Gradient className="relative rounded-xl shadow">
             <div>
-              <img
+              <Image
                 src="/images/lycoris recoil.png"
                 alt=""
                 className="rounded-t-xl grayscale"
@@ -104,7 +105,7 @@ export default function Home() {
           </Container.Gradient>
           <Container.Gradient className="rounded-xl shadow">
             <div>
-              <img
+              <Image
                 src="/images/lycoris recoil.png"
                 alt=""
                 className="rounded-t-xl grayscale"
@@ -138,7 +139,7 @@ export default function Home() {
           </Container.Gradient>
           <Container.Gradient className="relative rounded-xl bg-slate-main shadow">
             <div>
-              <img
+              <Image
                 src="/images/lycoris recoil.png"
                 alt=""
                 className="rounded-t-xl grayscale"
@@ -281,38 +282,39 @@ export default function Home() {
           Know Me More
         </Heading>
         <Accordion.Root type="multiple">
-          <Accordion.Item value="item-1">
+          <Accordion.Item value="who-are-you">
             <Accordion.Trigger>Who Are You?</Accordion.Trigger>
             <Accordion.Content>
-              Any details submitted on this form will not be shared with anyone.
-              This form is purely for business use, any personal submittions
-              will not be looked upon.
+              Hello 👋, I&apos;m Mir Saheem Shafi.
             </Accordion.Content>
           </Accordion.Item>
-          <Accordion.Item value="item-2">
+          <Accordion.Item value="experience">
             <Accordion.Trigger>
               How Much Experience Do You Have?
             </Accordion.Trigger>
             <Accordion.Content>
-              Any details submitted on this form will not be shared with anyone.
-              This form is purely for business use, any personal submittions
-              will not be looked upon.
+              I have 2 years of hands-on web development expertise, well-versed
+              in diverse frontend technologies like{" "}
+              <strong>
+                Typescript, React, Angular, NextJS, nodeJS, MongoDB
+              </strong>{" "}
+              and much more...
             </Accordion.Content>
           </Accordion.Item>
           <Accordion.Item value="item-3">
             <Accordion.Trigger>Where Do You Live? </Accordion.Trigger>
             <Accordion.Content>
-              Any details submitted on this form will not be shared with anyone.
-              This form is purely for business use, any personal submittions
-              will not be looked upon.
+              I am from <strong>Srinagar</strong>, a city in{" "}
+              <strong>Kashmir, India.</strong>
             </Accordion.Content>
           </Accordion.Item>
           <Accordion.Item value="item-4">
             <Accordion.Trigger>What can you build? </Accordion.Trigger>
             <Accordion.Content>
-              Any details submitted on this form will not be shared with anyone.
-              This form is purely for business use, any personal submittions
-              will not be looked upon.
+              I am capable of building flawless user interfaces with great{" "}
+              <strong>ui/ux</strong> and awesome performance powered by latest
+              technologies like. <strong>React, Angular, NextJS, NodeJS</strong>{" "}
+              and much more...
             </Accordion.Content>
           </Accordion.Item>
         </Accordion.Root>

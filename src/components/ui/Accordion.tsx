@@ -46,7 +46,7 @@ function Trigger({ children, ...props }: RadixAccordion.AccordionTriggerProps) {
 
 function Content({ children }: RadixAccordion.AccordionContentProps) {
   return (
-    <RadixAccordion.Content className="w-full overflow-hidden data-[state=closed]:animate-slideUp data-[state=open]:animate-slideDown">
+    <RadixAccordion.Content className="[&_a]:underline w-full overflow-hidden  data-[state=closed]:animate-slideUp data-[state=open]:animate-slideDown [&_strong]:font-semibold">
       <div className="p-2 pt-4">{children}</div>
     </RadixAccordion.Content>
   );
