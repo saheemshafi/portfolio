@@ -23,8 +23,8 @@ export default function Home() {
             className="absolute inset-0 -z-[1] flex flex-col items-center justify-center space-y-12"
             aria-hidden
           >
-            <Image src="/images/design-elements/FULL STACK.png" alt="" />
-            <Image
+            <img src="/images/design-elements/FULL STACK.png" alt="" />
+            <img
               src="/images/design-elements/WEB DEVELOPER.png"
               className="scale-150"
               alt=""
@@ -55,7 +55,7 @@ export default function Home() {
           >
             All Skills
           </Link>
-          <Image
+          <img
             src="/images/design-elements/eclipse.png"
             alt="skills"
             className="mx-auto"
@@ -71,7 +71,7 @@ export default function Home() {
         <div className="mb-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <Container.Gradient className="relative rounded-xl shadow">
             <div>
-              <Image
+              <img
                 src="/images/lycoris recoil.png"
                 alt=""
                 className="rounded-t-xl grayscale"
@@ -105,7 +105,7 @@ export default function Home() {
           </Container.Gradient>
           <Container.Gradient className="rounded-xl shadow">
             <div>
-              <Image
+              <img
                 src="/images/lycoris recoil.png"
                 alt=""
                 className="rounded-t-xl grayscale"
@@ -139,7 +139,7 @@ export default function Home() {
           </Container.Gradient>
           <Container.Gradient className="relative rounded-xl bg-slate-main shadow">
             <div>
-              <Image
+              <img
                 src="/images/lycoris recoil.png"
                 alt=""
                 className="rounded-t-xl grayscale"
