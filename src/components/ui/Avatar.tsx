@@ -15,14 +15,12 @@ const Avatar: FC<AvatarProps> = ({ src, name, ...props }) => {
     <RadixAvatar.Root
       {...props}
       className={cn(
-        "inline-flex shrink-0 aspect-square min-w-[23px] w-[45px] select-none items-center justify-center overflow-hidden rounded-full bg-black align-middle text-black",
+        "inline-flex aspect-square w-[45px] min-w-[23px] shrink-0 select-none items-center justify-center overflow-hidden rounded-full bg-black align-middle text-black",
         props.className,
       )}
     >
-      <RadixAvatar.Image asChild>
-        <Image src={src} className="aspect-[inherit]" alt={name}/>
-      </RadixAvatar.Image>
-      <RadixAvatar.Fallback className="leading-1 text-xs flex aspect-[inherit] h-full w-full items-center justify-center bg-zinc-300 font-medium uppercase text-black">
+      <RadixAvatar.Image src={src} alt={name} />
+      <RadixAvatar.Fallback className="leading-1 flex aspect-[inherit] h-full w-full items-center justify-center bg-zinc-300 text-xs font-medium uppercase text-black">
         {name.split(" ").at(0)?.at(0)}
         {name.split(" ").at(1)?.at(0)}
       </RadixAvatar.Fallback>
