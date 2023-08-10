@@ -15,6 +15,7 @@ const ThemeSwitcher: FC<ThemeSwitcherProps> = ({}) => {
   useEffect(() => {
     if (typeof localStorage == "undefined") return;
     const _theme = localStorage.getItem("theme");
+    setTheme(_theme || theme);
     document.documentElement.style.setProperty(
       "--theme-color",
       (_theme || theme)?.split("-")[1],
