@@ -11,16 +11,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { CgArrowsExpandUpRight } from "react-icons/cg";
 
-export default function Home() {
+export default async function Home() {
   return (
     <main>
-      <section className="grid min-h-[calc(100vh_-_64px)] place-items-center text-center">
+      <section className="grid min-h-[calc(100vh_-_64px)] place-items-center overflow-x-hidden text-center">
         <div>
-          <div>
-            <Heading subHeading="Hello, I am">Mir Saheem Shafi</Heading>
-          </div>
           <div
-            className="absolute inset-0 -z-[1] flex flex-col items-center justify-center space-y-12"
+            className="absolute inset-0 -z-[1] flex select-none flex-col items-center justify-center space-y-4 sm:space-y-12"
             aria-hidden
           >
             <img src="/images/design-elements/FULL STACK.png" alt="" />
@@ -30,7 +27,10 @@ export default function Home() {
               alt=""
             />
           </div>
-          <blockquote className="mt-3">
+          <div>
+            <Heading subHeading="Hello, I am">Mir Saheem Shafi</Heading>
+          </div>
+          <blockquote className="sm:mt-3">
             Doing things I love, A <strong>Fullstack Web Developer.</strong>
           </blockquote>
           <div className="mt-6 flex justify-center gap-4">
@@ -39,12 +39,11 @@ export default function Home() {
           </div>
         </div>
       </section>
+
       <Container id="skills">
-        <div className="max-w-md">
-          <Heading level="h2" subHeading="SKILLS">
-            Technologies i am working with
-          </Heading>
-        </div>
+        <Heading level="h2" subHeading="SKILLS">
+          Technologies i am working with
+        </Heading>
         <div className="relative md:-mt-12">
           <Link
             href="/skills"
@@ -63,9 +62,10 @@ export default function Home() {
         </div>
         <GradientLine className="max-w-lg" />
       </Container>
+
       <Container id="projects">
         <Heading level="h2" subHeading="PROJECTS">
-          Projects I Have Worked On
+          Projects I Have Contributed To
         </Heading>
 
         <div className="mb-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -177,13 +177,12 @@ export default function Home() {
           <Button variant="outline">View All Projects</Button>
         </div>
       </Container>
+
       <Container id="socials">
-        <div className="max-w-md">
-          <Heading level="h2" subHeading="SOCIALS">
-            Find Me On Social Media
-          </Heading>
-        </div>
-        <div className="relative sm:my-36">
+        <Heading level="h2" subHeading="SOCIALS">
+          Follow Me Around Social Media
+        </Heading>
+        <div className="relative mb-12 sm:mb-0 sm:mt-36">
           <GradientLine className="absolute left-1/2 hidden -translate-x-1/2 sm:block" />
           <GradientLine
             className="absolute left-1/2 -translate-x-1/2 opacity-25 sm:hidden"
@@ -267,12 +266,14 @@ export default function Home() {
           </div>
         </div>
       </Container>
+
       <Container id="contact">
         <Heading level="h2" subHeading="React Out">
           Contact Me
         </Heading>
         <ContactForm />
       </Container>
+
       <Container id="about-me">
         <Heading
           level="h2"
@@ -319,6 +320,7 @@ export default function Home() {
           </Accordion.Item>
         </Accordion.Root>
       </Container>
+
       <Container id="os-portfolio">
         <Heading
           level="h2"
@@ -330,6 +332,7 @@ export default function Home() {
         </Heading>
         <Repository username="saheemshafi" commits repositoryName="portfolio" />
       </Container>
+
       <Container id="os-repositories">
         <Heading
           level="h2"
