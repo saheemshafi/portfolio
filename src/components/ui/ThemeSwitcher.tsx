@@ -10,13 +10,12 @@ import GradientLine from "./GradientLine";
 interface ThemeSwitcherProps {}
 
 const ThemeSwitcher: FC<ThemeSwitcherProps> = ({}) => {
-  const [theme, setTheme] = useState(
-    localStorage.getItem("theme") || "yellow-249 204 63",
-  );
+  const [theme, setTheme] = useState("yellow-249 204 63");
 
   useEffect(() => {
-    if(typeof localStorage =="undefined") return;
+    if (typeof localStorage == "undefined") return;
     const _theme = localStorage.getItem("theme");
+    setTheme(_theme || theme);
     document.documentElement.style.setProperty(
       "--theme-color",
       (_theme || theme)?.split("-")[1],
