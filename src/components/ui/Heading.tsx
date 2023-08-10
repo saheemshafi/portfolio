@@ -46,7 +46,7 @@ function Heading({
   return (
     <div className={cn(level == "h1" ? "mb-4" : "mb-12")}>
       {subHeading && (
-        <p className="font-medium uppercase tracking-[0.17188rem] text-yellow-brand">
+        <p className="font-medium text-sm sm:text-base uppercase tracking-[0.17188rem] text-brand">
           {subHeading}
         </p>
       )}
@@ -59,7 +59,7 @@ function Heading({
         children,
       )}
       {description && (
-        <p className="max-w-lg font-medium capitalize text-zinc-300">
+        <p className="max-w-lg mt-2 font-medium capitalize text-zinc-300">
           {description}
         </p>
       )}
