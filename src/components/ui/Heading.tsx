@@ -16,7 +16,7 @@ export const textVariants = cva(
     variants: {
       level: {
         h1: "text-5xl sm:text-7xl leading-12",
-        h2: "text-[2rem] sm:text-[2.2rem]  max-w-lg",
+        h2: "text-[2rem] leading-[1.3] sm:leading-normal sm:text-[2.2rem] max-w-md",
         h3: "text-[1.7rem]",
         h4: "leading-[1.3] text-[1.5rem]",
         h5: "text-[1.3rem]",
@@ -44,7 +44,7 @@ function Heading({
   ...props
 }: HeadingProps) {
   return (
-    <div className="mb-12">
+    <div className={cn(level == "h1" ? "mb-4" : "mb-12")}>
       {subHeading && (
         <p className="font-medium uppercase tracking-[0.17188rem] text-yellow-brand">
           {subHeading}
@@ -54,12 +54,12 @@ function Heading({
         level || "h1",
         {
           ...props,
-          className: cn(textVariants({ level, variant }), className),
+          className: cn(textVariants({ level, variant }),className),
         },
         children,
       )}
       {description && (
-        <p className="font-medium text-zinc-300 max-w-lg capitalize">
+        <p className="max-w-lg font-medium capitalize text-zinc-300">
           {description}
         </p>
       )}

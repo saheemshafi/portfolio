@@ -2,17 +2,17 @@ import { VariantProps, cva } from "class-variance-authority";
 
 export type ButtonVariant = VariantProps<typeof buttonVariants>;
 export const buttonVariants = cva(
-  "rounded-full font-semibold disabled:opacity-80 flex focus-visible:ring outline-none shadow-sm ring-offset-1 items-center capitalize transition-colors",
+  "rounded-full font-semibold disabled:opacity-80 flex focus-visible:ring outline-none shadow-sm ring-offset-1 items-center capitalize transition-all active:ring",
   {
     variants: {
       variant: {
         primary:
-          "bg-yellow-brand text-slate-main focus-visible:ring-yellow-brand/20",
+          "bg-yellow-brand text-slate-main focus-visible:ring-yellow-brand/20 active:ring-yellow-brand/20",
         secondary:
-          "bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-white focus-visible:ring-slate-500/20",
+          "bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-white focus-visible:ring-slate-500/20 active:ring-slate-500/20",
         ghost: "",
         outline:
-          "bg-transparent border hover:bg-zinc-800 border-white text-white focus-visible:ring-white/10",
+          "bg-transparent border hover:bg-zinc-800 border-white text-white focus-visible:ring-white/10 active:ring-white/10",
       },
       size: {
         sm: "text-sm px-2.5 py-1 gap-1",

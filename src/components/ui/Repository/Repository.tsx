@@ -1,20 +1,18 @@
+import octokit from "@/lib/octokit";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { Fragment, Suspense } from "react";
+import { ErrorBoundary } from "react-error-boundary";
+import { VscError } from "react-icons/vsc";
 import Avatar from "../Avatar";
 import GradientLine from "../GradientLine";
 import { textVariants } from "../Heading";
-import { ErrorBoundary } from "react-error-boundary";
-import { VscError } from "react-icons/vsc";
-import { AiFillGithub } from "react-icons/ai";
-import octokit from "@/lib/octokit";
 
 type GithubInitials = { username: string; repositoryName: string };
 interface RepositoryProps extends GithubInitials {
   commits?: boolean;
 }
 
-export const revalidate = 12000;
 async function Repository({
   username,
   repositoryName,
