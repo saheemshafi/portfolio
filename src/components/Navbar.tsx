@@ -3,17 +3,17 @@
 import { cn } from "@/lib/utils";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { FC } from "react";
 import { PiCaretDownBold } from "react-icons/pi";
 import Button from "./ui/Button";
+import { buttonVariants } from "./ui/Button/_buttonVariants";
 import Container from "./ui/Container";
 import { textVariants } from "./ui/Heading";
+import ThemeSwitcher from "./ui/ThemeSwitcher";
 
 interface NavbarProps {}
 
 const Navbar: FC<NavbarProps> = ({}) => {
-  const pathname = usePathname();
   return (
     <header>
       <Container className="my-0 flex items-center justify-between py-4 leading-[1.3]">
@@ -21,13 +21,15 @@ const Navbar: FC<NavbarProps> = ({}) => {
           Mir Saheem Shafi
         </Link>
 
-        <NavigationMenu.Root className="relative z-[1] flex-1 justify-end hidden sm:flex">
+        <NavigationMenu.Root className="relative z-[1] hidden flex-1 justify-end sm:flex">
           <NavigationMenu.List className="m-0 flex list-none space-x-2 p-1 text-sm font-semibold text-white">
             <NavigationMenu.Item>
-              <NavigationMenu.Trigger className="group flex select-none items-center justify-between gap-[2px] rounded-full border border-transparent px-3 py-2 leading-none outline-none transition-colors hover:border-zinc-700 hover:bg-zinc-800 focus-visible:border-zinc-700 focus-visible:bg-zinc-800">
+              <NavigationMenu.Trigger
+                className={buttonVariants({ size: "sm", variant: "ghost" })}
+              >
                 Home{" "}
                 <PiCaretDownBold
-                  className="text-violet10 relative top-[1px] transition-transform duration-[250] ease-in group-data-[state=open]:-rotate-180"
+                  className="relative top-[1px] transition-transform duration-[250] ease-in group-data-[state=open]:-rotate-180"
                   aria-hidden
                 />
               </NavigationMenu.Trigger>
@@ -43,10 +45,12 @@ const Navbar: FC<NavbarProps> = ({}) => {
             </NavigationMenu.Item>
 
             <NavigationMenu.Item>
-              <NavigationMenu.Trigger className="group flex select-none items-center justify-between gap-[2px] rounded-full border border-transparent px-3 py-2 leading-none outline-none transition-colors hover:border-zinc-700 hover:bg-zinc-800 focus-visible:border-zinc-700 focus-visible:bg-zinc-800">
+              <NavigationMenu.Trigger
+                className={buttonVariants({ size: "sm", variant: "ghost" })}
+              >
                 Overview{" "}
                 <PiCaretDownBold
-                  className="text-violet10 relative top-[1px] transition-transform duration-[250] ease-in group-data-[state=open]:-rotate-180"
+                  className="relative top-[1px] transition-transform duration-[250] ease-in group-data-[state=open]:-rotate-180"
                   aria-hidden
                 />
               </NavigationMenu.Trigger>
@@ -62,14 +66,19 @@ const Navbar: FC<NavbarProps> = ({}) => {
 
             <NavigationMenu.Item>
               <NavigationMenu.Link
-                className="group flex select-none items-center justify-between gap-[2px] rounded-full border border-transparent px-3 py-2 leading-none outline-none transition-colors hover:border-zinc-700 hover:bg-zinc-800 focus-visible:border-zinc-700 focus-visible:bg-zinc-800"
+                className={buttonVariants({ size: "sm", variant: "ghost" })}
                 href="https://github.com/radix-ui"
               >
                 Github
               </NavigationMenu.Link>
             </NavigationMenu.Item>
+
             <NavigationMenu.Item>
               <Button size="sm">Download Resume</Button>
+            </NavigationMenu.Item>
+
+            <NavigationMenu.Item>
+              <ThemeSwitcher />
             </NavigationMenu.Item>
 
             <NavigationMenu.Indicator className="top-full z-[1] flex h-[10px] items-end justify-center overflow-hidden transition-[width,transform_250ms_ease] data-[state=hidden]:animate-fadeOut data-[state=visible]:animate-fadeIn">
@@ -78,7 +87,7 @@ const Navbar: FC<NavbarProps> = ({}) => {
           </NavigationMenu.List>
 
           <div className="perspective-[2000px] absolute left-0 top-full flex w-full justify-end text-white">
-            <NavigationMenu.Viewport className="relative mt-[10px] h-[var(--radix-navigation-menu-viewport-height)] w-full origin-[top_center] overflow-hidden rounded-[6px] bg-zinc-800 transition-[width,_height] duration-300 data-[state=closed]:animate-scaleOut data-[state=open]:animate-scaleIn sm:w-[var(--radix-navigation-menu-viewport-width)]" />
+            <NavigationMenu.Viewport className="relative mt-[10px] h-[var(--radix-navigation-menu-viewport-height)] w-full origin-[top_center] overflow-hidden rounded border border-zinc-700/50 bg-zinc-800 shadow transition-[width,_height] duration-300 data-[state=closed]:animate-scaleOut data-[state=open]:animate-scaleIn sm:w-[var(--radix-navigation-menu-viewport-width)]" />
           </div>
         </NavigationMenu.Root>
       </Container>

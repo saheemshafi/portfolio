@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --theme-color: 249 204 63;
+  }
   html {
     color-scheme: dark;
   }

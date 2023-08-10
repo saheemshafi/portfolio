@@ -14,10 +14,10 @@ import { CgArrowsExpandUpRight } from "react-icons/cg";
 export default async function Home() {
   return (
     <main>
-      <section className="grid min-h-[calc(100vh_-_64px)] place-items-center overflow-x-hidden text-center">
+      <section className="overflow grid min-h-[calc(100vh_-_64px)] place-items-center text-center">
         <div>
           <div
-            className="absolute inset-0 -z-[1] flex select-none flex-col items-center justify-center space-y-4 sm:space-y-12"
+            className="absolute inset-0 -z-[1] flex select-none flex-col items-center justify-center space-y-4 overflow-hidden sm:space-y-12"
             aria-hidden
           >
             <img src="/images/design-elements/FULL STACK.png" alt="" />
@@ -41,8 +41,12 @@ export default async function Home() {
       </section>
 
       <Container id="skills">
-        <Heading level="h2" subHeading="SKILLS">
-          Technologies i am working with
+        <Heading
+          level="h2"
+          subHeading="SKILLS"
+          description="I have hands-on experience with a variety of technologies, which you can explore in detail through my portfolio."
+        >
+          Technologies I Have Expertise In
         </Heading>
         <div className="relative md:-mt-12">
           <Link
@@ -64,8 +68,12 @@ export default async function Home() {
       </Container>
 
       <Container id="projects">
-        <Heading level="h2" subHeading="PROJECTS">
-          Projects I Have Contributed To
+        <Heading
+          level="h2"
+          subHeading="PROJECTS"
+          description="A Showcase of Projects I've Been Part Of."
+        >
+          My Contributions
         </Heading>
 
         <div className="mb-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -179,8 +187,12 @@ export default async function Home() {
       </Container>
 
       <Container id="socials">
-        <Heading level="h2" subHeading="SOCIALS">
-          Follow Me Around Social Media
+        <Heading
+          level="h2"
+          subHeading="SOCIALS"
+          description="Let's Connect on Social Media for Updates, Stories, and a Whole Lot of Inspiration!"
+        >
+          Stay in Touch
         </Heading>
         <div className="relative mb-12 sm:mb-0 sm:mt-36">
           <GradientLine className="absolute left-1/2 hidden -translate-x-1/2 sm:block" />
@@ -268,8 +280,12 @@ export default async function Home() {
       </Container>
 
       <Container id="contact">
-        <Heading level="h2" subHeading="React Out">
-          Contact Me
+        <Heading
+          level="h2"
+          subHeading="React Out"
+          description="Reach Out to me for hiring and business inquiries."
+        >
+          Let&apos;s Connect
         </Heading>
         <ContactForm />
       </Container>

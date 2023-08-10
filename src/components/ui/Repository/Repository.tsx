@@ -81,7 +81,7 @@ async function RepositoryDetails({ username, repositoryName }: GithubInitials) {
             name={repository.owner.login}
           ></Avatar>
         </Link>
-        <div className="flex flex-1 flex-wrap items-center justify-between gap-1">
+        <div className="flex flex-col sm:flex-row flex-1 flex-wrap items-start sm:items-center sm:justify-between gap-1">
           <Link
             className={cn(
               textVariants({ level: "h6" }),
@@ -92,7 +92,7 @@ async function RepositoryDetails({ username, repositoryName }: GithubInitials) {
           >
             {repository.owner.login}/{repository.name}
           </Link>
-          <span className="rounded-full border border-zinc-700 bg-zinc-800 px-2 py-0.5 text-xs font-medium uppercase tracking-wide text-zinc-300 ">
+          <span className="rounded-full border border-theme/20 bg-zinc-800 text-theme px-2 py-0.5 text-xs font-medium uppercase tracking-wide ">
             {repository.language}
           </span>
         </div>
@@ -121,7 +121,7 @@ async function Commits({
       {commits.splice(0, range).map(({ node_id, commit, author }) => (
         <li
           key={node_id}
-          className="relative my-2 rounded border border-zinc-800 p-2 text-sm first:border-zinc-700 first:bg-zinc-800"
+          className="relative my-2 rounded border border-zinc-800 p-2 text-sm first:border-theme/20 first:bg-theme/5"
         >
           <p className="truncate font-semibold" title={commit.message}>
             {commit.message}
@@ -135,7 +135,7 @@ async function Commits({
             <p className="font-normal text-zinc-400">
               Commited by{" "}
               <Link
-                className="font-medium hover:underline"
+                className="font-medium underline sm:no-underline hover:underline hover:text-theme transition-colors"
                 href={author?.html_url || ""}
               >
                 {author?.login}
