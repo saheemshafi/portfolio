@@ -2,22 +2,18 @@
 
 import { cn } from "@/lib/utils";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
-import * as Popover from "@/components/ui/Popover";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { FC } from "react";
 import { PiCaretDownBold } from "react-icons/pi";
-import { IoCloseOutline } from "react-icons/io5";
 import Button from "./ui/Button";
+import { buttonVariants } from "./ui/Button/_buttonVariants";
 import Container from "./ui/Container";
 import { textVariants } from "./ui/Heading";
-import { buttonVariants } from "./ui/Button/_buttonVariants";
-import GradientLine from "./ui/GradientLine";
+import ThemeSwitcher from "./ui/ThemeSwitcher";
 
 interface NavbarProps {}
 
 const Navbar: FC<NavbarProps> = ({}) => {
-  const pathname = usePathname();
   return (
     <header>
       <Container className="my-0 flex items-center justify-between py-4 leading-[1.3]">
@@ -82,22 +78,7 @@ const Navbar: FC<NavbarProps> = ({}) => {
             </NavigationMenu.Item>
 
             <NavigationMenu.Item>
-              <Popover.Root>
-                <Popover.Trigger asChild>
-                  <Button size="sm" variant="secondary">
-                    Theme
-                  </Button>
-                </Popover.Trigger>
-                <Popover.Portal>
-                  <Popover.Content
-                    popoverTitle="Themes"
-                    className="mr-1 w-[150px]"
-                  >
-                    <GradientLine className="mb-2" />
-                    <div className="space-y-1 text-sm font-medium">Popover</div>
-                  </Popover.Content>
-                </Popover.Portal>
-              </Popover.Root>
+              <ThemeSwitcher />
             </NavigationMenu.Item>
 
             <NavigationMenu.Indicator className="top-full z-[1] flex h-[10px] items-end justify-center overflow-hidden transition-[width,transform_250ms_ease] data-[state=hidden]:animate-fadeOut data-[state=visible]:animate-fadeIn">

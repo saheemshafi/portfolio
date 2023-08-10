@@ -85,7 +85,10 @@ module.exports = {
           "slideLeftAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)",
       },
       colors: {
-        brand: "rgb(var(--brand-color) / var(--tw-bg-opacity))",
+        theme: "rgb(var(--theme-color) / var(--tw-bg-opacity))",
+        yellow: {
+          main: "rgb(249 204 63 / var(--tw-bg-opacity))",
+        },
         slate: {
           main: "#16171A",
         },

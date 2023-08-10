@@ -7,7 +7,7 @@ export const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          "bg-brand text-slate-main focus-visible:ring-brand/20 active:ring-brand/20",
+          "bg-theme text-slate-main focus-visible:ring-theme/20 active:ring-theme/20",
         secondary:
           "bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-white focus-visible:ring-slate-500/20 active:ring-slate-500/20",
         ghost: "border border-transparent hover:border-zinc-700 hover:bg-zinc-800 focus-visible:border-zinc-700 focus-visible:bg-zinc-800 focus-visible:ring-slate-500/20 active:ring-slate-500/20",

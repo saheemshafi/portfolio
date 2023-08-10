@@ -3,9 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --theme-color: 249 204 63;
+  }
   html {
-    --brand-color: 249 204 63;
-    /* --brand-color: 139 232 229; */
     color-scheme: dark;
   }
   h1,
