@@ -10,9 +10,13 @@ export const buttonVariants = cva(
           "bg-theme text-slate-main focus-visible:ring-theme/20 active:ring-theme/20",
         secondary:
           "bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-white focus-visible:ring-slate-500/20 active:ring-slate-500/20",
-        ghost: "border border-transparent hover:border-zinc-700 hover:bg-zinc-800 focus-visible:border-zinc-700 focus-visible:bg-zinc-800 focus-visible:ring-slate-500/20 active:ring-slate-500/20",
+        ghost:
+          "border border-transparent hover:border-zinc-700 hover:bg-zinc-800 focus-visible:border-zinc-700 focus-visible:bg-zinc-800 focus-visible:ring-slate-500/20 active:ring-slate-500/20",
         outline:
           "bg-transparent border hover:bg-zinc-800 border-white text-white focus-visible:ring-white/10 active:ring-white/10",
+      },
+      buttonStyle: {
+        icon: "aspect-square w-8 h-8 p-[0_!important] grid place-items-center",
       },
       size: {
         sm: "text-sm px-2.5 py-1 gap-1",

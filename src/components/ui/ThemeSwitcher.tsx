@@ -6,6 +6,7 @@ import * as RadioGroup from "@radix-ui/react-radio-group";
 import { FC, useEffect, useState } from "react";
 import Button from "./Button";
 import GradientLine from "./GradientLine";
+import { IoSunny } from "react-icons/io5";
 
 interface ThemeSwitcherProps {}
 
@@ -22,10 +23,16 @@ const ThemeSwitcher: FC<ThemeSwitcherProps> = ({}) => {
     );
   }, [theme]);
 
+  const onChange = (theme: string) => {
+    localStorage.setItem("theme", theme);
+    setTheme(theme);
+  };
+
   return (
     <Popover.Root>
       <Popover.Trigger asChild>
         <Button size="sm" variant="secondary">
+          <IoSunny className="text-theme"/>
           Theme
         </Button>
       </Popover.Trigger>
@@ -36,10 +43,7 @@ const ThemeSwitcher: FC<ThemeSwitcherProps> = ({}) => {
           <RadioGroup.Root
             defaultValue={theme}
             className="grid text-sm font-medium"
-            onValueChange={(theme) => {
-              localStorage.setItem("theme", theme);
-              setTheme(theme);
-            }}
+            onValueChange={onChange}
           >
             <div className="flex items-center rounded-full border border-transparent p-2 transition-all [&:has([data-state=checked])]:border-yellow-main/20 [&:has([data-state=checked])]:bg-yellow-main/5">
               <RadioGroup.Item

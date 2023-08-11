@@ -1,9 +1,8 @@
-import { FC } from "react";
-import * as RadixPopover from "@radix-ui/react-popover";
-import Button from "./Button";
-import { IoCloseOutline } from "react-icons/io5";
-import GradientLine from "./GradientLine";
 import { cn } from "@/lib/utils";
+import * as RadixPopover from "@radix-ui/react-popover";
+import { FC } from "react";
+import { IoCloseOutline } from "react-icons/io5";
+import Button from "./Button";
 
 interface PopoverProps {}
 
@@ -31,11 +30,11 @@ function Content({
         <p>{popoverTitle}</p>
         <RadixPopover.Close asChild>
           <Button
-            variant="ghost"
-            className="grid aspect-square place-items-center p-0.5"
-            aria-label="Close Theme RadixPopover"
+            variant="secondary"
+            buttonStyle="icon"
+            aria-label="Close Theme Popover"
           >
-            <IoCloseOutline size={20} className="fill-current text-current" />
+            <IoCloseOutline size={20} />
           </Button>
         </RadixPopover.Close>
       </div>
@@ -49,4 +48,4 @@ const Trigger = RadixPopover.Trigger;
 const Close = RadixPopover.Close;
 const Portal = RadixPopover.Portal;
 
-export { Root, Trigger, Content, Close, Portal };
+export { Close, Content, Portal, Root, Trigger };

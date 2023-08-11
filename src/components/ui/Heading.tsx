@@ -4,13 +4,10 @@ import React, { HTMLAttributes, ReactNode } from "react";
 
 interface HeadingProps
   extends HTMLAttributes<HTMLHeadingElement>,
-    TextVariants {
-  subHeading?: string | JSX.Element;
-  description?: string | JSX.Element;
-}
-type TextVariants = VariantProps<typeof textVariants>;
+    HeadingVariants {}
+type HeadingVariants = VariantProps<typeof headingVariants>;
 
-export const textVariants = cva(
+export const headingVariants = cva(
   "font-bold text-white leading-tight capitalize",
   {
     variants: {
@@ -38,33 +35,65 @@ function Heading({
   level = "h1",
   children,
   className,
-  subHeading,
-  description,
   variant,
   ...props
 }: HeadingProps) {
+  return React.createElement(
+    level || "h1",
+    {
+      ...props,
+      className: cn(headingVariants({ level, variant }), className),
+    },
+    children,
+  );
+}
+
+function SubHeading({ children, className, ...props }: HeadingProps) {
   return (
-    <div className={cn(level == "h1" ? "mb-4" : "mb-12")}>
-      {subHeading && (
-        <p className="font-medium text-sm sm:text-base uppercase tracking-[0.17188rem] text-theme">
-          {subHeading}
-        </p>
+    <p
+      {...props}
+      className={cn(
+        "text-sm font-medium uppercase tracking-[0.17188rem] text-theme sm:text-base",
+        className,
       )}
-      {React.createElement(
-        level || "h1",
-        {
-          ...props,
-          className: cn(textVariants({ level, variant }),className),
-        },
-        children,
+    >
+      {children}
+    </p>
+  );
+}
+
+function Description({
+  children,
+  className,
+  ...props
+}: HTMLAttributes<HTMLParagraphElement>) {
+  return (
+    <p
+      {...props}
+      className={cn(
+        "mt-2 max-w-lg font-medium capitalize text-zinc-300",
+        className,
       )}
-      {description && (
-        <p className="max-w-lg mt-2 font-medium capitalize text-zinc-300">
-          {description}
-        </p>
-      )}
+    >
+      {children}
+    </p>
+  );
+}
+
+function Root({
+  children,
+  className,
+  ...props
+}: HTMLAttributes<HTMLDivElement>) {
+  return (
+    <div {...props} className={cn("mb-12", className)}>
+      {children}
     </div>
   );
 }
+
+Heading.Root = Root;
+Heading.SubHeading = SubHeading;
+Heading.Description = Description;
 
 export default Heading;
