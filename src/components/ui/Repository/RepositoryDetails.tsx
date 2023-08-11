@@ -1,5 +1,5 @@
 import octokit from "@/lib/octokit";
-import { cn } from "@/lib/utils";
+import { cn, formatDate } from "@/lib/utils";
 import Avatar from "@/components/ui/Avatar";
 import Link from "next/link";
 import { headingVariants } from "../Heading";
@@ -41,10 +41,7 @@ async function RepositoryDetails({ username, repositoryName }: GithubInitials) {
         </div>
       </div>
       <div className="mt-3 text-sm text-zinc-300">
-        Updated{" "}
-        {new Date(repository.updated_at).toLocaleString("US", {
-          dateStyle: "medium",
-        })}
+        Updated {formatDate(repository.updated_at)}
       </div>
     </>
   );
