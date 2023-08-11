@@ -30,8 +30,9 @@ function Content({
         <p>{popoverTitle}</p>
         <RadixPopover.Close asChild>
           <Button
-            variant="secondary"
+            variant="ghost"
             buttonStyle="icon"
+            className="h-6 w-6"
             aria-label="Close Theme Popover"
           >
             <IoCloseOutline size={20} />

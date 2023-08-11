@@ -8,11 +8,11 @@ interface HeadingProps
 type HeadingVariants = VariantProps<typeof headingVariants>;
 
 export const headingVariants = cva(
-  "font-bold text-white leading-tight capitalize",
+  "font-bold leading-tight capitalize",
   {
     variants: {
       level: {
-        h1: "text-5xl sm:text-7xl leading-12",
+        h1: "text-5xl sm:text-7xl leading-12 pb-[4px] sm:pb-[6px]",
         h2: "text-[2rem] leading-[1.3] sm:leading-normal sm:text-[2.2rem] max-w-md",
         h3: "text-[1.7rem]",
         h4: "leading-[1.3] text-[1.5rem]",

@@ -1,8 +1,9 @@
-import Navbar from "@/components/Navbar";
-import "./globals.css";
+import Navbar from "@/components/Navigation";
+import MobileNavigation from "@/components/Navigation/MobileNavigation";
+import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { cn } from "@/lib/utils";
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,14 +18,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" >
+    <html lang="en" className="scroll-smooth">
       <body
         className={cn(
           inter.className,
-          "min-h-screen overflow-x-hidden bg-slate-main",
+          "min-h-screen overflow-x-hidden bg-slate-main pb-[64px] sm:pb-0",
         )}
       >
         <Navbar />
+        <MobileNavigation />
         {children}
       </body>
     </html>
