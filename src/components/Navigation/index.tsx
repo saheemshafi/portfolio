@@ -3,16 +3,28 @@
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import Link from "next/link";
 import { FiDownload } from "react-icons/fi";
-import { HiDocumentText } from "react-icons/hi";
 import Button from "../ui/Button";
 import { buttonVariants } from "../ui/Button/_buttonVariants";
 import Container from "../ui/Container";
 import { headingVariants } from "../ui/Heading";
 import ThemeSwitcher from "../ui/ThemeSwitcher";
+import { GoHomeFill } from "react-icons/go";
+import { MdSpaceDashboard, MdCall } from "react-icons/md";
+import { PiCertificateFill } from "react-icons/pi";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
+
+export const links = [
+  { path: "/", icon: GoHomeFill, text: "Home" },
+  { path: "/projects", icon: MdSpaceDashboard, text: "Projects" },
+  { path: "/certifications", icon: PiCertificateFill, text: "Certificates" },
+  { path: "/#contact", icon: MdCall, text: "Contact" },
+];
 
 interface NavbarProps {}
 
 function Navbar({}: NavbarProps) {
+  const pathname = usePathname();
   return (
     <header className="border-b border-zinc-800 lg:border-none">
       <Container className="my-0 flex items-center justify-between py-4 leading-[1.3]">
@@ -23,58 +35,21 @@ function Navbar({}: NavbarProps) {
 
         <NavigationMenu.Root className="relative z-[1] hidden flex-1 justify-center lg:flex">
           <NavigationMenu.List className="m-0 flex list-none space-x-2 p-1 text-sm font-semibold text-white">
-            <NavigationMenu.Item>
-              <NavigationMenu.Link asChild>
-                <Link
-                  href="/"
-                  className={buttonVariants({ size: "sm", variant: "ghost" })}
-                >
-                  Home{" "}
-                </Link>
-              </NavigationMenu.Link>
-              {/* <NavigationMenu.Content className="absolute left-0 top-0 w-full data-[motion=from-end]:animate-enterFromRight data-[motion=from-start]:animate-enterFromLeft data-[motion=to-end]:animate-exitToRight data-[motion=to-start]:animate-exitToLeft sm:w-auto">
-                <ul className="one m-0 text-sm font-semibold list-none gap-x-[10px] p-2 sm:w-[500px] sm:grid-cols-2">
-                  <li>
-                    <Link href="/" className="flex items-center gap-3 py-2 px-3 rounded border border-zinc-700">
-                      <FaSlackHash size={24} className="text-theme"/>
-                    </Link>
-                  </li>
-                </ul>
-              </NavigationMenu.Content> */}
-            </NavigationMenu.Item>
-
-            <NavigationMenu.Item>
-              <NavigationMenu.Link asChild>
-                <Link
-                  className={buttonVariants({ size: "sm", variant: "ghost" })}
-                  href="projects"
-                >
-                  Projects
-                </Link>
-              </NavigationMenu.Link>
-            </NavigationMenu.Item>
-
-            <NavigationMenu.Item>
-              <NavigationMenu.Link asChild>
-                <Link
-                  className={buttonVariants({ size: "sm", variant: "ghost" })}
-                  href="certifications"
-                >
-                  Certifications
-                </Link>
-              </NavigationMenu.Link>
-            </NavigationMenu.Item>
-
-            <NavigationMenu.Item>
-              <NavigationMenu.Link asChild>
-                <Link
-                  href="#contact"
-                  className={buttonVariants({ size: "sm", variant: "ghost" })}
-                >
-                  Contact
-                </Link>
-              </NavigationMenu.Link>
-            </NavigationMenu.Item>
+            {links.map(({ path, text }) => (
+              <NavigationMenu.Item key={path}>
+                <NavigationMenu.Link active={pathname == path} asChild>
+                  <Link
+                    href={path}
+                    className={cn(
+                      buttonVariants({ size: "sm", variant: "ghost" }),
+                      "data-[active]:border-theme/20 data-[active]:bg-theme/5 data-[active]:text-theme",
+                    )}
+                  >
+                    {text}
+                  </Link>
+                </NavigationMenu.Link>
+              </NavigationMenu.Item>
+            ))}
 
             <NavigationMenu.Indicator className="top-full z-[1] flex h-[10px] items-end justify-center overflow-hidden transition-[width,transform_250ms_ease] data-[state=hidden]:animate-fadeOut data-[state=visible]:animate-fadeIn">
               <div className="relative top-[70%] h-[10px] w-[10px] rotate-[45deg] rounded-tl-[2px] bg-zinc-800" />
@@ -86,16 +61,9 @@ function Navbar({}: NavbarProps) {
           </div>
         </NavigationMenu.Root>
         <div className="flex gap-2">
-          <Button
-            buttonStyle="icon"
-            aria-label="Download Resume"
-            title="Download Resume"
-            className="sm:hidden"
-          >
-            <HiDocumentText size={20} />
-          </Button>
-          <Button size="sm" className="hidden sm:flex">
-            <FiDownload size={16} /> Download Resume
+          <Button size="sm" className="aspect-square sm:aspect-[initial]">
+            <FiDownload size={16} />{" "}
+            <span className="hidden sm:inline">Download Resume</span>
           </Button>
           <ThemeSwitcher />
         </div>
