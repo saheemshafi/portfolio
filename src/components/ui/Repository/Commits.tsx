@@ -31,7 +31,7 @@ async function Commits({
             <p className="font-normal text-zinc-400">
               Commited by{" "}
               <Link
-                className="font-medium underline transition-colors hover:text-theme hover:underline sm:no-underline"
+                className="font-medium underline transition-colors hover:text-theme hover:underline focus-visible:text-theme focus-visible:underline sm:no-underline"
                 href={author?.html_url || ""}
               >
                 {author?.login}
