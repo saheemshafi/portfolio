@@ -25,34 +25,21 @@ export default async function Home() {
 
   return (
     <main>
-      <section className="overflow grid min-h-[calc(100vh_-_64px)] place-items-center text-center">
-        <div>
-          <div
-            className="absolute inset-0 -z-[1] flex select-none flex-col items-center justify-center space-y-4 overflow-hidden sm:space-y-12"
-            aria-hidden
-          >
-            <img src="/images/design-elements/FULL STACK.png" alt="" />
-            <img
-              src="/images/design-elements/WEB DEVELOPER.png"
-              className="scale-150"
-              alt=""
-            />
-          </div>
-          <div>
-            <Heading.Root className="mb-8 text-center">
-              <Heading.SubHeading>Hello, I am</Heading.SubHeading>
-              <Heading>Mir Saheem Shafi</Heading>
-              <Heading.Description className="max-w-none">
-                Doing things I love, A <strong>Fullstack Web Developer.</strong>
-              </Heading.Description>
-            </Heading.Root>
-          </div>
-          <div className="mt-6 flex justify-center gap-4">
-            <Button>View Projects</Button>
-            <Button variant="outline">About Me</Button>
-          </div>
+      <Container className="min-h-screen pt-12">
+        <Heading.Root>
+          <Heading.SubHeading>Hello, I Am</Heading.SubHeading>
+          <Heading>Mir Saheem Shafi</Heading>
+          <Heading.Description>
+            Doing things I love, A <strong>Fullstack Web Developer.</strong>
+          </Heading.Description>
+        </Heading.Root>
+        <div className="flex gap-3">
+          <Button size="lg">View Projects</Button>
+          <Button variant="outline" size="lg">
+            About Me
+          </Button>
         </div>
-      </section>
+      </Container>
 
       <Container id="skills">
         <Heading.Root>

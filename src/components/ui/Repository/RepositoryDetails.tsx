@@ -35,7 +35,7 @@ async function RepositoryDetails({ username, repositoryName }: GithubInitials) {
           >
             {repository.owner.login}/{repository.name}
           </Link>
-          <span className="rounded-full border border-theme/20 bg-zinc-800 px-2 py-0.5 text-xs font-medium uppercase tracking-wide text-theme ">
+          <span className="rounded-sm border border-theme/20 bg-zinc-800 px-1.5 py-0.5 text-xs font-medium uppercase tracking-wide text-theme ">
             {repository.language}
           </span>
         </div>
