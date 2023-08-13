@@ -6,42 +6,40 @@ import Container from "@/components/ui/Container";
 import GradientLine from "@/components/ui/GradientLine";
 import Heading, { headingVariants } from "@/components/ui/Heading";
 import Repository from "@/components/ui/Repository";
+import supabase from "@/lib/supabase/supabase";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { CgArrowsExpandUpRight } from "react-icons/cg";
 
+export const revalidate = 43200; // Revalidate after 12 hours : 43200 seconds;
+
 export default async function Home() {
+  const { data: repos, error } = await supabase.from("repositories").select();
+  const portfolio = repos?.find(
+    ({ repositoryName }) => repositoryName == "portfolio",
+  );
+  if (error) {
+    throw new Error(error.message);
+  }
+
   return (
     <main>
-      <section className="overflow grid min-h-[calc(100vh_-_64px)] place-items-center text-center">
-        <div>
-          <div
-            className="absolute inset-0 -z-[1] flex select-none flex-col items-center justify-center space-y-4 overflow-hidden sm:space-y-12"
-            aria-hidden
-          >
-            <img src="/images/design-elements/FULL STACK.png" alt="" />
-            <img
-              src="/images/design-elements/WEB DEVELOPER.png"
-              className="scale-150"
-              alt=""
-            />
-          </div>
-          <div>
-            <Heading.Root className="text-center mb-8">
-              <Heading.SubHeading>Hello, I am</Heading.SubHeading>
-              <Heading>Mir Saheem Shafi</Heading>
-              <Heading.Description className="max-w-none">
-                Doing things I love, A <strong>Fullstack Web Developer.</strong>
-              </Heading.Description>
-            </Heading.Root>
-          </div>
-          <div className="mt-6 flex justify-center gap-4">
-            <Button>View Projects</Button>
-            <Button variant="outline">About Me</Button>
-          </div>
+      <Container className="min-h-screen pt-12">
+        <Heading.Root>
+          <Heading.SubHeading>Hello, I Am</Heading.SubHeading>
+          <Heading>Mir Saheem Shafi</Heading>
+          <Heading.Description>
+            Doing things I love, A <strong>Fullstack Web Developer.</strong>
+          </Heading.Description>
+        </Heading.Root>
+        <div className="flex gap-3">
+          <Button size="lg">View Projects</Button>
+          <Button variant="outline" size="lg">
+            About Me
+          </Button>
         </div>
-      </section>
+      </Container>
 
       <Container id="skills">
         <Heading.Root>
@@ -345,17 +343,23 @@ export default async function Home() {
         </Accordion.Root>
       </Container>
 
-      <Container id="os-portfolio">
-        <Heading.Root>
-          <Heading.SubHeading>Open Source</Heading.SubHeading>
-          <Heading level="h2">Build From My Portfolio</Heading>
-          <Heading.Description>
-            This portfolio is Open Source and you can use it to build your own
-            portfolio too.
-          </Heading.Description>
-        </Heading.Root>
-        <Repository username="saheemshafi" commits repositoryName="portfolio" />
-      </Container>
+      {portfolio && (
+        <Container id="os-portfolio">
+          <Heading.Root>
+            <Heading.SubHeading>Open Source</Heading.SubHeading>
+            <Heading level="h2">Build From My Portfolio</Heading>
+            <Heading.Description>
+              This portfolio is Open Source and you can use it to build your own
+              portfolio too.
+            </Heading.Description>
+          </Heading.Root>
+          <Repository
+            username={portfolio.owner}
+            commits={portfolio.with_commits}
+            repositoryName={portfolio.repositoryName}
+          />
+        </Container>
+      )}
 
       <Container id="os-repositories">
         <Heading.Root>
@@ -366,21 +370,11 @@ export default async function Home() {
           </Heading.Description>
         </Heading.Root>
         <div className="grid gap-4 lg:grid-cols-2">
-          <div>
-            <Repository username="saheemshafi" repositoryName="portfolio" />
-          </div>
-          <div>
-            <Repository username="saheemshafi" repositoryName="crackle" />
-          </div>
-          <div>
-            <Repository username="saheemshafi" repositoryName="comet" />
-          </div>
-          <div>
-            <Repository username="saheemshafi" repositoryName="music-player" />
-          </div>
-          <div>
-            <Repository username="saheemshafi" repositoryName="neo-news" />
-          </div>
+          {repos?.map(({ id, repositoryName, owner }) => (
+            <div key={id}>
+              <Repository username={owner} repositoryName={repositoryName} />
+            </div>
+          ))}
         </div>
       </Container>
     </main>

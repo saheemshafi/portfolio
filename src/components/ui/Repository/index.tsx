@@ -5,6 +5,7 @@ import GradientLine from "../GradientLine";
 import Commits from "./Commits";
 import RepositoryDetails from "./RepositoryDetails";
 import { GithubInitials } from "./repository.types";
+import { ImSpinner8 } from "react-icons/im";
 
 interface RepositoryProps extends GithubInitials {
   commits?: boolean;
@@ -25,7 +26,14 @@ async function Repository({
           </p>
         }
       >
-        <Suspense fallback="loading repository">
+        <Suspense
+          fallback={
+            <p className="flex gap-2 items-center font-semibold">
+              <ImSpinner8 className="animate-spin"/>
+              Loading repository...
+            </p>
+          }
+        >
           <RepositoryDetails
             username={username}
             repositoryName={repositoryName}

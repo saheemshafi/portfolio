@@ -2,7 +2,7 @@ import { VariantProps, cva } from "class-variance-authority";
 
 export type ButtonVariant = VariantProps<typeof buttonVariants>;
 export const buttonVariants = cva(
-  "rounded-full font-semibold group disabled:opacity-80 flex focus-visible:ring outline-none shadow-sm ring-offset-1 items-center capitalize transition-all active:ring",
+  "rounded-md font-semibold group disabled:opacity-80 flex focus-visible:ring outline-none shadow-sm ring-offset-1 items-center capitalize transition-all active:ring",
   {
     variants: {
       variant: {
