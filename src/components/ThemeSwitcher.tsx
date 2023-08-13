@@ -3,11 +3,11 @@
 import * as Popover from "@/components/ui/Popover";
 import * as RadioGroup from "@radix-ui/react-radio-group";
 
-import { FC, useContext, useEffect, useState } from "react";
+import { ThemeContext } from "@/contexts/ThemeProvider";
+import { FC, useContext } from "react";
+import { IoSunny } from "react-icons/io5";
 import Button from "./ui/Button";
 import GradientLine from "./ui/GradientLine";
-import { IoSunny } from "react-icons/io5";
-import { ThemeContext } from "@/contexts/ThemeProvider";
 
 interface ThemeSwitcherProps {}
 

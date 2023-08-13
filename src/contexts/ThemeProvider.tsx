@@ -11,13 +11,16 @@ export const ThemeContext = createContext<{
 });
 
 export const ThemeContextProvider = ({ children }: { children: ReactNode }) => {
-  const [theme, setTheme] = useState(
-    localStorage.getItem("theme") || "yellow-249 204 63",
-  );
+  let _theme;
+  if (typeof localStorage !== "undefined") {
+    _theme = localStorage.getItem("theme");
+  }
+
+  const [theme, setTheme] = useState(_theme || "yellow-249 204 63");
 
   if (!ThemeContext) {
     throw new Error(
-      "Theme context can only be used inside ThemeContextProvider or localstorage is undefined",
+      "Theme context can only be used inside ThemeContextProvider.",
     );
   }
 
