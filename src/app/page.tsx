@@ -6,12 +6,23 @@ import Container from "@/components/ui/Container";
 import GradientLine from "@/components/ui/GradientLine";
 import Heading, { headingVariants } from "@/components/ui/Heading";
 import Repository from "@/components/ui/Repository";
+import supabase from "@/lib/supabase/supabase";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { CgArrowsExpandUpRight } from "react-icons/cg";
 
+export const revalidate = 43200; // Revalidate after 12 hours : 43200 seconds;
+
 export default async function Home() {
+  const { data: repos, error } = await supabase.from("repositories").select();
+  const portfolio = repos?.find(
+    ({ repositoryName }) => repositoryName == "portfolio",
+  );
+  if (error) {
+    throw new Error(error.message);
+  }
+
   return (
     <main>
       <section className="overflow grid min-h-[calc(100vh_-_64px)] place-items-center text-center">
@@ -28,7 +39,7 @@ export default async function Home() {
             />
           </div>
           <div>
-            <Heading.Root className="text-center mb-8">
+            <Heading.Root className="mb-8 text-center">
               <Heading.SubHeading>Hello, I am</Heading.SubHeading>
               <Heading>Mir Saheem Shafi</Heading>
               <Heading.Description className="max-w-none">
@@ -345,17 +356,23 @@ export default async function Home() {
         </Accordion.Root>
       </Container>
 
-      <Container id="os-portfolio">
-        <Heading.Root>
-          <Heading.SubHeading>Open Source</Heading.SubHeading>
-          <Heading level="h2">Build From My Portfolio</Heading>
-          <Heading.Description>
-            This portfolio is Open Source and you can use it to build your own
-            portfolio too.
-          </Heading.Description>
-        </Heading.Root>
-        <Repository username="saheemshafi" commits repositoryName="portfolio" />
-      </Container>
+      {portfolio && (
+        <Container id="os-portfolio">
+          <Heading.Root>
+            <Heading.SubHeading>Open Source</Heading.SubHeading>
+            <Heading level="h2">Build From My Portfolio</Heading>
+            <Heading.Description>
+              This portfolio is Open Source and you can use it to build your own
+              portfolio too.
+            </Heading.Description>
+          </Heading.Root>
+          <Repository
+            username={portfolio.owner}
+            commits={portfolio.with_commits}
+            repositoryName={portfolio.repositoryName}
+          />
+        </Container>
+      )}
 
       <Container id="os-repositories">
         <Heading.Root>
@@ -366,21 +383,11 @@ export default async function Home() {
           </Heading.Description>
         </Heading.Root>
         <div className="grid gap-4 lg:grid-cols-2">
-          <div>
-            <Repository username="saheemshafi" repositoryName="portfolio" />
-          </div>
-          <div>
-            <Repository username="saheemshafi" repositoryName="crackle" />
-          </div>
-          <div>
-            <Repository username="saheemshafi" repositoryName="comet" />
-          </div>
-          <div>
-            <Repository username="saheemshafi" repositoryName="music-player" />
-          </div>
-          <div>
-            <Repository username="saheemshafi" repositoryName="neo-news" />
-          </div>
+          {repos?.map(({ id, repositoryName, owner }) => (
+            <div key={id}>
+              <Repository username={owner} repositoryName={repositoryName} />
+            </div>
+          ))}
         </div>
       </Container>
     </main>

@@ -30,6 +30,30 @@ export interface Database {
         }
         Relationships: []
       }
+      repositories: {
+        Row: {
+          created_at: string
+          id: string
+          owner: string
+          repositoryName: string
+          with_commits: boolean
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          owner: string
+          repositoryName: string
+          with_commits?: boolean
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          owner?: string
+          repositoryName?: string
+          with_commits?: boolean
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

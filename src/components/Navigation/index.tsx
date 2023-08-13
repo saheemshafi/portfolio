@@ -7,7 +7,7 @@ import Button from "../ui/Button";
 import { buttonVariants } from "../ui/Button/_buttonVariants";
 import Container from "../ui/Container";
 import { headingVariants } from "../ui/Heading";
-import ThemeSwitcher from "../ui/ThemeSwitcher";
+import ThemeSwitcher from "../ThemeSwitcher";
 import { GoHomeFill } from "react-icons/go";
 import { MdSpaceDashboard, MdCall } from "react-icons/md";
 import { PiCertificateFill } from "react-icons/pi";

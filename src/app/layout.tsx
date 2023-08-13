@@ -4,6 +4,8 @@ import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { ThemeContextProvider } from "@/contexts/ThemeProvider";
+import { CSSProperties } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,9 +27,11 @@ export default function RootLayout({
           "min-h-screen overflow-x-hidden bg-slate-main pb-[64px] sm:pb-0",
         )}
       >
-        <Navbar />
-        <MobileNavigation />
-        {children}
+        <ThemeContextProvider>
+          <Navbar />
+          <MobileNavigation />
+          {children}
+        </ThemeContextProvider>
       </body>
     </html>
   );
