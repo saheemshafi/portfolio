@@ -7,11 +7,11 @@ interface ProjectsPageProps {}
 const ProjectsPage: FC<ProjectsPageProps> = ({}) => {
   return (
     <Container className="pt-12">
-      <Heading.Root>
+      <Heading>
         <Heading.SubHeading>Projects</Heading.SubHeading>
-        <Heading>All Projects</Heading>
+        <Heading.Element>All Projects</Heading.Element>
         <Heading.Description>Every project I have worked on.</Heading.Description>
-      </Heading.Root>
+      </Heading>
     </Container>
   );
 };

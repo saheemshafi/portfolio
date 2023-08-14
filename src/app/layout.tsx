@@ -1,11 +1,10 @@
 import Navbar from "@/components/Navigation";
 import MobileNavigation from "@/components/Navigation/MobileNavigation";
+import { ThemeContextProvider } from "@/contexts/ThemeProvider";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { ThemeContextProvider } from "@/contexts/ThemeProvider";
-import { CSSProperties } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,7 +23,7 @@ export default function RootLayout({
       <body
         className={cn(
           inter.className,
-          "min-h-screen overflow-x-hidden bg-slate-main pb-[64px] sm:pb-0",
+          "min-h-screen overflow-x-hidden bg-slate-main pb-[64px] sm:pb-0 [&_strong]:font-semibold",
         )}
       >
         <ThemeContextProvider>

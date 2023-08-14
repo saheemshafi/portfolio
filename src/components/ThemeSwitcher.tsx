@@ -7,7 +7,7 @@ import { ThemeContext } from "@/contexts/ThemeProvider";
 import { FC, useContext } from "react";
 import { IoSunny } from "react-icons/io5";
 import Button from "./ui/Button";
-import GradientLine from "./ui/GradientLine";
+import GradientLine from "./ui/Separator";
 
 interface ThemeSwitcherProps {}
 

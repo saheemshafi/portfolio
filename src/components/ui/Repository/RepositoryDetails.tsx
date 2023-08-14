@@ -4,6 +4,7 @@ import Avatar from "@/components/ui/Avatar";
 import Link from "next/link";
 import { headingVariants } from "../Heading";
 import { GithubInitials } from "./repository.types";
+import Chip from "../Chip";
 
 async function RepositoryDetails({ username, repositoryName }: GithubInitials) {
   const { data: repository } = await octokit.rest.repos.get({
@@ -35,9 +36,7 @@ async function RepositoryDetails({ username, repositoryName }: GithubInitials) {
           >
             {repository.owner.login}/{repository.name}
           </Link>
-          <span className="rounded-sm border border-theme/20 bg-zinc-800 px-1.5 py-0.5 text-xs font-medium uppercase tracking-wide text-theme ">
-            {repository.language}
-          </span>
+          <Chip>{repository.language}</Chip>
         </div>
       </div>
       <div className="mt-3 text-sm text-zinc-300">

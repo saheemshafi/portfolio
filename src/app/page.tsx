@@ -2,8 +2,9 @@ import ContactForm from "@/components/ContactForm";
 import * as Accordion from "@/components/ui/Accordion";
 import Button from "@/components/ui/Button";
 import { buttonVariants } from "@/components/ui/Button/_buttonVariants";
+import Chip from "@/components/ui/Chip";
 import Container from "@/components/ui/Container";
-import GradientLine from "@/components/ui/GradientLine";
+import Separator from "@/components/ui/Separator";
 import Heading, { headingVariants } from "@/components/ui/Heading";
 import Repository from "@/components/ui/Repository";
 import supabase from "@/lib/supabase/supabase";
@@ -11,45 +12,50 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { CgArrowsExpandUpRight } from "react-icons/cg";
+import { ImGithub } from "react-icons/im";
+import Card from "@/components/ui/Card";
 
 export const revalidate = 43200; // Revalidate after 12 hours : 43200 seconds;
 
 export default async function Home() {
-  const { data: repos, error } = await supabase.from("repositories").select();
-  const portfolio = repos?.find(
+  const repos = await supabase.from("repositories").select();
+  const projects = await supabase
+    .from("projects")
+    .select(`*,repositories(id, owner, repositoryName)`);
+  const portfolio = repos.data?.find(
     ({ repositoryName }) => repositoryName == "portfolio",
   );
-  if (error) {
-    throw new Error(error.message);
+  if (repos.error || projects.error) {
+    throw new Error(repos.error?.message || projects.error?.message);
   }
 
   return (
     <main>
       <Container className="min-h-screen pt-12">
-        <Heading.Root>
+        <Heading className="mb-6">
           <Heading.SubHeading>Hello, I Am</Heading.SubHeading>
-          <Heading>Mir Saheem Shafi</Heading>
+          <Heading.Element>Mir Saheem Shafi</Heading.Element>
           <Heading.Description>
             Doing things I love, A <strong>Fullstack Web Developer.</strong>
           </Heading.Description>
-        </Heading.Root>
+        </Heading>
         <div className="flex gap-3">
-          <Button size="lg">View Projects</Button>
-          <Button variant="outline" size="lg">
-            About Me
-          </Button>
+          <Button>View Projects</Button>
+          <Button variant="ghost">About Me</Button>
         </div>
       </Container>
 
       <Container id="skills">
-        <Heading.Root>
+        <Heading>
           <Heading.SubHeading>SKILLS</Heading.SubHeading>
-          <Heading level="h2">Technologies I Have Expertise In</Heading>
+          <Heading.Element level="h2">
+            Techstack For Seamless Development
+          </Heading.Element>
           <Heading.Description>
             I have hands-on experience with a variety of technologies, which you
             can explore in detail through my portfolio.
           </Heading.Description>
-        </Heading.Root>
+        </Heading>
         <div className="relative md:-mt-12">
           <Link
             href="/skills"
@@ -66,141 +72,84 @@ export default async function Home() {
             className="mx-auto"
           />
         </div>
-        <GradientLine className="max-w-lg" />
+        <Separator className="max-w-lg" />
       </Container>
 
       <Container id="projects">
-        <Heading.Root>
+        <Heading>
           <Heading.SubHeading>PROJECTS</Heading.SubHeading>
-          <Heading level="h2"> My Contributions</Heading>
+          <Heading.Element level="h2"> My Contributions</Heading.Element>
           <Heading.Description>
             A Showcase of Projects I&apos;ve Been Part Of.
           </Heading.Description>
-        </Heading.Root>
+        </Heading>
 
         <div className="mb-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <Container.Gradient className="relative rounded-xl shadow">
-            <div>
-              <img
-                src="/images/lycoris recoil.png"
-                alt=""
-                className="rounded-t-xl grayscale"
-              />
-            </div>
-            <div className="px-3 py-4">
-              <div className="isolate flex flex-wrap gap-2 text-xs uppercase">
-                <Container.Gradient className="rounded-full px-2 py-1">
-                  React
-                </Container.Gradient>
-                <Container.Gradient className="rounded-full px-2 py-1">
-                  DotNet.WebApi
-                </Container.Gradient>
-                <Container.Gradient className="rounded-full px-2 py-1">
-                  Javascript
-                </Container.Gradient>
-              </div>
-              <div className="my-3">
-                <h6 className={headingVariants({ level: "h6" })}>
-                  Lavist Official - Ecommerce Platform
-                </h6>
-                <p className="mt-1 text-sm">
-                  An Ecommerce Platform for unique fashion.
-                </p>
-              </div>
-              <Button size="sm">
-                Live Project
-                <CgArrowsExpandUpRight />
-              </Button>
-            </div>
-          </Container.Gradient>
-          <Container.Gradient className="rounded-xl shadow">
-            <div>
-              <img
-                src="/images/lycoris recoil.png"
-                alt=""
-                className="rounded-t-xl grayscale"
-              />
-            </div>
-            <div className="px-3 py-4">
-              <div className="isolate flex flex-wrap gap-2 text-xs uppercase">
-                <Container.Gradient className="rounded-full px-2 py-1">
-                  React
-                </Container.Gradient>
-                <Container.Gradient className="rounded-full px-2 py-1">
-                  DotNet.WebApi
-                </Container.Gradient>
-                <Container.Gradient className="rounded-full px-2 py-1">
-                  Javascript
-                </Container.Gradient>
-              </div>
-              <div className="my-3">
-                <h6 className={headingVariants({ level: "h6" })}>
-                  Lavist Official - Ecommerce Platform
-                </h6>
-                <p className="mt-1 text-sm">
-                  An Ecommerce Platform for unique fashion.
-                </p>
-              </div>
-              <Button size="sm">
-                Live Project
-                <CgArrowsExpandUpRight />
-              </Button>
-            </div>
-          </Container.Gradient>
-          <Container.Gradient className="relative rounded-xl bg-slate-main shadow">
-            <div>
-              <img
-                src="/images/lycoris recoil.png"
-                alt=""
-                className="rounded-t-xl grayscale"
-              />
-            </div>
-            <div className="px-3 py-4">
-              <div className="isolate flex flex-wrap gap-2 text-xs uppercase">
-                <Container.Gradient className="rounded-full px-2 py-1">
-                  React
-                </Container.Gradient>
-                <Container.Gradient className="rounded-full px-2 py-1">
-                  DotNet.WebApi
-                </Container.Gradient>
-                <Container.Gradient className="rounded-full px-2 py-1">
-                  Javascript
-                </Container.Gradient>
-              </div>
-              <div className="my-3">
-                <h6 className={headingVariants({ level: "h6" })}>
-                  Lavist Official - Ecommerce Platform
-                </h6>
-                <p className="mt-1 text-sm">
-                  An Ecommerce Platform for unique fashion.
-                </p>
-              </div>
-              <Button size="sm">
-                Live Project
-                <CgArrowsExpandUpRight />
-              </Button>
-            </div>
-          </Container.Gradient>
+          {projects.data.map((project) => (
+            <Card key={project.id}>
+              <Card.Image src={project.image} alt={project.title} />
+              <Card.Content>
+                <Card.Tags>
+                  {project.tags
+                    ?.splice(0, 3)
+                    .map((tag) => <Chip key={tag}>{tag}</Chip>)}
+                </Card.Tags>
+                <Card.Info>
+                  <Card.Title>{project.title}</Card.Title>
+                  <Card.Description>{project.description}</Card.Description>
+                </Card.Info>
+                <Card.Actions>
+                  <Link
+                    href={`https://github.com/${project.repositories?.owner}/${project.repositories?.repositoryName}`}
+                    className={buttonVariants({
+                      size: "sm",
+                      variant: "secondary",
+                    })}
+                    target="_blank"
+                    referrerPolicy="no-referrer"
+                  >
+                    <ImGithub />
+                    Github
+                  </Link>
+
+                  {project.deploy_url && (
+                    <Link
+                      href={project.deploy_url}
+                      className={buttonVariants({ size: "sm" })}
+                    >
+                      Live Project
+                      <CgArrowsExpandUpRight />
+                    </Link>
+                  )}
+                </Card.Actions>
+              </Card.Content>
+            </Card>
+          ))}
         </div>
-        <GradientLine className="max-w-lg" />
+        <Separator className="max-w-lg" />
         <div className="mt-8 grid place-items-center">
-          <Button variant="outline">View All Projects</Button>
+          <Link
+            href="/projects"
+            className={buttonVariants({ variant: "outline" })}
+          >
+            View All Projects
+          </Link>
         </div>
       </Container>
 
       <Container id="socials">
-        <Heading.Root>
+        <Heading>
           <Heading.SubHeading>SOCIALS</Heading.SubHeading>
-          <Heading level="h2">Stay in Touch</Heading>
+          <Heading.Element level="h2">Stay in Touch</Heading.Element>
           <Heading.Description>
             Let&apos;s Connect on Social Media for Updates, Stories, and a Whole
             Lot of Inspiration!
           </Heading.Description>
-        </Heading.Root>
+        </Heading>
 
         <div className="relative mb-12 sm:mb-0 sm:mt-36">
-          <GradientLine className="absolute left-1/2 hidden -translate-x-1/2 sm:block" />
-          <GradientLine
+          <Separator className="absolute left-1/2 hidden -translate-x-1/2 sm:block" />
+          <Separator
             className="absolute left-1/2 -translate-x-1/2 opacity-25 sm:hidden"
             vertical
           />
@@ -284,25 +233,25 @@ export default async function Home() {
       </Container>
 
       <Container id="contact">
-        <Heading.Root>
+        <Heading>
           <Heading.SubHeading>React Out</Heading.SubHeading>
-          <Heading level="h2">Let&apos;s Connect</Heading>
+          <Heading.Element level="h2">Let&apos;s Connect</Heading.Element>
           <Heading.Description>
             Reach Out to me for hiring and business inquiries.
           </Heading.Description>
-        </Heading.Root>
+        </Heading>
 
         <ContactForm />
       </Container>
 
       <Container id="about-me">
-        <Heading.Root>
+        <Heading>
           <Heading.SubHeading>About Me</Heading.SubHeading>
-          <Heading level="h2">Know Me More</Heading>
+          <Heading.Element level="h2">Know Me More</Heading.Element>
           <Heading.Description>
             Have questions about me, here are some general ones.
           </Heading.Description>
-        </Heading.Root>
+        </Heading>
 
         <Accordion.Root type="multiple">
           <Accordion.Item value="who-are-you">
@@ -345,14 +294,16 @@ export default async function Home() {
 
       {portfolio && (
         <Container id="os-portfolio">
-          <Heading.Root>
+          <Heading>
             <Heading.SubHeading>Open Source</Heading.SubHeading>
-            <Heading level="h2">Build From My Portfolio</Heading>
+            <Heading.Element level="h2">
+              Build From My Portfolio
+            </Heading.Element>
             <Heading.Description>
               This portfolio is Open Source and you can use it to build your own
               portfolio too.
             </Heading.Description>
-          </Heading.Root>
+          </Heading>
           <Repository
             username={portfolio.owner}
             commits={portfolio.with_commits}
@@ -362,15 +313,15 @@ export default async function Home() {
       )}
 
       <Container id="os-repositories">
-        <Heading.Root>
+        <Heading>
           <Heading.SubHeading>Source Code</Heading.SubHeading>
-          <Heading level="h2">Projects You Can Explore</Heading>
+          <Heading.Element level="h2">Projects You Can Explore</Heading.Element>
           <Heading.Description>
             Open Source projects you can learn from.
           </Heading.Description>
-        </Heading.Root>
+        </Heading>
         <div className="grid gap-4 lg:grid-cols-2">
-          {repos?.map(({ id, repositoryName, owner }) => (
+          {repos.data?.map(({ id, repositoryName, owner }) => (
             <div key={id}>
               <Repository username={owner} repositoryName={repositoryName} />
             </div>
