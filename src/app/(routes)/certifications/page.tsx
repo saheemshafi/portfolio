@@ -9,7 +9,7 @@ import { CgArrowsExpandUpRight } from "react-icons/cg";
 import { formatDate } from "@/lib/utils";
 
 interface CertificationsPageProps {}
-export const revalidate = 43200; // Revalidate after 12 hours : 43200 seconds;
+export const revalidate = 0; // Revalidate after 12 hours : 43200 seconds;
 
 const CertificationsPage = async ({}: CertificationsPageProps) => {
   const certifications = await supabase.from("certifications").select();
