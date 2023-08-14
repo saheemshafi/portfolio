@@ -26,11 +26,12 @@ export default function RootLayout({
           "min-h-screen overflow-x-hidden bg-slate-main pb-[64px] sm:pb-0 [&_strong]:font-semibold",
         )}
       >
-        <ThemeContextProvider>
-          <Navbar />
-          <MobileNavigation />
-          {children}
-        </ThemeContextProvider>
+        <div className="absolute inset-0 bg-gradient-to-b from-theme/[0.02] to-transparent"></div>
+          <ThemeContextProvider>
+            <Navbar />
+            <MobileNavigation />
+            {children}
+          </ThemeContextProvider>
       </body>
     </html>
   );

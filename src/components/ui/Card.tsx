@@ -15,9 +15,7 @@ function Card({ children, className, ...props }: CardProps) {
   return (
     <div
       {...props}
-      className={cn(
-        "group relative rounded-xl border border-zinc-800 px-3 pb-12 shadow",
-      )}
+      className={cn("group relative rounded-md border-zinc-800 pb-12")}
     >
       {children}
     </div>
@@ -26,12 +24,12 @@ function Card({ children, className, ...props }: CardProps) {
 
 function CardImage({ src, alt, ...props }: ImageProps) {
   return (
-    <figure className="-mx-3">
+    <figure className="rounded-[inherit]">
       <Image
         {...props}
         src={src}
         alt={alt}
-        className="aspect-video w-full rounded-t-xl object-cover grayscale transition-[filter] duration-300 group-hover:grayscale-0"
+        className="aspect-video w-full rounded-[inherit] object-cover grayscale transition-[filter] duration-200 group-hover:grayscale-0"
         width={500}
         height={281}
       />
@@ -77,7 +75,7 @@ function Description({ children, className, ...props }: CardDescriptionProps) {
     <p
       {...props}
       className={cn(
-        "mt-1 line-clamp-none text-sm text-zinc-300 sm:line-clamp-2",
+        "mt-2 line-clamp-none text-sm text-zinc-300 sm:line-clamp-2",
         className,
       )}
     >

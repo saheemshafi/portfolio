@@ -41,8 +41,8 @@ function Navbar({}: NavbarProps) {
                   <Link
                     href={path}
                     className={cn(
-                      buttonVariants({ size: "sm", variant: "ghost" }),
-                      "data-[active]:border-theme/20 data-[active]:bg-theme/5 data-[active]:text-theme",
+                      buttonVariants({ size: "sm", variant: "secondary" }),
+                      "border-transparent bg-transparent hover:border-zinc-700 hover:bg-zinc-800 data-[active]:border-theme/20 data-[active]:bg-theme/5 data-[active]:text-theme",
                     )}
                   >
                     {text}
@@ -60,12 +60,11 @@ function Navbar({}: NavbarProps) {
             <NavigationMenu.Viewport className="relative mt-[10px] h-[var(--radix-navigation-menu-viewport-height)] w-full origin-[top_center] overflow-hidden rounded border border-zinc-700/50 bg-zinc-800 shadow transition-[width,_height] duration-300 data-[state=closed]:animate-scaleOut data-[state=open]:animate-scaleIn sm:w-[var(--radix-navigation-menu-viewport-width)]" />
           </div>
         </NavigationMenu.Root>
-        <div className="flex gap-2">
-          <Button size="sm" className="aspect-square sm:aspect-[initial]">
-            <FiDownload size={16} />{" "}
-            <span className="hidden sm:inline">Download Resume</span>
-          </Button>
+        <div className="flex items-center gap-2">
           <ThemeSwitcher />
+          <Button size="sm" variant="outline">
+            <FiDownload size={16} /> Resume
+          </Button>
         </div>
       </Container>
     </header>

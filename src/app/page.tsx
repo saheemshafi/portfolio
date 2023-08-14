@@ -14,6 +14,7 @@ import Link from "next/link";
 import { CgArrowsExpandUpRight } from "react-icons/cg";
 import { ImGithub } from "react-icons/im";
 import Card from "@/components/ui/Card";
+import { MdSpaceDashboard } from "react-icons/md";
 
 export const revalidate = 43200; // Revalidate after 12 hours : 43200 seconds;
 
@@ -31,16 +32,19 @@ export default async function Home() {
 
   return (
     <main>
-      <Container className="min-h-screen pt-12">
-        <Heading className="mb-6">
+      <Container className="min-h-[400px] pt-12">
+        <Heading className="mb-8">
           <Heading.SubHeading>Hello, I Am</Heading.SubHeading>
           <Heading.Element>Mir Saheem Shafi</Heading.Element>
           <Heading.Description>
-            Doing things I love, A <strong>Fullstack Web Developer.</strong>
+            I build awesome stuff on the web. From sleek designs to smooth
+            functionality. Got a cool project in mind? Let&apos;s chat and make
+            it happen!
           </Heading.Description>
         </Heading>
+
         <div className="flex gap-3">
-          <Button>View Projects</Button>
+          <Button><MdSpaceDashboard size={20}/> View Projects</Button>
           <Button variant="ghost">About Me</Button>
         </div>
       </Container>
@@ -84,7 +88,7 @@ export default async function Home() {
           </Heading.Description>
         </Heading>
 
-        <div className="mb-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mb-12 grid gap-6 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
           {projects.data.map((project) => (
             <Card key={project.id}>
               <Card.Image src={project.image} alt={project.title} />
