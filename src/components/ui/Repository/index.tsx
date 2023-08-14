@@ -1,7 +1,7 @@
 import { Fragment, Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { VscError } from "react-icons/vsc";
-import GradientLine from "../GradientLine";
+import GradientLine from "../Separator";
 import Commits from "./Commits";
 import RepositoryDetails from "./RepositoryDetails";
 import { GithubInitials } from "./repository.types";
@@ -17,7 +17,7 @@ async function Repository({
   commits,
 }: RepositoryProps) {
   return (
-    <div className="rounded border border-zinc-800 p-4 transition-colors hover:bg-zinc-800/20">
+    <div className="rounded border border-zinc-800 p-4 transition-colors md:hover:bg-zinc-800/20">
       <ErrorBoundary
         fallback={
           <p className="flex items-center gap-1 font-bold text-red-400">
@@ -28,8 +28,8 @@ async function Repository({
       >
         <Suspense
           fallback={
-            <p className="flex gap-2 items-center font-semibold">
-              <ImSpinner8 className="animate-spin"/>
+            <p className="flex items-center gap-2 font-semibold">
+              <ImSpinner8 className="animate-spin" />
               Loading repository...
             </p>
           }

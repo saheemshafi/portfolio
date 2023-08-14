@@ -1,12 +1,12 @@
 import { cn } from "@/lib/utils";
 import { FC } from "react";
 
-interface GradientLineProps {
+interface SeparatorProps {
   className?: string;
   vertical?: boolean;
 }
 
-const GradientLine: FC<GradientLineProps> = ({ className, vertical }) => {
+const Separator: FC<SeparatorProps> = ({ className, vertical }) => {
   return (
     <hr
       className={cn(
@@ -18,4 +18,4 @@ const GradientLine: FC<GradientLineProps> = ({ className, vertical }) => {
   );
 };
 
-export default GradientLine;
+export default Separator;
