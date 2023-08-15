@@ -42,7 +42,7 @@ function Navbar({}: NavbarProps) {
                     href={path}
                     className={cn(
                       buttonVariants({ size: "sm", variant: "secondary" }),
-                      "border-transparent bg-transparent hover:border-zinc-700 hover:bg-zinc-800 data-[active]:border-theme/20 data-[active]:bg-theme/5 data-[active]:text-theme",
+                      "border-transparent bg-transparent shadow-none hover:border-zinc-700 hover:bg-zinc-800 data-[active]:border-theme/20 data-[active]:bg-theme/5 data-[active]:text-theme",
                     )}
                   >
                     {text}
