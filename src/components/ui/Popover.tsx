@@ -1,17 +1,10 @@
 import { cn } from "@/lib/utils";
 import * as RadixPopover from "@radix-ui/react-popover";
-import { FC } from "react";
 import { IoCloseOutline } from "react-icons/io5";
 import Button from "./Button";
+import Separator from "./Separator";
 
 interface PopoverProps {}
-
-const Root: FC<PopoverProps> = ({
-  children,
-  ...props
-}: RadixPopover.PopoverProps) => {
-  return <RadixPopover.Root {...props}>{children}</RadixPopover.Root>;
-};
 
 function Content({
   children,
@@ -22,7 +15,7 @@ function Content({
     <RadixPopover.Content
       {...props}
       className={cn(
-        "rounded border border-zinc-700/50 bg-zinc-800 p-2 shadow data-[state=open]:data-[side=bottom]:animate-slideUpAndFade data-[state=open]:data-[side=left]:animate-slideRightAndFade data-[state=open]:data-[side=right]:animate-slideLeftAndFade data-[state=open]:data-[side=top]:animate-slideDownAndFade",
+        "rounded border border-zinc-700/50 bg-slate-main p-2 shadow data-[state=open]:data-[side=bottom]:animate-slideUpAndFade data-[state=open]:data-[side=left]:animate-slideRightAndFade data-[state=open]:data-[side=right]:animate-slideLeftAndFade data-[state=open]:data-[side=top]:animate-slideDownAndFade",
         props.className,
       )}
     >
@@ -39,14 +32,17 @@ function Content({
           </Button>
         </RadixPopover.Close>
       </div>
+      <Separator />
       {children}
-      <RadixPopover.Arrow className="fill-zinc-800" />
+      <RadixPopover.Arrow className="fill-slate-main" />
     </RadixPopover.Content>
   );
 }
 
+const Root = RadixPopover.Root;
 const Trigger = RadixPopover.Trigger;
 const Close = RadixPopover.Close;
 const Portal = RadixPopover.Portal;
 
 export { Close, Content, Portal, Root, Trigger };
+

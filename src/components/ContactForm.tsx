@@ -4,15 +4,16 @@ import Container from "@/components/ui/Container";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as Form from "@radix-ui/react-form";
 import { motion } from "framer-motion";
-import { FC } from "react";
+import { FC, HTMLAttributes } from "react";
 import { useForm } from "react-hook-form";
 import { BiSend } from "react-icons/bi";
 import { z } from "zod";
 import Button from "./ui/Button";
+import { cn } from "@/lib/utils";
 
-interface ContactFormProps { }
+interface ContactFormProps extends HTMLAttributes<HTMLDivElement> {}
 
-const ContactForm: FC<ContactFormProps> = ({ }) => {
+const ContactForm: FC<ContactFormProps> = ({ className, ...props }) => {
   const contactFormSchema = z.object({
     name: z.string().nonempty("Name is required."),
     email: z.string().email("Email is not valid."),
@@ -26,12 +27,16 @@ const ContactForm: FC<ContactFormProps> = ({ }) => {
     z.infer<typeof contactFormSchema>
   >({
     resolver: zodResolver(contactFormSchema),
-    mode: "onChange",
-    reValidateMode: "onChange"
   });
 
   return (
-    <Container.Gradient className="rounded-xl p-4 sm:rounded-3xl sm:p-8">
+    <div
+      {...props}
+      className={cn(
+        "border-t border-zinc-800 pt-6 sm:rounded-xl sm:border sm:p-8",
+        className,
+      )}
+    >
       <Form.Root
         className="isolate"
         method="POST"
@@ -39,18 +44,21 @@ const ContactForm: FC<ContactFormProps> = ({ }) => {
       >
         <div className="grid gap-6 sm:grid-cols-2">
           <Form.Field name="name">
-            <Form.Label htmlFor="name" className="mb-2 block">
+            <Form.Label
+              htmlFor="name"
+              className="mb-2 block text-sm text-zinc-300"
+            >
               Enter your name
             </Form.Label>
 
-            <Container.Gradient className="rounded-sm sm:rounded-full">
-              <Form.Control
-                type="text"
-                {...register("name")}
-                id="name"
-                className="block w-full rounded-[inherit] bg-zinc-800/40 px-4 py-3 font-medium outline-none focus:ring-2 focus:ring-slate-500/20"
-              />
-            </Container.Gradient>
+            <Form.Control
+              type="text"
+              {...register("name")}
+              id="name"
+              className={
+                "w-full rounded-md border border-zinc-700 bg-zinc-800 px-4 py-2 text-white outline-none transition-[shadow,border] focus:border-theme/50 focus:bg-transparent focus:ring-1 focus:ring-theme/20"
+              }
+            />
 
             {getFieldState("name").error && (
               <motion.small
@@ -64,18 +72,19 @@ const ContactForm: FC<ContactFormProps> = ({ }) => {
           </Form.Field>
 
           <Form.Field name="email">
-            <Form.Label htmlFor="email" className="mb-2 block">
+            <Form.Label
+              htmlFor="email"
+              className="mb-2 block text-sm text-zinc-300"
+            >
               Enter your email
             </Form.Label>
 
-            <Container.Gradient className="rounded-sm sm:rounded-full">
-              <Form.Control
-                type="email"
-                {...register("email")}
-                id="email"
-                className="block w-full rounded-[inherit] bg-zinc-800/40 px-4 py-3 font-medium outline-none focus:ring-2 focus:ring-slate-500/20"
-              />
-            </Container.Gradient>
+            <Form.Control
+              type="email"
+              {...register("email")}
+              id="email"
+              className="w-full rounded-md border border-zinc-700 bg-zinc-800 px-4 py-2 text-white outline-none transition-[shadow,border] focus:border-theme/50 focus:bg-transparent focus:ring-1 focus:ring-theme/20"
+            />
 
             {getFieldState("email").error && (
               <motion.small
@@ -90,20 +99,21 @@ const ContactForm: FC<ContactFormProps> = ({ }) => {
         </div>
 
         <Form.Field name="message" className="my-6">
-          <Form.Label htmlFor="message" className="mb-2 block">
+          <Form.Label
+            htmlFor="message"
+            className="mb-2 block text-sm text-zinc-300"
+          >
             Write a message
           </Form.Label>
 
-          <Container.Gradient className="rounded-sm sm:rounded-lg">
-            <Form.Control asChild>
-              <textarea
-                id="message"
-                rows={3}
-                {...register("message")}
-                className="block w-full resize-none rounded-[inherit] bg-zinc-800/40 px-4 py-3 font-medium outline-none focus:ring-2 focus:ring-zinc-500/20"
-              ></textarea>
-            </Form.Control>
-          </Container.Gradient>
+          <Form.Control
+            id="message"
+            {...register("message")}
+            className="w-full resize-none rounded-md border border-zinc-700 bg-zinc-800 px-4 py-2 text-white outline-none transition-[shadow,border] focus:border-theme/50 focus:bg-transparent focus:ring-1 focus:ring-theme/20"
+            asChild
+          >
+            <textarea rows={3}></textarea>
+          </Form.Control>
 
           {getFieldState("message").error && (
             <motion.small
@@ -116,9 +126,8 @@ const ContactForm: FC<ContactFormProps> = ({ }) => {
           )}
         </Form.Field>
 
-        <div className="flex gap-2 mt-8">
+        <div className="mt-8 flex gap-2">
           <Button
-            type="button"
             variant="secondary"
             onClick={() => {
               reset();
@@ -137,7 +146,7 @@ const ContactForm: FC<ContactFormProps> = ({ }) => {
           not be looked upon.
         </p>
       </Form.Root>
-    </Container.Gradient>
+    </div>
   );
 };
 

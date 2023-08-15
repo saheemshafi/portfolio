@@ -44,7 +44,9 @@ export default async function Home() {
         </Heading>
 
         <div className="flex gap-3">
-          <Button><MdSpaceDashboard size={20}/> View Projects</Button>
+          <Button>
+            <MdSpaceDashboard size={20} /> View Projects
+          </Button>
           <Button variant="ghost">About Me</Button>
         </div>
       </Container>
@@ -162,7 +164,7 @@ export default async function Home() {
               href="https://github.com/saheemshafi"
               referrerPolicy="no-referrer"
             >
-              <Container.Gradient className="relative grid aspect-square w-24 place-items-center rounded-full bg-slate-main p-4">
+              <div className="relative grid aspect-square w-24 place-items-center rounded-full border border-zinc-800 bg-slate-main p-4">
                 <Image
                   src="/images/icons/github.png"
                   alt="github"
@@ -172,32 +174,37 @@ export default async function Home() {
                 <p
                   className={cn(
                     headingVariants({ level: "h6" }),
-                    "absolute top-full mt-4 text-center text-base font-semibold uppercase tracking-wide",
+                    "absolute top-full mt-4 text-center text-base font-medium uppercase tracking-wide text-zinc-300",
                   )}
                 >
                   GITHUB
                 </p>
-              </Container.Gradient>
+              </div>
             </Link>
             <Link
               href="https://linkedin.com/in/saheemshafi"
               referrerPolicy="no-referrer"
             >
-              <Container.Gradient className="relative grid aspect-square w-24 place-items-center rounded-full bg-slate-main p-5">
+              <div className="relative grid aspect-square w-24 place-items-center rounded-full border border-zinc-800 bg-slate-main p-5">
                 <Image
                   src="/images/icons/linkedin.png"
                   alt="linkedin"
                   width={300}
                   height={300}
                 />
-                <p className="absolute top-full mt-4 bg-gradient-to-b from-white to-gray-400 bg-clip-text text-center font-semibold uppercase tracking-wide text-transparent">
+                <p
+                  className={cn(
+                    headingVariants({ level: "h6" }),
+                    "absolute top-full mt-4 text-center text-base font-medium uppercase tracking-wide text-zinc-300",
+                  )}
+                >
                   LinkedIN
                 </p>
-              </Container.Gradient>
+              </div>
             </Link>
             {/* TODO: Add twitter and discord link */}
             <Link href="">
-              <Container.Gradient className="relative grid aspect-square w-24 place-items-center rounded-full bg-slate-main p-4">
+              <div className="relative grid aspect-square w-24 place-items-center rounded-full border border-zinc-800 bg-slate-main p-4">
                 <Image
                   src="/images/icons/twitter.png"
                   alt="twitter"
@@ -207,15 +214,15 @@ export default async function Home() {
                 <p
                   className={cn(
                     headingVariants({ level: "h6" }),
-                    "absolute top-full mt-4 text-center text-base font-semibold uppercase tracking-wide",
+                    "absolute top-full mt-4 text-center text-base font-medium uppercase tracking-wide text-zinc-300",
                   )}
                 >
                   Twitter
                 </p>
-              </Container.Gradient>
+              </div>
             </Link>
             <Link href="">
-              <Container.Gradient className="relative grid aspect-square w-24 place-items-center rounded-full bg-slate-main p-4">
+              <div className="relative grid aspect-square w-24 place-items-center rounded-full border border-zinc-800 bg-slate-main p-4">
                 <Image
                   src="/images/icons/discord.png"
                   alt="discord"
@@ -225,12 +232,12 @@ export default async function Home() {
                 <p
                   className={cn(
                     headingVariants({ level: "h6" }),
-                    "absolute top-full mt-4 text-center text-base font-semibold uppercase tracking-wide",
+                    "absolute top-full mt-4 text-center text-base font-medium uppercase tracking-wide text-zinc-300",
                   )}
                 >
                   Discord
                 </p>
-              </Container.Gradient>
+              </div>
             </Link>
           </div>
         </div>

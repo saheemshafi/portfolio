@@ -10,9 +10,9 @@ const Separator: FC<SeparatorProps> = ({ className, vertical }) => {
   return (
     <hr
       className={cn(
-        "mx-auto h-[1px] w-full border-none bg-gradient-to-r from-transparent via-white to-[transparent]",
+        "mx-auto h-[1px] w-full border-none bg-zinc-800",
         className,
-        vertical && "h-[600px] w-[1px] bg-gradient-to-t",
+        vertical && "h-[600px] w-[1px]",
       )}
     ></hr>
   );
