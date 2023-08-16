@@ -5,6 +5,14 @@ import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
+import Container from "@/components/ui/Container";
+import { ImGithub, ImLinkedin2, ImTwitter } from "react-icons/im";
+import Button from "@/components/ui/Button";
+import Separator from "@/components/ui/Separator";
+import { buttonVariants } from "@/components/ui/Button/_buttonVariants";
+import { headingVariants } from "@/components/ui/Heading";
+import LinkTile from "@/components/LinkTile";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,12 +34,15 @@ export default function RootLayout({
           "min-h-screen overflow-x-hidden bg-slate-main pb-[64px] sm:pb-0 [&_strong]:font-semibold",
         )}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-theme/[0.02] to-transparent"></div>
-          <ThemeContextProvider>
-            <Navbar />
-            <MobileNavigation />
-            {children}
-          </ThemeContextProvider>
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-gradient-to-b from-theme/[0.02] to-transparent"
+        ></div>
+        <ThemeContextProvider>
+          <Navbar />
+          <MobileNavigation />
+          {children}
+        </ThemeContextProvider>
       </body>
     </html>
   );

@@ -22,7 +22,8 @@ const CertificationsPage = async ({}: CertificationsPageProps) => {
         <Heading.SubHeading>Certifications</Heading.SubHeading>
         <Heading.Element>All Certifications</Heading.Element>
         <Heading.Description>
-          All the certificates I have earned after learning some technologies.
+          Displaying a collection of earned certificates showcasing my
+          proficiency in various technologies.
         </Heading.Description>
       </Heading>
       <div className="mb-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

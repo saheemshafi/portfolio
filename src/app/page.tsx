@@ -6,15 +6,18 @@ import Chip from "@/components/ui/Chip";
 import Container from "@/components/ui/Container";
 import Separator from "@/components/ui/Separator";
 import Heading, { headingVariants } from "@/components/ui/Heading";
-import Repository from "@/components/ui/Repository";
+import Repository from "@/components/Repository";
 import supabase from "@/lib/supabase/supabase";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { CgArrowsExpandUpRight } from "react-icons/cg";
-import { ImGithub } from "react-icons/im";
+import { ImGithub, ImTwitter } from "react-icons/im";
 import Card from "@/components/ui/Card";
 import { MdSpaceDashboard } from "react-icons/md";
+import LinkTile from "@/components/LinkTile";
+import { PiDiscordLogo, PiDiscordLogoBold } from "react-icons/pi";
+import { BiLogoDiscordAlt, BiLogoGmail } from "react-icons/bi";
 
 export const revalidate = 43200; // Revalidate after 12 hours : 43200 seconds;
 
@@ -86,7 +89,8 @@ export default async function Home() {
           <Heading.SubHeading>PROJECTS</Heading.SubHeading>
           <Heading.Element level="h2"> My Contributions</Heading.Element>
           <Heading.Description>
-            A Showcase of Projects I&apos;ve Been Part Of.
+            Check out the some websites I&apos;ve been busy with! It&apos;s all
+            about tech coming together in my projects.
           </Heading.Description>
         </Heading>
 
@@ -156,10 +160,10 @@ export default async function Home() {
         <div className="relative mb-12 sm:mb-0 sm:mt-36">
           <Separator className="absolute left-1/2 hidden -translate-x-1/2 sm:block" />
           <Separator
-            className="absolute left-1/2 -translate-x-1/2 opacity-25 sm:hidden"
+            className="absolute left-1/2 h-[500px] -translate-x-1/2 sm:hidden"
             vertical
           />
-          <div className="relative grid place-items-center gap-y-24 sm:-translate-y-1/2 sm:grid-cols-4 sm:gap-y-0">
+          <div className="relative grid place-items-center gap-y-12 sm:-translate-y-1/2 sm:grid-cols-4 sm:gap-y-0">
             <Link
               href="https://github.com/saheemshafi"
               referrerPolicy="no-referrer"
@@ -174,7 +178,7 @@ export default async function Home() {
                 <p
                   className={cn(
                     headingVariants({ level: "h6" }),
-                    "absolute top-full mt-4 text-center text-base font-medium uppercase tracking-wide text-zinc-300",
+                    "absolute top-full mt-4 hidden text-center text-base font-medium uppercase tracking-wide text-zinc-300 sm:block",
                   )}
                 >
                   GITHUB
@@ -195,7 +199,7 @@ export default async function Home() {
                 <p
                   className={cn(
                     headingVariants({ level: "h6" }),
-                    "absolute top-full mt-4 text-center text-base font-medium uppercase tracking-wide text-zinc-300",
+                    "absolute top-full mt-4 hidden text-center text-base font-medium uppercase tracking-wide text-zinc-300 sm:block",
                   )}
                 >
                   LinkedIN
@@ -214,7 +218,7 @@ export default async function Home() {
                 <p
                   className={cn(
                     headingVariants({ level: "h6" }),
-                    "absolute top-full mt-4 text-center text-base font-medium uppercase tracking-wide text-zinc-300",
+                    "absolute top-full mt-4 hidden text-center text-base font-medium uppercase tracking-wide text-zinc-300 sm:block",
                   )}
                 >
                   Twitter
@@ -232,7 +236,7 @@ export default async function Home() {
                 <p
                   className={cn(
                     headingVariants({ level: "h6" }),
-                    "absolute top-full mt-4 text-center text-base font-medium uppercase tracking-wide text-zinc-300",
+                    "absolute top-full mt-4 hidden text-center text-base font-medium uppercase tracking-wide text-zinc-300 sm:block",
                   )}
                 >
                   Discord
@@ -252,7 +256,59 @@ export default async function Home() {
           </Heading.Description>
         </Heading>
 
-        <ContactForm />
+        <div className="grid gap-8 lg:grid-cols-2">
+          <div className="flex-1">
+            <Heading className="mb-6">
+              <Heading.Element level="h6">Fill out the form</Heading.Element>
+            </Heading>
+            <ContactForm />
+          </div>
+          <div className="max-lg:mt-8">
+            <Heading className="mb-6">
+              <Heading.Element level="h6">
+                Connect On Social Media
+              </Heading.Element>
+            </Heading>
+            <div className="grid gap-x-2 gap-y-2 sm:grid-cols-2 lg:grid-cols-1 lg:gap-y-4 xl:grid-cols-2">
+              <LinkTile href="" className="px-0">
+                <LinkTile.Icon>
+                  <ImGithub size={20} />
+                </LinkTile.Icon>
+                <div>
+                  <LinkTile.Title>Checkout My Github Profile</LinkTile.Title>
+                  <LinkTile.Link>github.com/saheemshafi</LinkTile.Link>
+                </div>
+              </LinkTile>
+              <LinkTile href="" className="px-0">
+                <LinkTile.Icon>
+                  <ImTwitter size={20} />
+                </LinkTile.Icon>
+                <div>
+                  <LinkTile.Title>Connect On LinkedIn</LinkTile.Title>
+                  <LinkTile.Link>linked.com/saheemshafi</LinkTile.Link>
+                </div>
+              </LinkTile>
+              <LinkTile href="" className="px-0">
+                <LinkTile.Icon>
+                  <BiLogoDiscordAlt size={20} />
+                </LinkTile.Icon>
+                <div>
+                  <LinkTile.Title>Let&apos;s Have A Chat</LinkTile.Title>
+                  <LinkTile.Link>discord.com/saheemshafi</LinkTile.Link>
+                </div>
+              </LinkTile>
+              <LinkTile href="" className="px-0">
+                <LinkTile.Icon>
+                  <BiLogoGmail size={20} />
+                </LinkTile.Icon>
+                <div>
+                  <LinkTile.Title>Email Me</LinkTile.Title>
+                  <LinkTile.Link>m.saheemshafi@gmail.com</LinkTile.Link>
+                </div>
+              </LinkTile>
+            </div>
+          </div>
+        </div>
       </Container>
 
       <Container id="about-me">
@@ -311,8 +367,8 @@ export default async function Home() {
               Build From My Portfolio
             </Heading.Element>
             <Heading.Description>
-              This portfolio is Open Source and you can use it to build your own
-              portfolio too.
+              Grab this open-source portfolio to craft your own. It has an
+              awesome collection of features you might love.
             </Heading.Description>
           </Heading>
           <Repository
@@ -328,7 +384,8 @@ export default async function Home() {
           <Heading.SubHeading>Source Code</Heading.SubHeading>
           <Heading.Element level="h2">Projects You Can Explore</Heading.Element>
           <Heading.Description>
-            Open Source projects you can learn from.
+            Explore and learn from my open-source projects. Dive into a world of
+            valuable insights and practical knowledge.
           </Heading.Description>
         </Heading>
         <div className="grid gap-4 lg:grid-cols-2">
