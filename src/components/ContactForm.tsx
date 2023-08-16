@@ -56,7 +56,7 @@ const ContactForm: FC<ContactFormProps> = ({ className, ...props }) => {
               {...register("name")}
               id="name"
               className={
-                "w-full rounded-md border border-zinc-700 bg-zinc-800 px-4 py-2 text-white outline-none transition-[shadow,border] focus:border-theme/50 focus:bg-transparent focus:ring-1 focus:ring-theme/20"
+                "w-full rounded-md border border-zinc-700 bg-zinc-800 px-4 py-2 text-white outline-none transition-[shadow,border] focus:border-theme/50 focus:bg-transparent focus:ring focus:ring-theme/20"
               }
             />
 
@@ -83,7 +83,7 @@ const ContactForm: FC<ContactFormProps> = ({ className, ...props }) => {
               type="email"
               {...register("email")}
               id="email"
-              className="w-full rounded-md border border-zinc-700 bg-zinc-800 px-4 py-2 text-white outline-none transition-[shadow,border] focus:border-theme/50 focus:bg-transparent focus:ring-1 focus:ring-theme/20"
+              className="w-full rounded-md border border-zinc-700 bg-zinc-800 px-4 py-2 text-white outline-none transition-[shadow,border] focus:border-theme/50 focus:bg-transparent focus:ring focus:ring-theme/20"
             />
 
             {getFieldState("email").error && (
@@ -109,7 +109,7 @@ const ContactForm: FC<ContactFormProps> = ({ className, ...props }) => {
           <Form.Control
             id="message"
             {...register("message")}
-            className="w-full resize-none rounded-md border border-zinc-700 bg-zinc-800 px-4 py-2 text-white outline-none transition-[shadow,border] focus:border-theme/50 focus:bg-transparent focus:ring-1 focus:ring-theme/20"
+            className="w-full resize-none rounded-md border border-zinc-700 bg-zinc-800 px-4 py-2 text-white outline-none transition-[shadow,border] focus:border-theme/50 focus:bg-transparent focus:ring focus:ring-theme/20"
             asChild
           >
             <textarea rows={3}></textarea>

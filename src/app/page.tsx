@@ -147,106 +147,6 @@ export default async function Home() {
         </div>
       </Container>
 
-      <Container id="socials">
-        <Heading>
-          <Heading.SubHeading>SOCIALS</Heading.SubHeading>
-          <Heading.Element level="h2">Stay in Touch</Heading.Element>
-          <Heading.Description>
-            Let&apos;s Connect on Social Media for Updates, Stories, and a Whole
-            Lot of Inspiration!
-          </Heading.Description>
-        </Heading>
-
-        <div className="relative mb-12 sm:mb-0 sm:mt-36">
-          <Separator className="absolute left-1/2 hidden -translate-x-1/2 sm:block" />
-          <Separator
-            className="absolute left-1/2 h-[500px] -translate-x-1/2 sm:hidden"
-            vertical
-          />
-          <div className="relative grid place-items-center gap-y-12 sm:-translate-y-1/2 sm:grid-cols-4 sm:gap-y-0">
-            <Link
-              href="https://github.com/saheemshafi"
-              referrerPolicy="no-referrer"
-            >
-              <div className="relative grid aspect-square w-24 place-items-center rounded-full border border-zinc-800 bg-slate-main p-4">
-                <Image
-                  src="/images/icons/github.png"
-                  alt="github"
-                  width={300}
-                  height={300}
-                />
-                <p
-                  className={cn(
-                    headingVariants({ level: "h6" }),
-                    "absolute top-full mt-4 hidden text-center text-base font-medium uppercase tracking-wide text-zinc-300 sm:block",
-                  )}
-                >
-                  GITHUB
-                </p>
-              </div>
-            </Link>
-            <Link
-              href="https://linkedin.com/in/saheemshafi"
-              referrerPolicy="no-referrer"
-            >
-              <div className="relative grid aspect-square w-24 place-items-center rounded-full border border-zinc-800 bg-slate-main p-5">
-                <Image
-                  src="/images/icons/linkedin.png"
-                  alt="linkedin"
-                  width={300}
-                  height={300}
-                />
-                <p
-                  className={cn(
-                    headingVariants({ level: "h6" }),
-                    "absolute top-full mt-4 hidden text-center text-base font-medium uppercase tracking-wide text-zinc-300 sm:block",
-                  )}
-                >
-                  LinkedIN
-                </p>
-              </div>
-            </Link>
-            {/* TODO: Add twitter and discord link */}
-            <Link href="">
-              <div className="relative grid aspect-square w-24 place-items-center rounded-full border border-zinc-800 bg-slate-main p-4">
-                <Image
-                  src="/images/icons/twitter.png"
-                  alt="twitter"
-                  width={300}
-                  height={300}
-                />
-                <p
-                  className={cn(
-                    headingVariants({ level: "h6" }),
-                    "absolute top-full mt-4 hidden text-center text-base font-medium uppercase tracking-wide text-zinc-300 sm:block",
-                  )}
-                >
-                  Twitter
-                </p>
-              </div>
-            </Link>
-            <Link href="">
-              <div className="relative grid aspect-square w-24 place-items-center rounded-full border border-zinc-800 bg-slate-main p-4">
-                <Image
-                  src="/images/icons/discord.png"
-                  alt="discord"
-                  width={300}
-                  height={300}
-                />
-                <p
-                  className={cn(
-                    headingVariants({ level: "h6" }),
-                    "absolute top-full mt-4 hidden text-center text-base font-medium uppercase tracking-wide text-zinc-300 sm:block",
-                  )}
-                >
-                  Discord
-                </p>
-              </div>
-            </Link>
-          </div>
-        </div>
-      </Container>
-
       <Container id="contact">
         <Heading>
           <Heading.SubHeading>React Out</Heading.SubHeading>
@@ -270,7 +170,7 @@ export default async function Home() {
               </Heading.Element>
             </Heading>
             <div className="grid gap-x-2 gap-y-2 sm:grid-cols-2 lg:grid-cols-1 lg:gap-y-4 xl:grid-cols-2">
-              <LinkTile href="" className="px-0">
+              <LinkTile href="https://github.com/saheemshafi" className="px-0">
                 <LinkTile.Icon>
                   <ImGithub size={20} />
                 </LinkTile.Icon>
@@ -279,7 +179,10 @@ export default async function Home() {
                   <LinkTile.Link>github.com/saheemshafi</LinkTile.Link>
                 </div>
               </LinkTile>
-              <LinkTile href="" className="px-0">
+              <LinkTile
+                href="https://linkedin.com/saheemshafi"
+                className="px-0"
+              >
                 <LinkTile.Icon>
                   <ImTwitter size={20} />
                 </LinkTile.Icon>
@@ -288,7 +191,10 @@ export default async function Home() {
                   <LinkTile.Link>linked.com/saheemshafi</LinkTile.Link>
                 </div>
               </LinkTile>
-              <LinkTile href="" className="px-0">
+              <LinkTile
+                href="https://discordapp.com/users/600023174305808384"
+                className="px-0"
+              >
                 <LinkTile.Icon>
                   <BiLogoDiscordAlt size={20} />
                 </LinkTile.Icon>
@@ -297,7 +203,7 @@ export default async function Home() {
                   <LinkTile.Link>discord.com/saheemshafi</LinkTile.Link>
                 </div>
               </LinkTile>
-              <LinkTile href="" className="px-0">
+              <LinkTile href="mailto:m.saheemshafi@gmail.com" className="px-0">
                 <LinkTile.Icon>
                   <BiLogoGmail size={20} />
                 </LinkTile.Icon>
