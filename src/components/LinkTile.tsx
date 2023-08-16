@@ -11,8 +11,10 @@ function LinkTile({ className, size = "md", ...props }: LinkTileProps) {
   return (
     <Link
       {...props}
+      target="_blank"
+      referrerPolicy="no-referrer"
       className={cn(
-        "group flex items-center border-zinc-800 p-2 px-3 text-sm max-sm:rounded-md max-sm:p-2 max-sm:border",
+        "group flex items-center border-zinc-800 p-2 px-3 text-sm max-sm:rounded-md max-sm:border max-sm:p-2",
         size == "sm"
           ? "gap-2 text-xs"
           : "[&_p.title] gap-3 text-sm [&_.icon]:h-10 [&_.icon]:w-10",
