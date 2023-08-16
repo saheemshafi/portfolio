@@ -2,9 +2,9 @@ import octokit from "@/lib/octokit";
 import { cn, formatDate } from "@/lib/utils";
 import Avatar from "@/components/ui/Avatar";
 import Link from "next/link";
-import { headingVariants } from "../Heading";
+import { headingVariants } from "../ui/Heading";
 import { GithubInitials } from "./repository.types";
-import Chip from "../Chip";
+import Chip from "../ui/Chip";
 
 async function RepositoryDetails({ username, repositoryName }: GithubInitials) {
   const { data: repository } = await octokit.rest.repos.get({

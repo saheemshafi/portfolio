@@ -1,7 +1,7 @@
 import { Fragment, Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { VscError } from "react-icons/vsc";
-import GradientLine from "../Separator";
+import GradientLine from "../ui/Separator";
 import Commits from "./Commits";
 import RepositoryDetails from "./RepositoryDetails";
 import { GithubInitials } from "./repository.types";

@@ -24,7 +24,8 @@ const ProjectsPage = async ({}: ProjectsPageProps) => {
         <Heading.SubHeading>Projects</Heading.SubHeading>
         <Heading.Element>All Projects</Heading.Element>
         <Heading.Description>
-          Every project I have worked on.
+          Checkout every project of mine from simple to complex and personal
+          to business use.
         </Heading.Description>
       </Heading>
       <div className="mb-12 grid gap-6 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">

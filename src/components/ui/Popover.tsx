@@ -32,7 +32,6 @@ function Content({
           </Button>
         </RadixPopover.Close>
       </div>
-      <Separator />
       {children}
       <RadixPopover.Arrow className="fill-slate-main" />
     </RadixPopover.Content>

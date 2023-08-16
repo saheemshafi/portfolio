@@ -12,7 +12,7 @@ const Separator: FC<SeparatorProps> = ({ className, vertical }) => {
       className={cn(
         "mx-auto h-[1px] w-full border-none bg-zinc-800",
         className,
-        vertical && "h-[600px] w-[1px]",
+        vertical && "h-full w-[1px]",
       )}
     ></hr>
   );
