@@ -1,23 +1,36 @@
 import ContactForm from "@/components/ContactForm";
+import LinkTile from "@/components/LinkTile";
+import Repository from "@/components/Repository";
 import * as Accordion from "@/components/ui/Accordion";
 import Button from "@/components/ui/Button";
 import { buttonVariants } from "@/components/ui/Button/_buttonVariants";
+import Card from "@/components/ui/Card";
 import Chip from "@/components/ui/Chip";
 import Container from "@/components/ui/Container";
+import Heading from "@/components/ui/Heading";
 import Separator from "@/components/ui/Separator";
-import Heading, { headingVariants } from "@/components/ui/Heading";
-import Repository from "@/components/Repository";
 import supabase from "@/lib/supabase/supabase";
-import { cn } from "@/lib/utils";
-import Image from "next/image";
 import Link from "next/link";
-import { CgArrowsExpandUpRight } from "react-icons/cg";
+import {
+  BiLogoDiscordAlt,
+  BiLogoDocker,
+  BiLogoGmail,
+  BiLogoNodejs,
+  BiLogoTailwindCss,
+  BiLogoTypescript,
+} from "react-icons/bi";
+import { BsGit } from "react-icons/bs";
+import { CgArrowsExpandUpRight, CgFigma } from "react-icons/cg";
 import { ImGithub, ImTwitter } from "react-icons/im";
-import Card from "@/components/ui/Card";
+import {
+  IoLogoAngular,
+  IoLogoHtml5,
+  IoLogoReact,
+  IoLogoSass,
+} from "react-icons/io5";
 import { MdSpaceDashboard } from "react-icons/md";
-import LinkTile from "@/components/LinkTile";
-import { PiDiscordLogo, PiDiscordLogoBold } from "react-icons/pi";
-import { BiLogoDiscordAlt, BiLogoGmail } from "react-icons/bi";
+import { SiSupabase } from "react-icons/si";
+import { TbBrandNextjs } from "react-icons/tb";
 
 export const revalidate = 43200; // Revalidate after 12 hours : 43200 seconds;
 
@@ -65,23 +78,94 @@ export default async function Home() {
             can explore in detail through my portfolio.
           </Heading.Description>
         </Heading>
-        <div className="relative md:-mt-12">
-          <Link
-            href="/skills"
-            className={cn(
-              buttonVariants({ variant: "outline", size: "sm" }),
-              "absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2",
-            )}
-          >
-            All Skills
-          </Link>
-          <img
-            src="/images/design-elements/eclipse.png"
-            alt="skills"
-            className="mx-auto"
-          />
+
+        <div className="mt-8 grid grid-cols-2 gap-4 font-semibold md:grid-cols-4 xl:grid-cols-5">
+          <div className="flex items-center gap-4 p-2">
+            <IoLogoReact
+              size={40}
+              className="shrink-0 rounded-md bg-blue-400/5 p-1.5 text-blue-400"
+            />{" "}
+            <span>React</span>
+          </div>
+          <div className="flex items-center gap-4 p-2">
+            <IoLogoAngular
+              size={40}
+              className="shrink-0 rounded-md bg-red-500/5 p-1.5 text-red-500"
+            />{" "}
+            <span>Angular</span>
+          </div>
+          <div className="flex items-center gap-4 p-2">
+            <IoLogoSass
+              size={40}
+              className="shrink-0 rounded-md bg-pink-500/5 p-1.5 text-pink-500"
+            />{" "}
+            <span>Sass</span>
+          </div>
+          <div className="flex items-center gap-4 p-2">
+            <BiLogoTailwindCss
+              size={40}
+              className="shrink-0 rounded-md bg-sky-500/5 p-1.5 text-sky-500"
+            />{" "}
+            <span>TailwindCSS</span>
+          </div>
+          <div className="flex items-center gap-4 p-2">
+            <IoLogoHtml5
+              size={40}
+              className="shrink-0 rounded-md bg-orange-500/5 p-1.5 text-orange-500"
+            />{" "}
+            <span>HTML</span>
+          </div>
+          <div className="flex items-center gap-4 p-2">
+            <TbBrandNextjs
+              size={40}
+              className="shrink-0 rounded-md bg-white/5 p-1.5 text-white"
+            />{" "}
+            <span>NextJS</span>
+          </div>
+          <div className="flex items-center gap-4 p-2">
+            <SiSupabase
+              size={40}
+              className="shrink-0 rounded-md bg-emerald-500/5 p-1.5 text-emerald-500"
+            />{" "}
+            <span>Supabase</span>
+          </div>
+          <div className="flex items-center gap-4 p-2">
+            <BsGit
+              size={40}
+              className="shrink-0 rounded-md bg-rose-500/5 p-1.5 text-rose-500"
+            />{" "}
+            <span>Git</span>
+          </div>
+          <div className="flex items-center gap-4 p-2">
+            <BiLogoDocker
+              size={40}
+              className="shrink-0 rounded-md bg-blue-400/5 p-1.5 text-blue-400"
+            />{" "}
+            <span>Docker</span>
+          </div>
+          <div className="flex items-center gap-4 p-2">
+            <BiLogoTypescript
+              size={40}
+              className="shrink-0 rounded-md bg-sky-500/5 p-1.5 text-sky-500"
+            />{" "}
+            <span>Typescript</span>
+          </div>
+          <div className="flex items-center gap-4 p-2">
+            <CgFigma
+              size={40}
+              className="shrink-0 rounded-md bg-violet-400/5 p-1.5 text-violet-400"
+            />{" "}
+            <span>Figma</span>
+          </div>
+          <div className="flex items-center gap-4 p-2">
+            <BiLogoNodejs
+              size={40}
+              className="shrink-0 rounded-md bg-lime-500/5 p-1.5 text-lime-500"
+            />{" "}
+            <span>NodeJS</span>
+          </div>
         </div>
-        <Separator className="max-w-lg" />
+        <Separator className="mt-12 max-w-lg" />
       </Container>
 
       <Container id="projects">
