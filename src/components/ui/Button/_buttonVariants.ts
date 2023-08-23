@@ -11,7 +11,7 @@ export const buttonVariants = cva(
         secondary:
           "bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-white focus-visible:ring-slate-500/20 active:ring-slate-500/20",
         ghost:
-          "border underline md:hover:no-underline border-transparent shadow-none focus-visible:border-zinc-700 focus-visible:bg-zinc-800 focus-visible:ring-slate-500/20 active:ring-slate-500/20",
+          "border border-transparent shadow-none focus-visible:border-zinc-700 focus-visible:bg-zinc-800 focus-visible:ring-slate-500/20 active:ring-slate-500/20",
         outline:
           "bg-transparent border hover:bg-zinc-800 border-white text-white focus-visible:ring-white/10 active:ring-white/10",
       },

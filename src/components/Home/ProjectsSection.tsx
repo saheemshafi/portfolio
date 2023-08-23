@@ -15,7 +15,8 @@ interface ProjectsSectionProps {}
 const ProjectsSection = async ({}: ProjectsSectionProps) => {
   const projects = await supabase
     .from("projects")
-    .select(`*,repositories(id, owner, repositoryName)`);
+    .select(`*,repositories(id, owner, repositoryName)`)
+    .limit(6);
   if (projects.error) {
     throw new Error(projects.error?.message);
   }
@@ -36,9 +37,7 @@ const ProjectsSection = async ({}: ProjectsSectionProps) => {
             <Card.Image src={project.image} alt={project.title} />
             <Card.Content>
               <Card.Tags>
-                {project.tags
-                  ?.splice(0, 3)
-                  .map((tag) => <Chip key={tag}>{tag}</Chip>)}
+                {project.tags?.map((tag) => <Chip key={tag}>{tag}</Chip>)}
               </Card.Tags>
               <Card.Info>
                 <Card.Title>{project.title}</Card.Title>
