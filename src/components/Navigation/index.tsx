@@ -13,6 +13,8 @@ import { MdSpaceDashboard, MdCall } from "react-icons/md";
 import { PiCertificateFill } from "react-icons/pi";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import supabase from "@/lib/supabase/supabase";
+import { useState } from "react";
 
 export const links = [
   { path: "/", icon: GoHomeFill, text: "Home" },
@@ -25,6 +27,26 @@ interface NavbarProps {}
 
 function Navbar({}: NavbarProps) {
   const pathname = usePathname();
+  const [downloading, setDownloading] = useState(false);
+
+  async function downloadResume() {
+    try {
+      setDownloading(true);
+      const req = await fetch("/api/download-resume");
+      const resume = await req.blob();
+
+      const anchor = document.createElement("a");
+      anchor.download = "saheemshafi-resume.pdf";
+      anchor.href = URL.createObjectURL(resume);
+      anchor.click();
+      anchor.remove();
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setDownloading(false);
+    }
+  }
+
   return (
     <header className="border-b border-zinc-800 lg:border-none">
       <Container className="my-0 flex items-center justify-between py-4 leading-[1.3]">
@@ -62,7 +84,12 @@ function Navbar({}: NavbarProps) {
         </NavigationMenu.Root>
         <div className="flex items-center gap-2">
           <ThemeSwitcher />
-          <Button size="sm" variant="outline">
+          <Button
+            onClick={downloadResume}
+            size="sm"
+            variant="outline"
+            loading={downloading}
+          >
             <FiDownload size={16} /> Resume
           </Button>
         </div>

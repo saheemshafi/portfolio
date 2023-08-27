@@ -39,8 +39,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       >
         {loading && (
           <motion.span
-            initial={{ opacity: 0, y: "5px" }}
-            animate={{ opacity: 1, y: 0, rotate: "360deg" }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, rotate: "360deg" }}
             transition={{
               bounce: true,
               ease: "easeInOut",
