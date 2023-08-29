@@ -10,7 +10,7 @@ import { ImGithub } from "react-icons/im";
 
 interface ProjectsPageProps {}
 
-export const revalidate = 0; // Revalidate after 3 hours : 10800 seconds;
+export const revalidate = 10800; // Revalidate after 3 hours : 10800 seconds;
 
 const ProjectsPage = async ({}: ProjectsPageProps) => {
   const { data: projects, error } = await supabase
