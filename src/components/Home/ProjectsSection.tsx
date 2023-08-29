@@ -34,7 +34,10 @@ const ProjectsSection = async ({}: ProjectsSectionProps) => {
       <div className="mb-12 grid gap-6 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
         {projects.data.map((project) => (
           <Card key={project.id}>
-            <Card.Image src={project.image} alt={project.title} />
+            <Card.Image
+              src={process.env.SUPABASE_BUCKET_URL.concat(project.imagePath)}
+              alt={project.title}
+            />
             <Card.Content>
               <Card.Tags>
                 {project.tags?.map((tag) => <Chip key={tag}>{tag}</Chip>)}

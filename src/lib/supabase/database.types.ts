@@ -45,7 +45,7 @@ export interface Database {
           deploy_url: string | null
           description: string
           id: string
-          image: string
+          imagePath: string
           repository: string | null
           tags: string[] | null
           title: string
@@ -55,7 +55,7 @@ export interface Database {
           deploy_url?: string | null
           description: string
           id?: string
-          image: string
+          imagePath: string
           repository?: string | null
           tags?: string[] | null
           title: string
@@ -65,7 +65,7 @@ export interface Database {
           deploy_url?: string | null
           description?: string
           id?: string
-          image?: string
+          imagePath?: string
           repository?: string | null
           tags?: string[] | null
           title?: string
