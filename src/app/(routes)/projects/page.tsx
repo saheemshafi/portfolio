@@ -16,6 +16,10 @@ const ProjectsPage = async ({}: ProjectsPageProps) => {
   const { data: projects, error } = await supabase
     .from("projects")
     .select(`*,repositories(id, owner, repositoryName)`);
+  const { data } = await supabase.storage
+    .from("portfolio-bucket")
+    .getPublicUrl("project-images/crackle-media.jpg");
+  console.log(data);
 
   if (error) {
     throw new Error(error?.message);
@@ -34,7 +38,10 @@ const ProjectsPage = async ({}: ProjectsPageProps) => {
       <div className="mb-12 grid gap-6 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
         {projects.map((project) => (
           <Card key={project.id}>
-            <Card.Image src={project.image} alt={project.title} />
+            <Card.Image
+              src={process.env.SUPABASE_BUCKET_URL.concat(project.imagePath)}
+              alt={project.title}
+            />
             <Card.Content>
               <Card.Tags>
                 {project.tags

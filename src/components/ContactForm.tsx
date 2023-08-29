@@ -1,6 +1,6 @@
 "use client";
 
-import Container from "@/components/ui/Container";
+import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as Form from "@radix-ui/react-form";
 import { motion } from "framer-motion";
@@ -9,7 +9,6 @@ import { useForm } from "react-hook-form";
 import { BiSend } from "react-icons/bi";
 import { z } from "zod";
 import Button from "./ui/Button";
-import { cn } from "@/lib/utils";
 
 interface ContactFormProps extends HTMLAttributes<HTMLDivElement> {}
 
@@ -20,12 +19,18 @@ const ContactForm: FC<ContactFormProps> = ({ className, ...props }) => {
     message: z.string().min(10, "Message must be atleast 10 characters long."),
   });
 
-  const onSubmit = async (values: z.infer<typeof contactFormSchema>) => {
+  type ContactFormSchema = z.infer<typeof contactFormSchema>;
+
+  const onSubmit = async (values: ContactFormSchema) => {
     console.log(values);
   };
-  const { register, handleSubmit, formState, getFieldState, reset } = useForm<
-    z.infer<typeof contactFormSchema>
-  >({
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset,
+  } = useForm<ContactFormSchema>({
     resolver: zodResolver(contactFormSchema),
   });
 
@@ -60,13 +65,13 @@ const ContactForm: FC<ContactFormProps> = ({ className, ...props }) => {
               }
             />
 
-            {getFieldState("name").error && (
+            {errors.name && (
               <motion.small
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: "auto", opacity: 1 }}
                 className="mt-2 block text-red-400"
               >
-                {getFieldState("name").error?.message}
+                {errors.name.message}
               </motion.small>
             )}
           </Form.Field>
@@ -86,13 +91,13 @@ const ContactForm: FC<ContactFormProps> = ({ className, ...props }) => {
               className="w-full rounded-md border border-zinc-700 bg-zinc-800 px-4 py-2 text-white outline-none transition-[shadow,border] focus:border-theme/50 focus:bg-transparent focus:ring focus:ring-theme/20"
             />
 
-            {getFieldState("email").error && (
+            {errors.email && (
               <motion.small
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: "auto", opacity: 1 }}
                 className="mt-2 block text-red-400"
               >
-                {getFieldState("email").error?.message}
+                {errors.email?.message}
               </motion.small>
             )}
           </Form.Field>
@@ -115,13 +120,13 @@ const ContactForm: FC<ContactFormProps> = ({ className, ...props }) => {
             <textarea rows={3}></textarea>
           </Form.Control>
 
-          {getFieldState("message").error && (
+          {errors.message && (
             <motion.small
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
               className="mt-2 block text-red-400"
             >
-              {getFieldState("message").error?.message}
+              {errors.message?.message}
             </motion.small>
           )}
         </Form.Field>
@@ -135,7 +140,7 @@ const ContactForm: FC<ContactFormProps> = ({ className, ...props }) => {
           >
             Cancel
           </Button>
-          <Button loading={formState.isSubmitting} type="submit">
+          <Button loading={isSubmitting} type="submit">
             Send message <BiSend />
           </Button>
         </div>
