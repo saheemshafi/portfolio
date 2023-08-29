@@ -10,12 +10,15 @@ import { ImGithub } from "react-icons/im";
 
 interface ProjectsPageProps {}
 
+export const revalidate = 10800; // Revalidate after 3 hours : 10800 seconds;
+
 const ProjectsPage = async ({}: ProjectsPageProps) => {
-  const projects = await supabase
+  const { data: projects, error } = await supabase
     .from("projects")
     .select(`*,repositories(id, owner, repositoryName)`);
-  if (projects.error) {
-    throw new Error(projects.error?.message);
+
+  if (error) {
+    throw new Error(error?.message);
   }
 
   return (
@@ -24,12 +27,12 @@ const ProjectsPage = async ({}: ProjectsPageProps) => {
         <Heading.SubHeading>Projects</Heading.SubHeading>
         <Heading.Element>All Projects</Heading.Element>
         <Heading.Description>
-          Checkout every project of mine from simple to complex and personal
-          to business use.
+          Checkout every project of mine from simple to complex and personal to
+          business use.
         </Heading.Description>
       </Heading>
       <div className="mb-12 grid gap-6 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
-        {projects.data.map((project) => (
+        {projects.map((project) => (
           <Card key={project.id}>
             <Card.Image src={project.image} alt={project.title} />
             <Card.Content>

@@ -16,7 +16,7 @@ const ProjectsSection = async ({}: ProjectsSectionProps) => {
   const projects = await supabase
     .from("projects")
     .select(`*,repositories(id, owner, repositoryName)`)
-    .limit(6);
+    .limit(3);
   if (projects.error) {
     throw new Error(projects.error?.message);
   }

@@ -39,27 +39,6 @@ export interface Database {
         }
         Relationships: []
       }
-      links: {
-        Row: {
-          created_at: string
-          id: string
-          name: string
-          url: string
-        }
-        Insert: {
-          created_at?: string
-          id?: string
-          name: string
-          url: string
-        }
-        Update: {
-          created_at?: string
-          id?: string
-          name?: string
-          url?: string
-        }
-        Relationships: []
-      }
       projects: {
         Row: {
           created_at: string
@@ -106,21 +85,18 @@ export interface Database {
           id: string
           owner: string
           repositoryName: string
-          with_commits: boolean
         }
         Insert: {
           created_at?: string
           id?: string
           owner: string
           repositoryName: string
-          with_commits?: boolean
         }
         Update: {
           created_at?: string
           id?: string
           owner?: string
           repositoryName?: string
-          with_commits?: boolean
         }
         Relationships: []
       }
