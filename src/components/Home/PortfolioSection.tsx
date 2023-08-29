@@ -6,13 +6,14 @@ import Heading from "../ui/Heading";
 interface PortfolioSectionProps {}
 
 const PortfolioSection = async ({}: PortfolioSectionProps) => {
-  const repos = await supabase.from("repositories").select();
-  const portfolio = repos.data?.find(
-    ({ repositoryName }) => repositoryName == "portfolio",
-  );
+  const { data, error } = await supabase
+    .from("repositories")
+    .select()
+    .filter("repositoryName", "like", "portfolio");
+  const portfolio = data?.at(0);
 
-  if (repos.error) {
-    throw new Error(repos.error?.message);
+  if (error) {
+    throw new Error(error?.message);
   }
 
   return (
@@ -28,7 +29,7 @@ const PortfolioSection = async ({}: PortfolioSectionProps) => {
         </Heading>
         <Repository
           username={portfolio.owner}
-          commits={portfolio.with_commits}
+          commits
           repositoryName={portfolio.repositoryName}
         />
       </Container>

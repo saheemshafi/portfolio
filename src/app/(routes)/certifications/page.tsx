@@ -9,12 +9,16 @@ import { CgArrowsExpandUpRight } from "react-icons/cg";
 import { formatDate } from "@/lib/utils";
 
 interface CertificationsPageProps {}
-export const revalidate = 43200; // Revalidate after 12 hours : 43200 seconds;
+
+export const revalidate = 10800; // Revalidate after 3 hours : 10800 seconds;
 
 const CertificationsPage = async ({}: CertificationsPageProps) => {
-  const certifications = await supabase.from("certifications").select();
-  if (certifications.error) {
-    throw new Error(certifications.error.message);
+  const { data: certifications, error } = await supabase
+    .from("certifications")
+    .select();
+
+  if (error) {
+    throw new Error(error.message);
   }
   return (
     <Container className="pt-12">
@@ -27,7 +31,7 @@ const CertificationsPage = async ({}: CertificationsPageProps) => {
         </Heading.Description>
       </Heading>
       <div className="mb-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {certifications.data.map((certification) => (
+        {certifications.map((certification) => (
           <Card key={certification.id}>
             <Card.Image src={certification.image} alt={certification.course} />
             <Card.Content>
