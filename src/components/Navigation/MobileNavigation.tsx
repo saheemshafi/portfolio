@@ -8,7 +8,7 @@ import { links } from ".";
 function MobileNavigation({}) {
   const pathname = usePathname();
   return (
-    <NavigationMenu.Root className="fixed inset-x-0 bottom-0 z-10 mx-auto border-t border-t-zinc-600 bg-zinc-800 py-1 text-xs font-medium backdrop-blur-sm sm:mb-4 sm:max-w-[400px] sm:rounded-lg sm:bg-zinc-800/90 lg:hidden">
+    <NavigationMenu.Root className="fixed inset-x-0 bottom-0 z-10 mx-auto border-theme/5 bg-slate-main bg-gradient-to-t from-theme/5 py-1 text-xs font-medium backdrop-blur-sm sm:mb-4 sm:max-w-[400px] sm:rounded-lg sm:border sm:shadow-[0_4px_8px] sm:shadow-slate-main/40 md:hidden">
       <NavigationMenu.List className="grid grid-cols-4 gap-2">
         {links.map(({ path, icon: Icon, text }) => (
           <NavigationMenu.Item key={path}>
@@ -18,10 +18,10 @@ function MobileNavigation({}) {
               asChild
             >
               <Link href={path}>
-                <span className="grid place-items-center rounded-full bg-zinc-700/50 px-3 py-0.5 transition-all group-hover:bg-theme/10 group-focus-visible:bg-theme/10 group-focus-visible:ring-1 group-focus-visible:ring-theme/30 group-data-[active]:text-theme">
+                <span className="grid place-items-center rounded-full px-3 py-0.5 transition-all group-focus-visible:ring-1 group-focus-visible:ring-theme/30 group-data-[active]:bg-zinc-800 group-data-[active]:text-theme sm:hover:bg-zinc-800">
                   <Icon size={24} />
                 </span>
-                <span className="text-zinc-300 transition-colors group-hover:text-theme group-focus-visible:text-theme">
+                <span className="text-zinc-300 transition-colors sm:group-hover:text-theme sm:group-focus-visible:text-theme">
                   {text}
                 </span>
               </Link>
