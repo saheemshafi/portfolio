@@ -1,9 +1,8 @@
 "use client";
 
-import { FC } from "react";
-import * as RadixAvatar from "@radix-ui/react-avatar";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
+import * as RadixAvatar from "@radix-ui/react-avatar";
+import { FC } from "react";
 
 interface AvatarProps extends RadixAvatar.AvatarProps {
   src: string;

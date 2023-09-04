@@ -4,10 +4,19 @@ import { cn } from "@/lib/utils";
 import * as RadixAccordion from "@radix-ui/react-accordion";
 import { PiCaretDownBold } from "react-icons/pi";
 
+/**
+ * Union of types utilized by `RadixUI` in the `RadixAccordion.Root`.
+ */
 type AccordionProps =
   | ({ type: "single" } & RadixAccordion.AccordionSingleProps)
   | ({ type: "multiple" } & RadixAccordion.AccordionMultipleProps);
 
+/**
+ * Renders a custom styled radix accordion.
+ * @param {string} props.type "single" - One item can be opened at a time.
+ * @param {string} props.type "multiple" - Many items can be opened at a time.
+ * @returns {JSX.Element} Styled `RadixAccordion.Root` element.
+ */
 function Root({ children, className, ...props }: AccordionProps) {
   return (
     <RadixAccordion.Root

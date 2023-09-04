@@ -1,6 +1,16 @@
 import { VariantProps, cva } from "class-variance-authority";
 
+/**
+ * @description Typescript types infered from `typeof buttonVariants()`.
+ */
 export type ButtonVariant = VariantProps<typeof buttonVariants>;
+
+/**
+ * Provides api to return different classnames based on `variant`, `buttonStyle`
+ * and `size`.
+ * @param {ButtonVariant} props
+ * @type {ButtonVariant}
+ */
 export const buttonVariants = cva(
   "rounded-full font-semibold w-fit group disabled:opacity-80 flex focus-visible:ring outline-none shadow-sm ring-offset-1 items-center capitalize transition-all active:ring",
   {

@@ -2,14 +2,28 @@
 
 import { ReactNode, createContext, useEffect, useState } from "react";
 
-export const ThemeContext = createContext<{
+/**
+ * Types for `ThemeContext`
+ */
+interface ThemeContextType {
   theme: string;
   onThemeChange: (theme: string) => void;
-}>({
+}
+
+/**
+ * @type {ThemeContextType}
+ * @description `ThemeContext` to manage global theming in app.
+ */
+export const ThemeContext = createContext<ThemeContextType>({
   theme: "yellow-249 204 63",
   onThemeChange: (theme: string) => {},
 });
 
+/**
+ * Wraps `children` in `ThemeContext.Provider`.
+ * @prop children
+ * @returns `JSXElement`
+ */
 export const ThemeContextProvider = ({ children }: { children: ReactNode }) => {
   let _theme;
   if (typeof localStorage !== "undefined") {
@@ -24,6 +38,12 @@ export const ThemeContextProvider = ({ children }: { children: ReactNode }) => {
     );
   }
 
+  /**
+   * @description Sets theme to localstorage and to state.
+   * @param theme Format `[color]-[r] [g] [b]`
+   * @example
+   * <button onClick={() => onThemeChange("yellow-249 204 63")}>Change Theme</button>;
+   */
   const onThemeChange = (theme: string) => {
     setTheme(theme);
     localStorage.setItem("theme", theme);

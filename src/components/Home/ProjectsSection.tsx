@@ -1,5 +1,5 @@
+import supabase from "@/lib/supabase/supabase";
 import Link from "next/link";
-import { FC } from "react";
 import { CgArrowsExpandUpRight } from "react-icons/cg";
 import { ImGithub } from "react-icons/im";
 import { buttonVariants } from "../ui/Button/_buttonVariants";
@@ -8,7 +8,6 @@ import Chip from "../ui/Chip";
 import Container from "../ui/Container";
 import Heading from "../ui/Heading";
 import Separator from "../ui/Separator";
-import supabase from "@/lib/supabase/supabase";
 
 interface ProjectsSectionProps {}
 
