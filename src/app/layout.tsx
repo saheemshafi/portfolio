@@ -5,14 +5,6 @@ import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Link from "next/link";
-import Container from "@/components/ui/Container";
-import { ImGithub, ImLinkedin2, ImTwitter } from "react-icons/im";
-import Button from "@/components/ui/Button";
-import Separator from "@/components/ui/Separator";
-import { buttonVariants } from "@/components/ui/Button/_buttonVariants";
-import { headingVariants } from "@/components/ui/Heading";
-import LinkTile from "@/components/LinkTile";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth theme-skyblue">
       <body
         className={cn(
           inter.className,

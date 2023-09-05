@@ -2,21 +2,34 @@
 
 import { ReactNode, createContext, useEffect, useState } from "react";
 
-export const ThemeContext = createContext<{
+/**
+ * Types for `ThemeContext`
+ */
+interface ThemeContextType {
   theme: string;
   onThemeChange: (theme: string) => void;
-}>({
+}
+
+/**
+ * @type {ThemeContextType}
+ * @description `ThemeContext` to manage global theming in app.
+ */
+export const ThemeContext = createContext<ThemeContextType>({
   theme: "yellow-249 204 63",
   onThemeChange: (theme: string) => {},
 });
 
+/**
+ * Wraps `children` in `ThemeContext.Provider`.
+ * @prop children
+ * @returns `JSXElement`
+ */
 export const ThemeContextProvider = ({ children }: { children: ReactNode }) => {
   let _theme;
   if (typeof localStorage !== "undefined") {
     _theme = localStorage.getItem("theme");
   }
-
-  const [theme, setTheme] = useState(_theme || "yellow-249 204 63");
+  const [theme, setTheme] = useState(_theme || "yellow");
 
   if (!ThemeContext) {
     throw new Error(
@@ -24,6 +37,12 @@ export const ThemeContextProvider = ({ children }: { children: ReactNode }) => {
     );
   }
 
+  /**
+   * @description Sets theme to localstorage and to state.
+   * @param theme Format `theme-[color]`
+   * @example
+   * <button onClick={() => onThemeChange("yellow")}>Change Theme</button>;
+   */
   const onThemeChange = (theme: string) => {
     setTheme(theme);
     localStorage.setItem("theme", theme);
@@ -32,10 +51,12 @@ export const ThemeContextProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     if (typeof localStorage == "undefined") return;
     const _theme = localStorage.getItem("theme");
-    document.documentElement.style.setProperty(
-      "--theme-color",
-      (_theme || theme)?.split("-")[1] || null,
+    const htmlElement = document.documentElement;
+    const className = htmlElement.className.replace(
+      /theme-[\w]+/,
+      `theme-${_theme || theme}`,
     );
+    htmlElement.className = className;
   }, [theme]);
 
   return (

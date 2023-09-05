@@ -7,10 +7,14 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { CgArrowsExpandUpRight } from "react-icons/cg";
 import { formatDate } from "@/lib/utils";
-
-interface CertificationsPageProps {}
+import { Metadata } from "next";
 
 export const revalidate = 10800; // Revalidate after 3 hours : 10800 seconds;
+export const metadata: Metadata = {
+  title: "Mir Saheem Shafi - Certifications",
+};
+
+interface CertificationsPageProps {}
 
 const CertificationsPage = async ({}: CertificationsPageProps) => {
   const { data: certifications, error } = await supabase
@@ -20,6 +24,7 @@ const CertificationsPage = async ({}: CertificationsPageProps) => {
   if (error) {
     throw new Error(error.message);
   }
+  
   return (
     <Container className="pt-12">
       <Heading>

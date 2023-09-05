@@ -4,13 +4,17 @@ import Chip from "@/components/ui/Chip";
 import Container from "@/components/ui/Container";
 import Heading from "@/components/ui/Heading";
 import supabase from "@/lib/supabase/supabase";
+import { Metadata } from "next";
 import Link from "next/link";
 import { CgArrowsExpandUpRight } from "react-icons/cg";
 import { ImGithub } from "react-icons/im";
 
-interface ProjectsPageProps {}
-
 export const revalidate = 10800; // Revalidate after 3 hours : 10800 seconds;
+export const metadata: Metadata = {
+  title: "Mir Saheem Shafi - All Projects",
+};
+
+interface ProjectsPageProps {}
 
 const ProjectsPage = async ({}: ProjectsPageProps) => {
   const { data: projects, error } = await supabase
