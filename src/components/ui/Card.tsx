@@ -29,7 +29,7 @@ function CardImage({ src, alt, ...props }: ImageProps) {
         {...props}
         src={src}
         alt={alt}
-        className="aspect-video w-full rounded-[inherit] object-cover grayscale transition-[filter] duration-200 group-hover:grayscale-0"
+        className="aspect-video w-full rounded-[inherit] object-cover lg:grayscale transition-[filter] duration-200 group-hover:grayscale-0"
         width={500}
         height={281}
       />

@@ -7,7 +7,7 @@ function Container({ className, children, ...attrs }: ContainerProps) {
   return (
     <section
       {...attrs}
-      className={cn("relative isolate mb-12 px-4 py-4 md:px-8", className)}
+      className={cn("relative isolate mb-16 sm:mb-12 px-4 py-4 md:px-8", className)}
     >
       {children}
     </section>

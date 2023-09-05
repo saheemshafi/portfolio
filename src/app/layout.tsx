@@ -23,7 +23,7 @@ export default function RootLayout({
       <body
         className={cn(
           inter.className,
-          "min-h-screen overflow-x-hidden bg-slate-main pb-[64px] sm:pb-0 [&_strong]:font-semibold",
+          "min-h-screen overflow-x-hidden bg-slate-main pb-[calc(64px_-_16px] sm:pb-0 [&_strong]:font-semibold",
         )}
       >
         <div

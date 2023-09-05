@@ -4,6 +4,7 @@ import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { links } from ".";
+import { motion } from "framer-motion";
 
 function MobileNavigation({}) {
   const pathname = usePathname();
@@ -14,14 +15,17 @@ function MobileNavigation({}) {
           <NavigationMenu.Item key={path}>
             <NavigationMenu.Link
               active={pathname == path}
-              className="group flex flex-col items-center gap-1 rounded-sm p-1 outline-none"
+              className="group text-zinc-300 data-[active]:text-theme flex flex-col items-center gap-1 rounded-sm p-1 outline-none"
               asChild
             >
-              <Link href={path}>
-                <span className="grid place-items-center rounded-full px-3 py-0.5 transition-all group-focus-visible:ring-1 group-focus-visible:ring-theme/30 group-data-[active]:bg-zinc-800 group-data-[active]:text-theme sm:hover:bg-zinc-800">
+              <Link
+                href={path}
+              >
+                <span className="relative isolate grid place-items-center px-3 py-0.5">
                   <Icon size={24} />
+                  <div className="absolute inset-0 -z-[1] translate-y-1/2 scale-50 rounded-full opacity-0 transition-all duration-[250ms] ease-in-out group-focus-visible:ring-1 group-focus-visible:ring-theme/30 group-data-[active]:translate-y-0 group-data-[active]:scale-100 group-data-[active]:bg-theme/5 group-data-[active]:opacity-100"></div>
                 </span>
-                <span className="text-zinc-300 transition-colors sm:group-hover:text-theme sm:group-focus-visible:text-theme">
+                <span className="transition-colors sm:group-hover:text-theme sm:group-focus-visible:text-theme">
                   {text}
                 </span>
               </Link>
