@@ -39,7 +39,7 @@ const ProjectsPage = async ({}: ProjectsPageProps) => {
           business use.
         </Heading.Description>
       </Heading>
-      <div className="mb-12 grid gap-6 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
+      <div className="grid gap-6 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
         {projects.map((project) => (
           <Card key={project.id}>
             <Card.Image

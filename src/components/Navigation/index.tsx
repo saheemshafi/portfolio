@@ -49,7 +49,7 @@ function Navbar({}: NavbarProps) {
 
   return (
     <header className="border-b border-zinc-800 lg:border-none">
-      <Container className="my-0 flex items-center justify-between py-4 leading-[1.3]">
+      <Container className="my-0 sm:my-0 flex items-center justify-between py-4 leading-[1.3]">
         <Link href="/" className={cn(headingVariants({ level: "h4" }),"truncate mr-2")}>
           <span className="hidden sm:inline">Mir Saheem Shafi</span>
           <span className="sm:hidden">MSS</span>

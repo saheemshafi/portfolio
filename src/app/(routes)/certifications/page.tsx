@@ -35,7 +35,7 @@ const CertificationsPage = async ({}: CertificationsPageProps) => {
           proficiency in various technologies.
         </Heading.Description>
       </Heading>
-      <div className="mb-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {certifications.map((certification) => (
           <Card key={certification.id}>
             <Card.Image src={certification.image} alt={certification.course} />
