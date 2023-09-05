@@ -2,13 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+html.theme-yellow {
+  --theme-color: 249 204 63;
+}
+html.theme-skyblue {
+  --theme-color: 56 189 248;
+}
+html.theme-emerald {
+  --theme-color: 52 211 153;
+}
+
 @layer base {
-  :root {
-    --theme-color: 249 204 63;
-  }
+
   html {
     color-scheme: dark;
   }
+
   h1,
   h2,
   h3,

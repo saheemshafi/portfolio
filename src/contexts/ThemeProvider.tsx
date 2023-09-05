@@ -29,8 +29,7 @@ export const ThemeContextProvider = ({ children }: { children: ReactNode }) => {
   if (typeof localStorage !== "undefined") {
     _theme = localStorage.getItem("theme");
   }
-
-  const [theme, setTheme] = useState(_theme || "yellow-249 204 63");
+  const [theme, setTheme] = useState(_theme || "yellow");
 
   if (!ThemeContext) {
     throw new Error(
@@ -40,9 +39,9 @@ export const ThemeContextProvider = ({ children }: { children: ReactNode }) => {
 
   /**
    * @description Sets theme to localstorage and to state.
-   * @param theme Format `[color]-[r] [g] [b]`
+   * @param theme Format `theme-[color]`
    * @example
-   * <button onClick={() => onThemeChange("yellow-249 204 63")}>Change Theme</button>;
+   * <button onClick={() => onThemeChange("yellow")}>Change Theme</button>;
    */
   const onThemeChange = (theme: string) => {
     setTheme(theme);
@@ -52,10 +51,12 @@ export const ThemeContextProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     if (typeof localStorage == "undefined") return;
     const _theme = localStorage.getItem("theme");
-    document.documentElement.style.setProperty(
-      "--theme-color",
-      (_theme || theme)?.split("-")[1] || null,
+    const htmlElement = document.documentElement;
+    const className = htmlElement.className.replace(
+      /theme-[\w]+/,
+      `theme-${_theme || theme}`,
     );
+    htmlElement.className = className;
   }, [theme]);
 
   return (
