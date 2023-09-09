@@ -39,6 +39,33 @@ export interface Database {
         }
         Relationships: []
       }
+      contacts: {
+        Row: {
+          email: string
+          email_sent: boolean | null
+          from: string
+          id: string
+          message: string
+          submitted_at: string
+        }
+        Insert: {
+          email: string
+          email_sent?: boolean | null
+          from: string
+          id?: string
+          message: string
+          submitted_at?: string
+        }
+        Update: {
+          email?: string
+          email_sent?: boolean | null
+          from?: string
+          id?: string
+          message?: string
+          submitted_at?: string
+        }
+        Relationships: []
+      }
       projects: {
         Row: {
           created_at: string

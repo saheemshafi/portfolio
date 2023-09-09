@@ -42,13 +42,13 @@ const ContactSection: FC<ContactSectionProps> = ({}) => {
                 <LinkTile.Link>github.com/saheemshafi</LinkTile.Link>
               </div>
             </LinkTile>
-            <LinkTile href="https://linkedin.com/saheemshafi" className="px-0">
+            <LinkTile href="https://linkedin.com/in/saheemshafi" className="px-0">
               <LinkTile.Icon>
                 <ImTwitter size={20} />
               </LinkTile.Icon>
               <div>
                 <LinkTile.Title>Connect On LinkedIn</LinkTile.Title>
-                <LinkTile.Link>linked.com/saheemshafi</LinkTile.Link>
+                <LinkTile.Link>linked.com/in/saheemshafi</LinkTile.Link>
               </div>
             </LinkTile>
             <LinkTile

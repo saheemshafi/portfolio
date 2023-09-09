@@ -7,22 +7,42 @@ import { motion } from "framer-motion";
 import { FC, HTMLAttributes } from "react";
 import { useForm } from "react-hook-form";
 import { BiSend } from "react-icons/bi";
-import { z } from "zod";
 import Button from "./ui/Button";
+import {
+  ContactFormSchema,
+  contactFormSchema,
+} from "@/lib/zod/contactFormSchema";
 
 interface ContactFormProps extends HTMLAttributes<HTMLDivElement> {}
 
 const ContactForm: FC<ContactFormProps> = ({ className, ...props }) => {
-  const contactFormSchema = z.object({
-    name: z.string().nonempty("Name is required."),
-    email: z.string().email("Email is not valid."),
-    message: z.string().min(10, "Message must be atleast 10 characters long."),
-  });
-
-  type ContactFormSchema = z.infer<typeof contactFormSchema>;
-
   const onSubmit = async (values: ContactFormSchema) => {
-    console.log(values);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        body: JSON.stringify(values),
+      });
+      const data = await res.json();
+      if (!data.success) {
+        throw data.errors;
+      }
+      console.log(data);
+    } catch (error) {
+      if (error instanceof Array) {
+        error.forEach((err: string) => {
+          if (err.startsWith("Zod")) {
+            const path = err.substring(
+              err.indexOf("[") + 1,
+              err.lastIndexOf("]"),
+            ) as keyof ContactFormSchema;
+            setError(path, {
+              message: err.substring(err.lastIndexOf("]") + 2),
+            });
+          }
+        });
+      }
+      console.log(error);
+    }
   };
 
   const {
@@ -30,6 +50,7 @@ const ContactForm: FC<ContactFormProps> = ({ className, ...props }) => {
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
+    setError,
   } = useForm<ContactFormSchema>({
     resolver: zodResolver(contactFormSchema),
   });

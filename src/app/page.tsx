@@ -9,6 +9,7 @@ import SkillsSection from "@/components/Home/SkillsSection";
 export const revalidate = 10800; // Revalidate after 3 hours : 10800 seconds;
 
 export default async function Home() {
+  
   return (
     <main>
       <HeroSection />

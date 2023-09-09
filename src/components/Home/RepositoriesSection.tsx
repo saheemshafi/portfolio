@@ -6,11 +6,8 @@ import Heading from "../ui/Heading";
 interface RepositoriesSectionProps {}
 
 const RepositoriesSection = async ({}: RepositoriesSectionProps) => {
-
-  const repos = await supabase.from("repositories").select();
-  if (repos.error) {
-    throw new Error(repos.error?.message);
-  }
+  
+  const repos = await supabase.from("repositories").select().throwOnError();
 
   return (
     <Container id="os-repositories">
@@ -23,7 +20,7 @@ const RepositoriesSection = async ({}: RepositoriesSectionProps) => {
         </Heading.Description>
       </Heading>
       <div className="grid gap-4 lg:grid-cols-2">
-        {repos.data.map(({ id, repositoryName, owner }) => (
+        {repos.data?.map(({ id, repositoryName, owner }) => (
           <div key={id}>
             <Repository username={owner} repositoryName={repositoryName} />
           </div>

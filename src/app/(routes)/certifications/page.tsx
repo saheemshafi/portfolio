@@ -17,14 +17,11 @@ export const metadata: Metadata = {
 interface CertificationsPageProps {}
 
 const CertificationsPage = async ({}: CertificationsPageProps) => {
-  const { data: certifications, error } = await supabase
+  const { data: certifications } = await supabase
     .from("certifications")
-    .select();
+    .select()
+    .throwOnError();
 
-  if (error) {
-    throw new Error(error.message);
-  }
-  
   return (
     <Container className="pt-12">
       <Heading>
@@ -36,7 +33,7 @@ const CertificationsPage = async ({}: CertificationsPageProps) => {
         </Heading.Description>
       </Heading>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {certifications.map((certification) => (
+        {certifications?.map((certification) => (
           <Card key={certification.id}>
             <Card.Image src={certification.image} alt={certification.course} />
             <Card.Content>

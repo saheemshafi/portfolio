@@ -16,9 +16,11 @@ const ProjectsSection = async ({}: ProjectsSectionProps) => {
     .from("projects")
     .select(`*,repositories(id, owner, repositoryName)`)
     .limit(3);
+
   if (projects.error) {
-    throw new Error(projects.error?.message);
+    throw projects.error.message;
   }
+
   return (
     <Container id="projects">
       <Heading>
@@ -31,7 +33,7 @@ const ProjectsSection = async ({}: ProjectsSectionProps) => {
       </Heading>
 
       <div className="mb-12 grid gap-6 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
-        {projects.data.map((project) => (
+        {projects.data?.map((project) => (
           <Card key={project.id}>
             <Card.Image
               src={process.env.SUPABASE_BUCKET_URL.concat(project.imagePath)}
