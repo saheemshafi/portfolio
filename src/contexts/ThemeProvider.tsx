@@ -15,7 +15,7 @@ interface ThemeContextType {
  * @description `ThemeContext` to manage global theming in app.
  */
 export const ThemeContext = createContext<ThemeContextType>({
-  theme: "yellow-249 204 63",
+  theme: "yellow",
   onThemeChange: (theme: string) => {},
 });
 
@@ -29,7 +29,7 @@ export const ThemeContextProvider = ({ children }: { children: ReactNode }) => {
   if (typeof localStorage !== "undefined") {
     _theme = localStorage.getItem("theme");
   }
-  const [theme, setTheme] = useState(_theme || "yellow");
+  const [theme, setTheme] = useState(_theme || "skyblue");
 
   if (!ThemeContext) {
     throw new Error(
