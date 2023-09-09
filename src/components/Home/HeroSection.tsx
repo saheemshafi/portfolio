@@ -1,10 +1,8 @@
+import Link from "next/link";
 import { FC } from "react";
-import { MdSpaceDashboard } from "react-icons/md";
-import Button from "../ui/Button";
+import { buttonVariants } from "../ui/Button/_buttonVariants";
 import Container from "../ui/Container";
 import Heading from "../ui/Heading";
-import Link from "next/link";
-import { buttonVariants } from "../ui/Button/_buttonVariants";
 
 interface HeroSectionProps {}
 
@@ -23,11 +21,11 @@ const HeroSection: FC<HeroSectionProps> = ({}) => {
 
       <div className="flex gap-3">
         <Link href="/projects" className={buttonVariants()}>
-          <MdSpaceDashboard size={20} /> View Projects
+           View Projects
         </Link>
         <Link
           href="/#about-me"
-          className={buttonVariants({ variant: "ghost" })}
+          className={buttonVariants({ variant: "secondary" })}
         >
           About Me
         </Link>
