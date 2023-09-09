@@ -6,15 +6,12 @@ import Heading from "../ui/Heading";
 interface PortfolioSectionProps {}
 
 const PortfolioSection = async ({}: PortfolioSectionProps) => {
-  const { data, error } = await supabase
+  const { data } = await supabase
     .from("repositories")
     .select()
+    .throwOnError()
     .filter("repositoryName", "like", "portfolio");
   const portfolio = data?.at(0);
-
-  if (error) {
-    throw new Error(error?.message);
-  }
 
   return (
     portfolio && (

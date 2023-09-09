@@ -30,7 +30,7 @@ function Element({
   ...props
 }: HeadingProps) {
   return React.createElement(
-    level || "h1",
+    level as string,
     {
       ...props,
       className: cn(headingVariants({ level }), className),
@@ -39,7 +39,11 @@ function Element({
   );
 }
 
-function SubHeading({ children, className, ...props }: HeadingProps) {
+function SubHeading({
+  children,
+  className,
+  ...props
+}: HTMLAttributes<HTMLParagraphElement>) {
   return (
     <p
       {...props}

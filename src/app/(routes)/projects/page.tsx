@@ -17,17 +17,10 @@ export const metadata: Metadata = {
 interface ProjectsPageProps {}
 
 const ProjectsPage = async ({}: ProjectsPageProps) => {
-  const { data: projects, error } = await supabase
+  const { data: projects } = await supabase
     .from("projects")
-    .select(`*,repositories(id, owner, repositoryName)`);
-  const { data } = await supabase.storage
-    .from("portfolio-bucket")
-    .getPublicUrl("project-images/crackle-media.jpg");
-  console.log(data);
-
-  if (error) {
-    throw new Error(error?.message);
-  }
+    .select(`*,repositories(id, owner, repositoryName)`)
+    .throwOnError();
 
   return (
     <Container className="pt-12">
@@ -40,7 +33,7 @@ const ProjectsPage = async ({}: ProjectsPageProps) => {
         </Heading.Description>
       </Heading>
       <div className="grid gap-6 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
-        {projects.map((project) => (
+        {projects?.map((project) => (
           <Card key={project.id}>
             <Card.Image
               src={process.env.SUPABASE_BUCKET_URL.concat(project.imagePath)}
