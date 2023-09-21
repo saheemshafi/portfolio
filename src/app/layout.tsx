@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navigation";
+import Head from "next/head";
 import MobileNavigation from "@/components/Navigation/MobileNavigation";
 import { ThemeContextProvider } from "@/contexts/ThemeProvider";
 import { cn } from "@/lib/utils";
@@ -20,6 +21,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth theme-skyblue">
+      <Head>
+        <meta name="google-site-verification" content="YP6DdeuezywkR1zfPFsT02B-rw7o9FHny2AC685TAQw" />
+      </Head>
       <body
         className={cn(
           inter.className,
