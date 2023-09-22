@@ -27,10 +27,15 @@ export async function POST(req: NextRequest) {
         (issue) => `Zod-[${issue.path[0]}]: ${issue.message}`,
       );
       return NextResponse.json({ success: false, errors }, { status: 422 });
-    } else if (error instanceof Error) {
+    } else {
       return NextResponse.json(
-        { success: false, errors: [error.message] },
-        { status: 400 },
+        {
+          success: false,
+          errors: [
+            error instanceof Error ? error.message : "Something went wrong!",
+          ],
+        },
+        { status: 500 },
       );
     }
   }

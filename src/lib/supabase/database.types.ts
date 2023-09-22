@@ -42,7 +42,7 @@ export interface Database {
       contacts: {
         Row: {
           email: string
-          email_sent: boolean | null
+          email_sent: boolean
           from: string
           id: string
           message: string
@@ -50,7 +50,7 @@ export interface Database {
         }
         Insert: {
           email: string
-          email_sent?: boolean | null
+          email_sent?: boolean
           from: string
           id?: string
           message: string
@@ -58,7 +58,7 @@ export interface Database {
         }
         Update: {
           email?: string
-          email_sent?: boolean | null
+          email_sent?: boolean
           from?: string
           id?: string
           message?: string
