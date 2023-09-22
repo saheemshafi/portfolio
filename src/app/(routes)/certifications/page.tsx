@@ -2,7 +2,7 @@ import { buttonVariants } from "@/components/ui/Button/_buttonVariants";
 import Card from "@/components/ui/Card";
 import Container from "@/components/ui/Container";
 import Heading from "@/components/ui/Heading";
-import supabase from "@/lib/supabase/supabase";
+import supabase from "@/lib/supabase/supabase";;
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { CgArrowsExpandUpRight } from "react-icons/cg";

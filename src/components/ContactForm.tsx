@@ -1,21 +1,21 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as Form from "@radix-ui/react-form";
-import { motion } from "framer-motion";
-import { FC, HTMLAttributes } from "react";
-import { useForm } from "react-hook-form";
-import { BiSend } from "react-icons/bi";
-import Button from "./ui/Button";
 import {
   ContactFormSchema,
   contactFormSchema,
 } from "@/lib/zod/contactFormSchema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as Form from "@radix-ui/react-form";
+import { motion } from "framer-motion";
+import { HTMLAttributes } from "react";
+import { useForm } from "react-hook-form";
+import { BiSend } from "react-icons/bi";
+import Button from "./ui/Button";
 
 interface ContactFormProps extends HTMLAttributes<HTMLDivElement> {}
 
-const ContactForm: FC<ContactFormProps> = ({ className, ...props }) => {
+function ContactForm({ className, ...props }: ContactFormProps) {
   const onSubmit = async (values: ContactFormSchema) => {
     try {
       const res = await fetch("/api/contact", {
@@ -23,11 +23,13 @@ const ContactForm: FC<ContactFormProps> = ({ className, ...props }) => {
         body: JSON.stringify(values),
       });
       const data = await res.json();
+
       if (!data.success) {
         throw data.errors;
       }
       console.log(data);
     } catch (error) {
+      // Errors sent from backend are of type Array
       if (error instanceof Array) {
         error.forEach((err: string) => {
           if (err.startsWith("Zod")) {
@@ -174,6 +176,6 @@ const ContactForm: FC<ContactFormProps> = ({ className, ...props }) => {
       </Form.Root>
     </div>
   );
-};
+}
 
 export default ContactForm;
