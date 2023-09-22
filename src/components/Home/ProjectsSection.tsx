@@ -8,6 +8,7 @@ import Chip from "../ui/Chip";
 import Container from "../ui/Container";
 import Heading from "../ui/Heading";
 import Separator from "../ui/Separator";
+import { env } from "@/lib/zod/envSchema";
 
 interface ProjectsSectionProps {}
 
@@ -36,7 +37,7 @@ const ProjectsSection = async ({}: ProjectsSectionProps) => {
         {projects.data?.map((project) => (
           <Card key={project.id}>
             <Card.Image
-              src={process.env.SUPABASE_BUCKET_URL.concat(project.imagePath)}
+              src={env.SUPABASE_BUCKET_URL.concat(project.imagePath)}
               alt={project.title}
             />
             <Card.Content>

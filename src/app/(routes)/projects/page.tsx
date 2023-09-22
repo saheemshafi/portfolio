@@ -4,6 +4,7 @@ import Chip from "@/components/ui/Chip";
 import Container from "@/components/ui/Container";
 import Heading from "@/components/ui/Heading";
 import supabase from "@/lib/supabase/supabase";
+import { env } from "@/lib/zod/envSchema";
 import { Metadata } from "next";
 import Link from "next/link";
 import { CgArrowsExpandUpRight } from "react-icons/cg";
@@ -36,7 +37,7 @@ const ProjectsPage = async ({}: ProjectsPageProps) => {
         {projects?.map((project) => (
           <Card key={project.id}>
             <Card.Image
-              src={process.env.SUPABASE_BUCKET_URL.concat(project.imagePath)}
+              src={env.SUPABASE_BUCKET_URL.concat(project.imagePath)}
               alt={project.title}
             />
             <Card.Content>
