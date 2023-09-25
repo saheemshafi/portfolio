@@ -10,6 +10,7 @@ const envSchema = z.object({
   SUPABASE_URL: z.string().url(),
   SUPABASE_KEY: z.string(),
   SUPABASE_BUCKET_URL: z.string().url(),
+  APP_URL: z.string().url(),
 });
 
 export const env = envSchema.parse(process.env);

@@ -11,8 +11,21 @@ import { CgArrowsExpandUpRight } from "react-icons/cg";
 import { ImGithub } from "react-icons/im";
 
 export const revalidate = 10800; // Revalidate after 3 hours : 10800 seconds;
-export const metadata: Metadata = {
+
+const { title, description } = {
   title: "Mir Saheem Shafi - All Projects",
+  description:
+    "Checkout Every Project Of Mine From Simple To Complex And Personal To Business Use.",
+};
+
+export const metadata: Metadata = {
+  title,
+  description,
+  openGraph: {
+    title,
+    description,
+    url: env.APP_URL.concat("/projects"),
+  },
 };
 
 interface ProjectsPageProps {}
