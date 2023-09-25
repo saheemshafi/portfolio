@@ -2,16 +2,30 @@ import { buttonVariants } from "@/components/ui/Button/_buttonVariants";
 import Card from "@/components/ui/Card";
 import Container from "@/components/ui/Container";
 import Heading from "@/components/ui/Heading";
-import supabase from "@/lib/supabase/supabase";;
+import supabase from "@/lib/supabase/supabase";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { CgArrowsExpandUpRight } from "react-icons/cg";
 import { formatDate } from "@/lib/utils";
 import { Metadata } from "next";
+import { env } from "@/lib/zod/envSchema";
 
 export const revalidate = 10800; // Revalidate after 3 hours : 10800 seconds;
+
+const { title, description } = {
+  title: "Mir Saheem Shafi - All Certifications",
+  description:
+    "Displaying a collection of earned certificates showcasing my proficiency in various technologies.",
+};
+
 export const metadata: Metadata = {
-  title: "Mir Saheem Shafi - Certifications",
+  title,
+  description,
+  openGraph: {
+    title,
+    description,
+    url: env.APP_URL.concat("/certifications"),
+  },
 };
 
 interface CertificationsPageProps {}
