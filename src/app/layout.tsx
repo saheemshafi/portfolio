@@ -22,7 +22,6 @@ export const metadata: Metadata = {
   colorScheme: "dark",
   keywords:
     "web developer, frontend web developer, nextjs developer, react developer, angular developer",
-  icons: ["/favicon.ico"],
   openGraph: {
     type: "website",
     countryName: "India",
