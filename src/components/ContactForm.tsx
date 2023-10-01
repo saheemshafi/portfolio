@@ -1,6 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import toast from "react-hot-toast";
 import {
   ContactFormSchema,
   contactFormSchema,
@@ -27,7 +28,9 @@ function ContactForm({ className, ...props }: ContactFormProps) {
       if (!data.success) {
         throw data.errors;
       }
-      console.log(data);
+
+      toast.success("Message sent successfully!")
+
     } catch (error) {
       // Errors sent from backend are of type Array
       if (error instanceof Array) {

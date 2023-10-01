@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { env } from "@/lib/zod/envSchema";
+import { ToastProvider } from "@/contexts/ToastProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -52,6 +53,7 @@ export default function RootLayout({
         ></div>
         <ThemeContextProvider>
           <Navbar />
+          <ToastProvider />
           <MobileNavigation />
           {children}
         </ThemeContextProvider>
