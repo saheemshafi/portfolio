@@ -13,7 +13,6 @@ html.theme-emerald {
 }
 
 @layer base {
-
   html {
     color-scheme: dark;
   }
@@ -26,4 +25,8 @@ html.theme-emerald {
   h6 {
     text-wrap: pretty;
   }
+}
+
+.toast {
+  @apply !rounded !border !border-theme/10 !bg-slate-main !text-white before:absolute before:inset-0 before:-z-[1] before:rounded before:bg-gradient-to-t from-theme/5;
 }

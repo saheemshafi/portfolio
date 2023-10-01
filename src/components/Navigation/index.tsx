@@ -1,20 +1,20 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
 import { FiDownload } from "react-icons/fi";
+import { GoHomeFill } from "react-icons/go";
+import { MdCall, MdSpaceDashboard } from "react-icons/md";
+import { PiCertificateFill } from "react-icons/pi";
+import ThemeSwitcher from "../ThemeSwitcher";
 import Button from "../ui/Button";
 import { buttonVariants } from "../ui/Button/_buttonVariants";
 import Container from "../ui/Container";
 import { headingVariants } from "../ui/Heading";
-import ThemeSwitcher from "../ThemeSwitcher";
-import { GoHomeFill } from "react-icons/go";
-import { MdSpaceDashboard, MdCall } from "react-icons/md";
-import { PiCertificateFill } from "react-icons/pi";
-import { usePathname } from "next/navigation";
-import { cn } from "@/lib/utils";
-import supabase from "@/lib/supabase/supabase";
-import { useState } from "react";
+import toast from "react-hot-toast";
 
 export const links = [
   { path: "/", icon: GoHomeFill, text: "Home" },
@@ -40,6 +40,7 @@ function Navbar({}: NavbarProps) {
       anchor.href = URL.createObjectURL(resume);
       anchor.click();
       anchor.remove();
+      toast.success("Started Download!");
     } catch (error) {
       console.log(error);
     } finally {
@@ -49,8 +50,11 @@ function Navbar({}: NavbarProps) {
 
   return (
     <header className="border-b border-zinc-800 lg:border-none">
-      <Container className="my-0 sm:my-0 flex items-center justify-between py-4 leading-[1.3]">
-        <Link href="/" className={cn(headingVariants({ level: "h4" }),"truncate mr-2")}>
+      <Container className="my-0 flex items-center justify-between py-4 leading-[1.3] sm:my-0">
+        <Link
+          href="/"
+          className={cn(headingVariants({ level: "h4" }), "mr-2 truncate")}
+        >
           <span className="hidden sm:inline">Mir Saheem Shafi</span>
           <span className="sm:hidden">MSS</span>
         </Link>
