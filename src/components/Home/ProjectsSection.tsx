@@ -15,7 +15,7 @@ interface ProjectsSectionProps {}
 const ProjectsSection = async ({}: ProjectsSectionProps) => {
   const projects = await supabase
     .from("projects")
-    .select(`*,repositories(id, owner, repositoryName)`)
+    .select(`*`)
     .limit(3);
 
   if (projects.error) {
@@ -50,7 +50,7 @@ const ProjectsSection = async ({}: ProjectsSectionProps) => {
               </Card.Info>
               <Card.Actions>
                 <Link
-                  href={`https://github.com/${project.repositories?.owner}/${project.repositories?.repositoryName}`}
+                  href={project.repository || ''}
                   className={buttonVariants({
                     size: "sm",
                     variant: "secondary",
