@@ -28,12 +28,12 @@ export const metadata: Metadata = {
   },
 };
 
-interface ProjectsPageProps {}
+interface ProjectsPageProps { }
 
-const ProjectsPage = async ({}: ProjectsPageProps) => {
+const ProjectsPage = async ({ }: ProjectsPageProps) => {
   const { data: projects } = await supabase
     .from("projects")
-    .select(`*,repositories(id, owner, repositoryName)`)
+    .select(`*`)
     .throwOnError();
 
   return (
@@ -65,7 +65,7 @@ const ProjectsPage = async ({}: ProjectsPageProps) => {
               </Card.Info>
               <Card.Actions>
                 <Link
-                  href={`https://github.com/${project.repositories?.owner}/${project.repositories?.repositoryName}`}
+                  href={project.repository || ''}
                   className={buttonVariants({
                     size: "sm",
                     variant: "secondary",
