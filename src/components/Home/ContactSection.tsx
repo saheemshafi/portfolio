@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { BiLogoDiscordAlt, BiLogoGmail } from "react-icons/bi";
-import { ImGithub, ImTwitter } from "react-icons/im";
+import { ImGithub, ImLinkedin2 } from "react-icons/im";
 import ContactForm from "../ContactForm";
 import LinkTile from "../LinkTile";
 import Container from "../ui/Container";
@@ -44,7 +44,7 @@ const ContactSection: FC<ContactSectionProps> = ({}) => {
             </LinkTile>
             <LinkTile href="https://linkedin.com/in/saheemshafi" className="px-0">
               <LinkTile.Icon>
-                <ImTwitter size={20} />
+                <ImLinkedin2 size={20} />
               </LinkTile.Icon>
               <div>
                 <LinkTile.Title>Connect On LinkedIn</LinkTile.Title>
