@@ -13,10 +13,7 @@ import { env } from "@/lib/zod/envSchema";
 interface ProjectsSectionProps {}
 
 const ProjectsSection = async ({}: ProjectsSectionProps) => {
-  const projects = await supabase
-    .from("projects")
-    .select(`*`)
-    .limit(3);
+  const projects = await supabase.from("projects").select(`*`).limit(3);
 
   if (projects.error) {
     throw projects.error.message;
@@ -50,7 +47,7 @@ const ProjectsSection = async ({}: ProjectsSectionProps) => {
               </Card.Info>
               <Card.Actions>
                 <Link
-                  href={project.repository || ''}
+                  href={project.repository || ""}
                   className={buttonVariants({
                     size: "sm",
                     variant: "secondary",
@@ -66,6 +63,8 @@ const ProjectsSection = async ({}: ProjectsSectionProps) => {
                   <Link
                     href={project.deploy_url}
                     className={buttonVariants({ size: "sm" })}
+                    target="_blank"
+                    referrerPolicy="no-referrer"
                   >
                     Live Project
                     <CgArrowsExpandUpRight />
