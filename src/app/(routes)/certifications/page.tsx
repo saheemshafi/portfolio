@@ -10,8 +10,7 @@ import { formatDate } from "@/lib/utils";
 import { Metadata } from "next";
 import { env } from "@/lib/zod/envSchema";
 
-export const revalidate = 10800; // Revalidate after 3 hours : 10800 seconds;
-
+export const revalidate = 0;
 const { title, description } = {
   title: "Mir Saheem Shafi - All Certifications",
   description:
