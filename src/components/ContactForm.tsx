@@ -17,6 +17,16 @@ import Button from "./ui/Button";
 interface ContactFormProps extends HTMLAttributes<HTMLDivElement> {}
 
 function ContactForm({ className, ...props }: ContactFormProps) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset,
+    setError,
+  } = useForm<ContactFormSchema>({
+    resolver: zodResolver(contactFormSchema),
+  });
+
   const onSubmit = async (values: ContactFormSchema) => {
     try {
       const res = await fetch("/api/contact", {
@@ -29,8 +39,8 @@ function ContactForm({ className, ...props }: ContactFormProps) {
         throw data.errors;
       }
 
-      toast.success("Message sent successfully!")
-
+      toast.success("Message sent successfully!");
+      reset();
     } catch (error) {
       // Errors sent from backend are of type Array
       if (error instanceof Array) {
@@ -49,16 +59,6 @@ function ContactForm({ className, ...props }: ContactFormProps) {
       console.log(error);
     }
   };
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-    reset,
-    setError,
-  } = useForm<ContactFormSchema>({
-    resolver: zodResolver(contactFormSchema),
-  });
 
   return (
     <div
