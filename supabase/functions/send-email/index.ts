@@ -24,7 +24,6 @@ const transporter = nodemailer.createTransport({
 serve(async (req) => {
   const { id, email, sender, message, submitted_at }: Email = await req.json();
 
-  // Initialize Supabase Admin Client
   const supabase = createClient(
     Deno.env.get("SUPABASE_URL")!,
     Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!,
@@ -60,12 +59,11 @@ serve(async (req) => {
   }
 });
 
-// Replace this function with your email service (e.g., Resend, SendGrid)
 async function sendEmail({ id, sender, email, submitted_at }: Email) {
   console.log(`Sending email from ${sender}...`);
 
   const mailOptions = {
-    from: Deno.env.get("SMTP_USER"), // Sender email
+    from: Deno.env.get("SMTP_USER"), 
     to: email,
     subject: `Enquiry with ${Deno.env.get("HOST_NAME")!} submitted!`,
     html: `
